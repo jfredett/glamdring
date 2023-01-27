@@ -39,28 +39,5 @@
     grom  = "git rebase origin/main";
     wip   = "git add -A . ; git ci -a -m 'wip'";
     unwip = "git reset HEAD^";
-    ci = '' 
-      git ci -m "[\$\{$(git branch --show-current)}\] \"\$\{@\}\""
-    '';
-    ignore = ''
-      function ignore {
-        if [ -z "$1" ] ; then
-          touch .gitignore
-          cat .gitignore
-        else
-          if git status --porcelain | grep -vE '^[? ]' ; then
-            echo "There is staged work, please commit or reset it"
-            return 1
-          fi
-
-          echo "$1" >> .gitignore
-          git add .gitignore
-          git commit -m "ignore $1"
-        fi
-
-        return 0
-      }
-      ignore
-    '';
   };
 }
