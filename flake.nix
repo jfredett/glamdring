@@ -11,28 +11,71 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      linux = "x86_64-linux";
-      mac = "aarch64";
-      pkgs = nixpkgs.legacyPackages.${system};
-
-      jfredett = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        modules = [ ./home.nix ];
+      systems = {
+        linux = "x86_64-linux";
+        mac = "aarch64-darwin";
       };
 
-      defaultShell =  pkgs.mkShell {
+      defaultShell = system: let 
+        pkgs = nixpkgs.legacyPackages.${system};
+      in pkgs.mkShell {
         packages = with pkgs; [ 
           ruby_3_1
           rake
         ];
       };
-    in {
-      homeConfigurations.jfredett = jfredett;
-      homeConfigurations.jfredette = jfredett;
-      homeConfigurations.fredettej = jfredett;
+      
+      mkHome = { system, user, home }: {
+        ${user} = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${systems.${system}};
 
-      devShells.${linux}.default = defaultShell;  
-      devShells.${mac}.default = defaultShell;   
+          modules = [
+             ./home.nix 
+             {
+               home = {
+                 username = user;
+                 homeDirectory = home;
+               };
+             }
+          ];
+        };
+      };
+    in {
+      defaultPackage.${systems.linux} = home-manager.defaultPackage.${systems.linux};
+      defaultPackage.${systems.mac} = home-manager.defaultPackage.${systems.mac};
+
+      homeConfigurations = mkHome {
+        user = "jfredette";
+        home = "/Users/jfredette";
+        system = "mac";
+      } // mkHome {
+        user = "jfredett";
+        home = "/home/jfredett";
+        system = "linux";
+      };
+      /*
+        "jfredette" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${systems.mac};
+
+          modules = [
+             ./home.nix 
+             {
+               home = {
+                 username = "jfredette";
+                 homeDirectory = "/Users/jfredette";
+               };
+             }
+          ];
+        };
+        "jfredett" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${systems.linux};
+
+          modules = [ ./linux.nix ];
+        };
+      };
+      */
+
+      devShells.${systems.linux}.default = defaultShell systems.linux;  
+      devShells.${systems.mac}.default = defaultShell systems.mac;   
     };
 }

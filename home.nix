@@ -1,6 +1,5 @@
-{ config, pkgs, lib, home-manager, vscode-server, ... }:
+{ config, pkgs, lib, ... }:
 {
-  programs.home-manager.enable = true;
   home.stateVersion = "22.11";
 
   home.packages = [
@@ -17,17 +16,18 @@
     ./ssh.nix
     ./tmux.nix
   ];
+  */
 
   programs = {
+    home-manager.enable = true;
     bash.enable = true;
     git.enable = true;
-    neovim.enable = true;
-    tmux.enable = true;
-    ssh.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+ #   neovim.enable = true;
+#    tmux.enable = true;
+ #  ssh.enable = true;
+ #   direnv = {
+ #     enable = true;
+ #     nix-direnv.enable = true;
+ #   };
   };
-  */
 }
