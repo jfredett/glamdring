@@ -1,10 +1,16 @@
 {config, lib, pkgs, ...}:
 {
   # TODO: Turnkey service should pull these keys to /run/keys, owned by this user
-  programs.ssh = {
+  programs.ssh = let 
+    ssh_dir = "$HOME/.ssh";
+  in {
     matchBlocks = {
       "*.emerald.city" = {
-        identityFile = "/home/jfredett/.ssh/archimedes";
+        identityFile = "${ssh_dir}/.ssh/archimedes";
+      };
+      
+      "*.github.com" = {
+        identityFile = "${ssh_dir}/.ssh/archimedes";
       };
     };
   };
