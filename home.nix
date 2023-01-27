@@ -7,7 +7,6 @@
     pkgs.ripgrep
   ];
 
-/*
   imports = [
     ./bash.nix
     ./dirstack.nix
@@ -16,18 +15,17 @@
     ./ssh.nix
     ./tmux.nix
   ];
-  */
 
   programs = {
     home-manager.enable = true;
     bash.enable = true;
     git.enable = true;
- #   neovim.enable = true;
-#    tmux.enable = true;
- #  ssh.enable = true;
- #   direnv = {
- #     enable = true;
- #     nix-direnv.enable = true;
- #   };
+    neovim.enable = true;
+    tmux.enable = true;
+    ssh.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 }
