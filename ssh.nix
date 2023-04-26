@@ -5,6 +5,10 @@
     ssh_dir = "~/.ssh";
   in {
     matchBlocks = {
+      "pinky" = {
+        identityFile = "${ssh_dir}/archimedes";
+      };
+
       "*.emerald.city" = {
         identityFile = "${ssh_dir}/archimedes";
       };

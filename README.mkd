@@ -1,0 +1,24 @@
+# `randy.nix`
+
+Randy is my development machine, running nix. Randy is named after my
+first dog, who, despite the rest of this naming convention, is definitely
+not in hell. Randy was a good boy.
+
+In any case, this server will run, for the moment, vscode-server and 
+whatever toolchains I need/want for that. I wasn't planning on building
+this until `toto` was fully complete, but I'm starting early because
+`archimedes` is having some issues staying awake and I suspect it's due
+to the wifi turning off to save power. I could just move Archy back up
+to my office, but that would require going downstairs and then back upstairs,
+and why would I do that when I can do something more complicated?
+
+## Service Loadout
+
+1. vscode-server -- i do want to move to neovim/tmux again, but only after I get remote desktop and a tiling wm
+10. turnkey
+11. RDP? Desktop?
+  - eventually I want this to be a thin-client thing, so 
+    probably getting into this is a good plan, but for
+    now I don't mind the vscode-over-ssh setup
+12. 
+

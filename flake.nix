@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # flake utils/flake utils plus
+    # nixvim lives here
+    # awesome config lives here
+    
   };
 
   outputs = { nixpkgs, home-manager, ... }:
@@ -22,6 +26,7 @@
         packages = with pkgs; [ 
           ruby_3_1
           rake
+          lua-language-server
         ];
       };
       
@@ -53,27 +58,6 @@
         home = "/home/jfredett";
         system = "linux";
       };
-      /*
-        "jfredette" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${systems.mac};
-
-          modules = [
-             ./home.nix 
-             {
-               home = {
-                 username = "jfredette";
-                 homeDirectory = "/Users/jfredette";
-               };
-             }
-          ];
-        };
-        "jfredett" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${systems.linux};
-
-          modules = [ ./linux.nix ];
-        };
-      };
-      */
 
       devShells.${systems.linux}.default = defaultShell systems.linux;  
       devShells.${systems.mac}.default = defaultShell systems.mac;   
