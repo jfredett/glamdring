@@ -9,9 +9,10 @@
 
   imports = [
     ./bash.nix
-    ./dirstack.nix
+    #./dirstack.nix
     ./git.nix
-    ./nvim.nix
+    #./nvim.nix
+    ./nixvim.nix
     ./ssh.nix
     ./tmux.nix
   ];
