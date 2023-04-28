@@ -1,25 +1,17 @@
 { config, pkgs, lib, ... }:
 {
+  imports = [
+    ./nvim/options.nix
+    ./nvim/telescope.nix
+    ./nvim/treesitter.nix
+    ./nvim/lsp.nix
+  ];
+
   programs.nixvim = {
     enable = true;
 
     viAlias = true;
     vimAlias = true;
-
-    imports = [
-      ./nvim/options.nix
-    ];
-
-    extraPlugins = with pkgs.vimPlugins; [
-      # vim-colorschemes 
-      neogit
-      nvim-dap
-      nvim-dap-ui
-#      illuminate TODO: Figure out how to import a git plugin that isn't prior packaged.
-      neotest
-      tabular
-      plenary-nvim
-    ];
 
     colorschemes.gruvbox = {
       enable = true;
@@ -27,15 +19,27 @@
       trueColor = true;
     };
 
+    extraPlugins = with pkgs.vimPlugins; [
+      # illuminate TODO: Figure out how to import a git plugin that isn't prior packaged.
+      neogit
+      nvim-dap
+      nvim-dap-ui
+      neotest
+      tabular
+      plenary-nvim
+    ];
+
     plugins = {
-      lualine.enable = true;
-      telescope.enable = true;
       indent-blankline.enable = true;
-      trouble.enable = true; 
+      lsp.enable = true;
+      lualine.enable = true;
       neo-tree.enable = true;
-      todo-comments.enable = true;
-      nvim-cmp.enable = true;
       nix.enable = true;
+      nvim-cmp.enable = true;
+      telescope.enable = true;
+      todo-comments.enable = true;
+      treesitter.enable = true;
+      trouble.enable = true; 
     };
   };
 }

@@ -1,15 +1,16 @@
 { config, lib, pkgs, vimUtils, ... }: {
-  globals.mapleader = ",";
+  programs.nixvim = {
+    globals.mapleader = ",";
 
-  options = {
-    number = true;
-    relativenumber = false;
-    incsearch = true;
-    backup = false;
-    writebackup = false;
-    swapfile = false;
-    wildmenu = true;
-    shortmess = "aIA";
+    options = {
+      number = true;
+      relativenumber = false;
+      incsearch = true;
+      backup = false;
+      writebackup = false;
+      swapfile = false;
+      wildmenu = true;
+      shortmess = "aIA";
     # Show loose whitespace
     list = true;
 
@@ -50,4 +51,5 @@
       "<leader>gb<space>" = mkCmd "TODO";
     };
   };
+};
 }
