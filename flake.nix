@@ -41,7 +41,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.jfredett = import ./jfredett.nix;
-            home-manager.users.pinky = import ./pinky.nix;
+            home-manager.users.pinky = import ./pinky.nix { inherit pkgs lib nixvim; config = {}; };
           }
         ];
       };

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nixvim, ... }:
 {
   home.stateVersion = "22.11";
 
@@ -8,6 +8,7 @@
   ];
 
   imports = [
+    nixvim.homeManagerModules.nixvim
     ./bash.nix
     #./dirstack.nix
     ./git.nix
@@ -25,7 +26,8 @@
     home-manager.enable = true;
     bash.enable = true;
     git.enable = true;
-    neovim.enable = true;
+    neovim.enable = false;
+    nixvim.enable = true;
     tmux.enable = true;
     ssh.enable = true;
     direnv = {
