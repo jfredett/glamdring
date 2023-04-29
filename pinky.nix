@@ -3,8 +3,8 @@
   home.stateVersion = "22.11";
 
   home.packages = [
-    pkgs.rnix-lsp
     pkgs.ripgrep
+    pkgs.jq
   ];
 
   imports = [

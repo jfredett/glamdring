@@ -1,4 +1,9 @@
 { config, lib, pkgs, vimUtils, ... }: {
+  home.packages = with pkgs; [
+    rnix-lsp
+    shellcheck
+  ];
+
   programs.nixvim.plugins.lsp = {
     servers = {
       bashls.enable = true;
@@ -10,8 +15,6 @@
       pylsp.enable = true;
       rnix-lsp.enable = true;
       rust-analyzer.enable = true;
-      
-
     };
   };
 }

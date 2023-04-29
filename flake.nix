@@ -40,7 +40,7 @@
             system.stateVersion = "23.05";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jfredett = import ./jfredett.nix;
+            home-manager.users.jfredett = import ./jfredett.nix { inherit pkgs lib nixvim; config = {}; };
             home-manager.users.pinky = import ./pinky.nix { inherit pkgs lib nixvim; config = {}; };
           }
         ];
