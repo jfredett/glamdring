@@ -217,7 +217,6 @@
 
       nerdtree
       nerdtree-git-plugin
-      nerdtree-syntax-highlight
 
 
       {

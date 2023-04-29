@@ -7,59 +7,74 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # flake utils/flake utils plus
-    # nixvim lives here
-    # awesome config lives here
-    
+    flake-utils.url = "github:numtide/flake-utils";
+    nixvim.url = "github:pta2002/nixvim";
+    eclib.url = "git+file:/home/jfredett/code/eclib";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
-    let
-      systems = {
-        linux = "x86_64-linux";
-        mac = "aarch64-darwin";
-      };
+  outputs = { self, nixpkgs, home-manager, flake-utils, eclib, nixvim, ... }: flake-utils.lib.eachDefaultSystem (system: let
+    pkgs = nixpkgs.legacyPackages.${system};
+    mkHome = home-manager.lib.homeManagerConfiguration;
+  in with nixpkgs.lib; {
+    devShell = pkgs.mkShell {
+      packages = with pkgs; [
+        ruby_3_1
+        rake
 
-      defaultShell = system: let 
-        pkgs = nixpkgs.legacyPackages.${system};
-      in pkgs.mkShell {
-        packages = with pkgs; [ 
-          ruby_3_1
-          rake
-          lua-language-server
+        lua-language-server
+      ];
+    };
+
+    nixosConfigurations = let 
+      emerald-city = eclib.lib.${system};
+    in {
+      randy = hwConfig: nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = [ 
+          hwConfig
+          emerald-city.common
+          emerald-city.vm
+          home-manager.nixosModules.home-manager
+          {
+            system.stateVersion = "23.05";
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jfredett = import ./jfredett.nix { inherit pkgs lib nixvim; config = {}; };
+            home-manager.users.pinky = import ./pinky.nix { inherit pkgs lib nixvim; config = {}; };
+          }
         ];
       };
-      
-      mkHome = { system, user, home }: {
-        ${user} = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${systems.${system}};
-
-          modules = [
-             ./home.nix 
-             {
-               home = {
-                 username = user;
-                 homeDirectory = home;
-               };
-             }
-          ];
-        };
-      };
-    in {
-      defaultPackage.${systems.linux} = home-manager.defaultPackage.${systems.linux};
-      defaultPackage.${systems.mac} = home-manager.defaultPackage.${systems.mac};
-
-      homeConfigurations = mkHome {
-        user = "jfredette";
-        home = "/Users/jfredette";
-        system = "mac";
-      } // mkHome {
-        user = "jfredett";
-        home = "/home/jfredett";
-        system = "linux";
-      };
-
-      devShells.${systems.linux}.default = defaultShell systems.linux;  
-      devShells.${systems.mac}.default = defaultShell systems.mac;   
     };
+
+    homeConfigurations = {
+      randy = mkHome {
+        inherit pkgs; 
+
+        modules = [
+          ./home.nix
+          {
+            home = {
+              username = "jfredett";
+              homeDirectory = "/home/jfredett";
+            };
+          }
+        ];
+      };
+
+      work = mkHome {
+        inherit pkgs; 
+
+        modules = [
+          ./home.nix
+          {
+            home = {
+              username = "jfredette";
+              homeDirectory = "/Users/jfredette";
+            };
+          }
+        ];
+      };
+    };
+  });
 }

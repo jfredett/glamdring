@@ -2,7 +2,7 @@
 {
   home.file = {
     dirstack = {
-      target = "$HOME/gandalf/dirstack/bin/dirstack_driver";
+      target = "/home/jfredett/gandalf/dirstack/bin/dirstack_driver";
       executable = true;
       source = ./dirstack.sh;
     };
