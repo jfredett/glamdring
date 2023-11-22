@@ -45,6 +45,22 @@
           }
         ];
       };
+
+      archimedes = hwConfig: nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = [ 
+      	  hwConfig
+	  (import ./common.nix)
+          home-manager.nixosModules.home-manager
+          {
+            system.stateVersion = "23.05";
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jfredett = import ./jfredett.nix { inherit pkgs lib nixvim; config = {}; };
+          }
+	];
+      };
     };
 
     homeConfigurations = {
