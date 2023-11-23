@@ -1,17 +1,18 @@
 { config, pkgs, lib, nixvim, ... }:
 {
-  home.stateVersion = "23.11";
+  home.stateVersion = "23.05";
 
-  home.packages = [
-    pkgs.ripgrep
+  home.packages = with pkgs; [
+    ripgrep
+    tree
   ];
 
   imports = [
     nixvim.homeManagerModules.nixvim
+    ./nixvim.nix
     ./bash.nix
     ./dirstack.nix
     ./git.nix
-    ./nixvim.nix
     ./ssh.nix
     ./tmux.nix
   ];
