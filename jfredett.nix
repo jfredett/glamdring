@@ -15,6 +15,7 @@
     ./git.nix
     ./ssh.nix
     ./tmux.nix
+    ./barrier.nix
   ];
   
   home.shellAliases = {
