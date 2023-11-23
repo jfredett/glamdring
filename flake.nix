@@ -2,17 +2,24 @@
   description = "Glamdring, a weapon fit for a wizard";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    flake-utils.url = "github:numtide/flake-utils";
+
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
-    nixvim.url = "github:pta2002/nixvim";
-    eclib.url = "git+file:/home/jfredett/code/eclib";
+    nixvim = {
+      url = "github:pta2002/nixvim/nixos-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    eclib = {
+      url = "git+file:/home/jfredett/code/eclib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, eclib, nixvim, ... }: flake-utils.lib.eachDefaultSystem (system: let
+  outputs = { self, nixpkgs, home-manager, flake-utils, nixvim, ... }: flake-utils.lib.eachDefaultSystem (system: let
     pkgs = nixpkgs.legacyPackages.${system};
     mkHome = home-manager.lib.homeManagerConfiguration;
   in with nixpkgs.lib; {
@@ -51,7 +58,7 @@
 
         modules = [ 
       	  hwConfig
-	  (import ./common.nix)
+      	  (import ./common.nix)
           home-manager.nixosModules.home-manager
           {
             system.stateVersion = "23.05";
