@@ -18,6 +18,7 @@
           y = 0;
         };
       };
+
       font = {
         normal = {
           family = "Inconsolata Nerd Font";
@@ -39,12 +40,13 @@
           y = 0;
         };
       };
+
       keybinds = [
-        { key = "c"      ; mods = "Control" ; action = "Copy"             ; }
-        { key = "v"      ; mods = "Control" ; action = "Paste"            ; }
-	{ key = "Key0"   ; mods = "Control|Shift" ; action = "ResetFontSize"    ; }
-	{ key = "Equals" ; mods = "Command|Shift" ; action = "IncreaseFontSize" ; }
-	{ key = "Minus"  ; mods = "Command|Shift" ; action = "DecreaseFontSize" ; }
+        { key = "c"      ; mods = "Control"       ; action = "Copy"             ; }
+        { key = "v"      ; mods = "Control"       ; action = "Paste"            ; }
+        { key = "Key0"   ; mods = "Control|Shift" ; action = "ResetFontSize"    ; }
+        { key = "Equals" ; mods = "Command|Shift" ; action = "IncreaseFontSize" ; }
+        { key = "Minus"  ; mods = "Command|Shift" ; action = "DecreaseFontSize" ; }
   
       ];
     };

@@ -30,6 +30,6 @@
   ];
 
   environment.variables = {
-#    VAULT_ADDR = "https://vault.emerald.city:8200";
+    VAULT_ADDR = "https://vault.emerald.city:8200";
   };
 }
