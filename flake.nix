@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
@@ -19,7 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, nixvim, ... }: flake-utils.lib.eachDefaultSystem (system: let
+  outputs = inputs@{ self, nixpkgs, nur, home-manager, flake-utils, nixvim, ... }: flake-utils.lib.eachDefaultSystem (system: let
     pkgs = nixpkgs.legacyPackages.${system};
     mkHome = home-manager.lib.homeManagerConfiguration;
   in with nixpkgs.lib; {
@@ -47,8 +48,8 @@
             system.stateVersion = "23.05";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jfredett = import ./jfredett.nix { inherit pkgs lib nixvim; config = {}; };
-            home-manager.users.pinky = import ./pinky.nix { inherit pkgs lib nixvim; config = {}; };
+            home-manager.users.jfredett = import ./jfredett.nix { inherit pkgs lib nixvim nur; config = {}; };
+            home-manager.users.pinky = import ./pinky.nix { inherit pkgs lib nixvim nur; config = {}; };
           }
         ];
       };
@@ -57,16 +58,16 @@
         inherit system;
 
         modules = [ 
-      	  hwConfig
-      	  (import ./common.nix)
+          hwConfig
+          (import ./common.nix)
           home-manager.nixosModules.home-manager
           {
             system.stateVersion = "23.05";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jfredett = import ./jfredett.nix { inherit pkgs lib nixvim; config = {}; };
+            home-manager.users.jfredett = import ./jfredett.nix { inherit pkgs lib nixvim nur; config = {}; };
           }
-	];
+        ];
       };
     };
 

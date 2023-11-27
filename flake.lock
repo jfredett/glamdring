@@ -394,6 +394,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1701085559,
+        "narHash": "sha256-BHT8Zxl/4iQ4NQ8N+fvJhi+LoblGNUz8p+axv40RDjY=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "5b543aa25fdc06ae3f60c45acc050bd0876541bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "poetry2nix": {
       "inputs": {
         "flake-utils": [
@@ -482,7 +497,8 @@
         "flake-utils": "flake-utils_3",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "nur": "nur"
       }
     },
     "systems": {
