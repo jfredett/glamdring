@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ...}: {
+{ config, pkgs, lib, nur, ...}: {
   programs.firefox = {
     enable = true;
 
@@ -68,95 +68,97 @@
           user_pref("media.ffmpeg.vaapi.enabled", true);
           user_pref("media.rdd-vpx.enabled", true);
         '';
+        /*
         extensions = let
-          ryceePkgs = pkgs.nur.repos.rycee.firefox-addons;
-          bandiPkgs = pkgs.nur.repos.bandithedoge.firefox-addons;
+          ryceePkgs = nur.repos.rycee.firefox-addons;
+          bandiPkgs = nur.repos.bandithedoge.firefox-addons;
         in [
           ryceePkgs.onepassword-password-manager
 
-            # Efficiency Stuff
-            bandiPkgs.auto-tab-discard
-            bandiPkgs.dont-fuck-with-paste
-            bandiPkgs.tridactyl
-            bandiPkgs.violentmonkey
-            ryceePkgs.tree-style-tab
-            ryceePkgs.tst-tab-search
-            ryceePkgs.tst-wheel-and-double
-            ryceePkgs.pushbullet
-            ryceePkgs.tab-counter-plus
-            ryceePkgs.tab-reloader
-            ryceePkgs.terms-of-service-didnt-read
-            ryceePkgs.tomato-counter 
-            ryceePkgs.torrent-control
+          # Efficiency Stuff
+          bandiPkgs.auto-tab-discard
+          bandiPkgs.dont-fuck-with-paste
+          bandiPkgs.tridactyl
+          bandiPkgs.violentmonkey
+          ryceePkgs.tree-style-tab
+          ryceePkgs.tst-tab-search
+          ryceePkgs.tst-wheel-and-double
+          ryceePkgs.pushbullet
+          ryceePkgs.tab-counter-plus
+          ryceePkgs.tab-reloader
+          ryceePkgs.terms-of-service-didnt-read
+          ryceePkgs.tomato-counter 
+          ryceePkgs.torrent-control
 
-            # Privacy Stuff
-            ryceePkgs.duckduckgo-privacy-essentials
-            ryceePkgs.canvasblocker
-            ryceePkgs.censor-tracker
-            ryceePkgs.clearurls 
-            ryceePkgs.decentraleyes
-            ryceePkgs.linkcleaner
-            ryceePkgs.ninja-cookiforcee
-            ryceePkgs.privacy-possum
-            ryceePkgs.proton-vpn
+          # Privacy Stuff
+          ryceePkgs.duckduckgo-privacy-essentials
+          ryceePkgs.canvasblocker
+          ryceePkgs.censor-tracker
+          ryceePkgs.clearurls 
+          ryceePkgs.decentraleyes
+          ryceePkgs.linkcleaner
+          ryceePkgs.ninja-cookiforcee
+          ryceePkgs.privacy-possum
+          ryceePkgs.proton-vpn
 
-            # Security Stuff
-            ryceePkgs.ublock-origin
-            ryceePkgs.privacy-badger
-            ryceePkgs.disable-javascript
-            ryceePkgs.user-agent-string-switcher
+          # Security Stuff
+          ryceePkgs.ublock-origin
+          ryceePkgs.privacy-badger
+          ryceePkgs.disable-javascript
+          ryceePkgs.user-agent-string-switcher
 
-            # Site Enhancements Stuff
+          # Site Enhancements Stuff
 
-            ## General
-            ryceePkgs.native-mathml
-            ryceePkgs.native-tab-override
-            ryceePkgs.re-enable-right-click
+          ## General
+          ryceePkgs.native-mathml
+          ryceePkgs.native-tab-override
+          ryceePkgs.re-enable-right-click
 
 
-            ## Github
-            bandiPkgs.enhanced-github
-            bandiPkgs.octolinker
-            bandiPkgs.github-code-folding
-            bandiPkgs.github-repo-size
-            bandiPkgs.material-icons-for-github
-            ryceePkgs.buster-captcha-solver
-            ryceePkgs.bypass-paywalls-clean
+          ## Github
+          bandiPkgs.enhanced-github
+          bandiPkgs.octolinker
+          bandiPkgs.github-code-folding
+          bandiPkgs.github-repo-size
+          bandiPkgs.material-icons-for-github
+          ryceePkgs.buster-captcha-solver
+          ryceePkgs.bypass-paywalls-clean
 
-            ## SoundCloud
-            ryceePkgs.darkcloud
+          ## SoundCloud
+          ryceePkgs.darkcloud
 
-            ## YouTube
-            ryceePkgs.enhancer-for-youtube
+          ## YouTube
+          ryceePkgs.enhancer-for-youtube
 
-            # Social Stuff
-            bandiPkgs.pronoundb
-            bandiPkgs.reddit-enhancement-suite
-            bandiPkgs.sponsorblock
-            ryceePkgs.betterttv
-            ryceePkgs.blocktools
+          # Social Stuff
+          bandiPkgs.pronoundb
+          bandiPkgs.reddit-enhancement-suite
+          bandiPkgs.sponsorblock
+          ryceePkgs.betterttv
+          ryceePkgs.blocktools
 
-            # MuseScore
-            ryceePkgs.musescore-downloader
+          # MuseScore
+          ryceePkgs.musescore-downloader
 
-            # Reddit
-            ryceePkgs.old-reddit-redirect
+          # Reddit
+          ryceePkgs.old-reddit-redirect
 
-            # ryceePkgs.https-everywhere
-            # ryceePkgs.bitwarden
-            # ryceePkgs.clearurls
-            # ryceePkgs.decentraleyes
-            # ryceePkgs.floccus
-            # ryceePkgs.ghostery
-            # ryceePkgs.privacy-redirect
-            # ryceePkgs.privacy-badger
-            # ryceePkgs.languagetool
-            # ryceePkgs.disconnect
-            # ryceePkgs.react-devtools
-          ];
-                #userChrome = '' '';
-                #userContent = '' '';
-              };
-            };
-          };
-        }
+          # ryceePkgs.https-everywhere
+          # ryceePkgs.bitwarden
+          # ryceePkgs.clearurls
+          # ryceePkgs.decentraleyes
+          # ryceePkgs.floccus
+          # ryceePkgs.ghostery
+          # ryceePkgs.privacy-redirect
+          # ryceePkgs.privacy-badger
+          # ryceePkgs.languagetool
+          # ryceePkgs.disconnect
+          # ryceePkgs.react-devtools
+        ];
+        */
+        #userChrome = '' '';
+        #userContent = '' '';
+      };
+    };
+  };
+}
