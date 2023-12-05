@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nixvim, ... }:
+{ pkgs, nixvim, nur, ... }:
 {
   home.stateVersion = "23.05";
 
@@ -8,9 +8,9 @@
   ];
 
   imports = [
-    nixvim.homeManagerModules.nixvim
     ./nixvim.nix
     ./bash.nix
+    ./firefox.nix
     ./dirstack.nix
     ./git.nix
     ./ssh.nix
