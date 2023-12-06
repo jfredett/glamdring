@@ -8,14 +8,15 @@
   ];
 
   imports = [
-    ./nixvim.nix
+    ./barrier.nix
     ./bash.nix
-    ./firefox.nix
     ./dirstack.nix
+    ./firefox.nix
     ./git.nix
+    ./nixvim.nix
+    ./slack.nix
     ./ssh.nix
     ./tmux.nix
-    ./barrier.nix
   ];
   
   home.shellAliases = {
