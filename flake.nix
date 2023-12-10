@@ -46,6 +46,7 @@
     nixosConfigurations = {
       archimedes = nixosConfFor [
         ./hosts/archimedes/hardware-configuration.nix
+        ./1password.nix
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

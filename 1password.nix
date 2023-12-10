@@ -1,8 +1,10 @@
 { config, lib, pkgs, ...}: {
- # Enable the unfree 1Password packages
-  home.packages = with pkgs; [
-    "1password-gui"
-    "1password"
+  # TODO: This is only available at the system level, not w/i home manager, even though I'm pretty
+  # sure it should be in HM.
+  environment.systemPackages = with pkgs; [
+    _1password-gui
+    _1password
+    git-credential-1password
   ];
 
   programs._1password.enable = true;

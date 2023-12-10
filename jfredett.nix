@@ -8,7 +8,6 @@
   ];
 
   imports = [
-    ./1password.nix
     ./barrier.nix
     ./bash.nix
     ./dirstack.nix
