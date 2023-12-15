@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-#    ./nvim/options.nix
-#    ./nvim/telescope.nix
-#    ./nvim/treesitter.nix
-#    ./nvim/lsp.nix
+    ./nvim/options.nix
+    ./nvim/telescope.nix
+    ./nvim/treesitter.nix
+    ./nvim/lsp.nix
   ];
 
   programs.nixvim = {
