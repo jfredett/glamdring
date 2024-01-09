@@ -47,6 +47,7 @@
       archimedes = nixosConfFor [
         ./hosts/archimedes/hardware-configuration.nix
         ./1password.nix
+        ./virtualbox.nix
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

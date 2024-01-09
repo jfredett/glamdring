@@ -27,6 +27,7 @@
       neotest
       tabular
       plenary-nvim
+      copilot-vim
     ];
 
     plugins = {
