@@ -2,7 +2,7 @@
 {
   imports = [
 #    ./trusted-certificates.nix
-    ./users.nix
+#    ./users.nix
   ];
 
   nix = {

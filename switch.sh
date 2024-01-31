@@ -1,1 +1,1 @@
-home-manager switch --flake .
+home-manager switch --flake . $@

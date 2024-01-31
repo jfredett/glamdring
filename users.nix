@@ -1,7 +1,9 @@
 # TODO: Probably extract this to yet another flake, all the users can be defined right in
 # flake.nix, along with ssh-key, can automate uploading the key to vault from there, etc.
-{ pkgs, lib, ... }:
-{
+{ pkgs, lib, ... }: let 
+	inherit (pkgs) stdenv;
+	inherit (lib) mkIf;
+in lib.mkIf stdenv.isLinux {
   # TODO: Make this a proper module, allow turning on/off common users from there.
 
   # FIXME: I don't want to include a hashed password, I don't have a nixos-based
@@ -34,5 +36,5 @@
     settings.KbdInteractiveAuthentication = false;
   };
 
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = mkIf stdenv.isLinux [ 22 ];
 }
