@@ -8,12 +8,11 @@
   ];
 
   imports = [
-    ./alacritty.nix
-    ./barrier.nix
+    #./barrier.nix
     ./bash.nix
-    ./dirstack.nix
     #./discord.nix
-    ./firefox.nix
+    #./dirstack.nix
+    #./firefox.nix
     ./git.nix
     ./nixvim.nix
     ./slack.nix
