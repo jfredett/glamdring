@@ -1,4 +1,4 @@
-{ pkgs, nixvim, nur, ... }:
+{ pkgs, home-manager, nixvim, nur, ... }:
 {
   home.stateVersion = "23.05";
 

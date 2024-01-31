@@ -55,5 +55,17 @@
         }
       ];
     };
+    homeConfigurations = {
+      "jfredette" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = "aarch64-darwin"; };
+        modules = [
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jfredette = homeManagerConfFor ./jfredett.nix;
+          }
+        ];
+      };
+    };
   };
 }
