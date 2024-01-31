@@ -60,23 +60,23 @@
     };
 
     darwinConfigurations."MBP-G071LCCXRH" = nix-darwin.lib.darwinSystem {
-	    system = "aarch64-darwin";
-	    modules = [
-		    { 
-			system.stateVersion = 4; 
-			services.nix-daemon.enable = true;
-}
-		    (import ./common.nix)
-		    home-manager.darwinModules.home-manager
-		    {
-		      users.users.jfredette.home = "/Users/jfredette";
-		      home-manager.useGlobalPkgs = true;
-			  home-manager.useUserPackages = true;
-			  home-manager.users.jfredette = homeManagerConfFor ./jfredett.nix;
-			}
-	    ];
+      system = "aarch64-darwin";
+      modules = [
+        { 
+          system.stateVersion = 4; 
+          services.nix-daemon.enable = true;
+        }
+        (import ./common.nix)
+        home-manager.darwinModules.home-manager
+        {
+          users.users.jfredette.home = "/Users/jfredette";
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.jfredette = homeManagerConfFor ./jfredett.nix;
+        }
+      ];
 
-	    specialArgs = { inherit nixpkgs; };
+      specialArgs = { inherit nixpkgs; };
     };
 
   };
