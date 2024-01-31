@@ -13,7 +13,8 @@
         identityFile = "${ssh_dir}/archimedes";
       };
       
-      "github.com" = {
+      "github.oz" = {
+        hostname = "github.com";
         identityFile = "${ssh_dir}/archimedes";
       };
     };
