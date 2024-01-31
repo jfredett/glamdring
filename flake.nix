@@ -75,13 +75,5 @@
 	    specialArgs = { inherit nixpkgs; };
     };
 
-    homeConfigurations = {
-      "jfredette" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "aarch64-darwin"; };
-        modules = [
-          ./osx.nix
-        ];
-      };
-    };
   };
 }
