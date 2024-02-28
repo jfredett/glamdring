@@ -43,7 +43,7 @@
     };
   in {
     nixosConfigurations = {
-      archimedes = nixosConfFor [
+      archimedes = configs: nixosConfFor ([
         ./hosts/archimedes/hardware-configuration.nix
         ./1password.nix
         ./virtualbox.nix
@@ -52,7 +52,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.jfredett = homeManagerConfFor ./jfredett.nix;
         }
-      ];
+      ] ++ configs);
     };
 
     darwinConfigurations."MBP-G071LCCXRH" = nix-darwin.lib.darwinSystem {

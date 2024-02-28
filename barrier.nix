@@ -13,7 +13,7 @@
     Service = {
       ExecStart = with pkgs; writeShellScript "barrier-client-login.sh" ''
         #!/run/current-system/sw/bin/bash
-        ${pkgs.barrier}/bin/barrierc --disable-crypto --display :0 --debug INFO -f 192.168.1.15
+        ${pkgs.barrier}/bin/barrierc --disable-crypto --display :0 --debug INFO -f 172.19.0.17
       '';
       Restart = "always";
     };
