@@ -7,15 +7,11 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:pta2002/nixvim/nixos-23.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    eclib = {
-      url = "git+file:/home/jfredett/code/eclib";
+      url = "github:pta2002/nixvim/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -43,6 +39,10 @@
       specialArgs = { inherit nixpkgs; };
     };
   in {
+    devShells.x86_64-linux.default = let
+      pkgs = import nixpkgs { system = "x86_64-linux"; config = {}; };
+    in pkgs.mkShell { buildInputs = []; };
+
     nixosConfigurations = {
       archimedes = configs: nixosConfFor ([
         ./hosts/archimedes/hardware-configuration.nix
