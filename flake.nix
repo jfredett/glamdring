@@ -2,7 +2,7 @@
   description = "Glamdring, a weapon fit for a wizard";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
 
