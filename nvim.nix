@@ -157,7 +157,6 @@
 
             lspconfig.rust_analyzer.setup{}
             lspconfig.lua_ls.setup{}
-            lspconfig.rnix.setup{}
 
             if not configs.ruby_lsp then
               configs.ruby_lsp = {
