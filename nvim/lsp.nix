@@ -1,6 +1,5 @@
 { config, lib, pkgs, vimUtils, ... }: {
   home.packages = with pkgs; [
-    rnix-lsp
     shellcheck
   ];
 
@@ -13,7 +12,6 @@
       jsonls.enable = true;
       lua-ls.enable = true;
       pylsp.enable = true;
-      rnix-lsp.enable = true;
       rust-analyzer.enable = true;
     };
   };
