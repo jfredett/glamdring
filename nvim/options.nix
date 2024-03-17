@@ -59,7 +59,14 @@
     */
 
     keymaps = let
-      mkSilent = cmd: action: { 
+      # TODO: These have terrible names.
+      mkSilentLeaderLeader = cmd: action: { 
+        action = "<cmd>${action}<cr>";
+        key = "<leader>${cmd}<leader>";
+        options = { silent = true; };
+        mode = "n";
+      };
+      mkSilentLeaderSpace = cmd: action: { 
         action = "<cmd>${action}<cr>";
         key = "<leader>${cmd}<space>";
         options = { silent = true; };
@@ -71,11 +78,11 @@
         options = { silent = false; };
       };
     in [
-      (mkSilent "d" "Telescope find_files")
-      (mkSilent "b" "Telescope buffers")
-      (mkSilent "h" "Telescope help_tags")
-      (mkSilent "d" "Neotree")
-      (mkSilent "g" "Neogit")
+      (mkSilentLeaderSpace "d" "Telescope find_files")
+      (mkSilentLeaderLeader "b" "Telescope buffers")
+      (mkSilentLeaderLeader "h" "Telescope help_tags")
+      (mkSilentLeaderLeader "d" "Neotree")
+      (mkSilentLeaderLeader "g" "Neogit")
       (mkCmd "Y" "y$")
       (mkCmd "<C-S>" "<C-A>")
       (mkCmd "W" "w")
