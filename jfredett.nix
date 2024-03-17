@@ -11,6 +11,7 @@
     ./barrier.nix
     ./bash.nix
     ./dirstack.nix
+    ./discord.nix
     ./firefox.nix
     ./git.nix
     ./nixvim.nix
