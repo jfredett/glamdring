@@ -10,8 +10,9 @@
   imports = [
     #./barrier.nix
     ./bash.nix
-#    ./dirstack.nix
-    #./firefox.nix
+    ./dirstack.nix
+    #./discord.nix
+    ./firefox.nix
     ./git.nix
     ./nixvim.nix
     ./slack.nix
