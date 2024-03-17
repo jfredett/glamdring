@@ -15,8 +15,10 @@
 
     colorschemes.gruvbox = {
       enable = true;
-      contrastDark = "hard";
-      trueColor = true;
+	settings = {
+      contrast_dark = "hard";
+      true_color = true;
+};
     };
 
     extraPlugins = with pkgs.vimPlugins; [
@@ -36,7 +38,7 @@
       lualine.enable = true;
       neo-tree.enable = true;
       nix.enable = true;
-      nvim-cmp.enable = true;
+      cmp.enable = true;
       telescope.enable = true;
       todo-comments.enable = true;
       treesitter.enable = true;
