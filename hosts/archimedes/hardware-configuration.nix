@@ -49,9 +49,13 @@
   services.xserver.desktopManager.lxqt.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+#  services.xserver = {
+#    layout = "us";
+#    xkbVariant = "";
+#  };
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
