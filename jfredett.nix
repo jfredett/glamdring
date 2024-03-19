@@ -8,7 +8,8 @@
   ];
 
   imports = [
-    #./barrier.nix
+    ./alacritty.nix
+    ./barrier.nix
     ./bash.nix
     ./dirstack.nix
     #./discord.nix
