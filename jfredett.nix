@@ -13,6 +13,7 @@
     ./direnv.nix
     ./dirstack.nix
     ./discord.nix
+    ./dropbox.nix
     ./firefox.nix
     ./git.nix
     ./nixvim.nix
