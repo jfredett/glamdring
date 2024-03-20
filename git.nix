@@ -32,6 +32,22 @@
         interactive = "auto";
       };
     };
+
+    ignores = [
+      ".direnv/"
+      ".envrc"
+      ".env"
+      ".env.local"
+      ".env.development"
+      ".env.test"
+      ".env.production"
+      ".cache/"
+      ".vscode/"
+      ".idea/"
+      ".DS_Store"
+      "node_modules/"
+      "yarn-error.log"
+    ];
   };
   
   home.shellAliases = {
