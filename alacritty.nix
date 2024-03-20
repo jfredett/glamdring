@@ -1,15 +1,20 @@
 { config, lib, pkgs, ... }: {
+
+  home.packages = [ pkgs.inconsolata-nerdfont ];
+
   programs.alacritty = {
     enable = true;
     settings = {
       window = {
         # Ignore this since we're operating in Awesome anyway
         dimensions = {
-          columns = 0;
-          lines = 0;
+          columns = 80;
+          lines = 24;
         };
+        /*
         decorations = "None";
         decorations_theme_variant = "None";
+        */
         startup_mode = "Windowed";
 
         padding = {
@@ -31,7 +36,7 @@
           family = "Inconsolata Nerd Font";
           style = "Italic";
         };
-        size = 14.0;
+        size = 11.0;
         builtin_box_drawing = true;
 
         offset = {
@@ -40,6 +45,9 @@
         };
       };
 
+
+
+      /*
       keybinds = [
         { key = "c"      ; mods = "Control"       ; action = "Copy"             ; }
         { key = "v"      ; mods = "Control"       ; action = "Paste"            ; }
@@ -48,6 +56,7 @@
         { key = "Minus"  ; mods = "Command|Shift" ; action = "DecreaseFontSize" ; }
   
       ];
+      */
     };
   };
 }
