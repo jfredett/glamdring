@@ -8,11 +8,12 @@
   ];
 
   imports = [
-    #./barrier.nix
+    ./barrier.nix
     ./bash.nix
-    #./discord.nix
-    #./dirstack.nix
-    #./firefox.nix
+    ./direnv.nix
+    ./dirstack.nix
+    ./discord.nix
+    ./firefox.nix
     ./git.nix
     ./nixvim.nix
     ./slack.nix
@@ -31,9 +32,5 @@
     nixvim.enable = true;
     tmux.enable = true;
     ssh.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
   };
 }
