@@ -8,13 +8,18 @@
 
     initExtra = ''
       set -o vi
+      export EDITOR=nvim
     '';
     
     shellAliases = {
       "cd.." = "cd ..";
       psf = "ps aux | grep";
       rg = "rg --no-ignore";
+      vi = "nvim";
+      vim = "nvim";
     };
+
+
   };
 
   programs.oh-my-posh = {
