@@ -6,6 +6,9 @@
     nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
 
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +19,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nur, home-manager, flake-utils, nixvim, ... }:
+  outputs = inputs@{ self, nixpkgs, nur, nix-darwin, home-manager, flake-utils, nixvim, ... }:
   let
     system = "x86_64-linux";
     homeManagerConfFor = config:
@@ -55,5 +58,26 @@
         }
       ] ++ configs);
     };
+
+    darwinConfigurations."MBP-G071LCCXRH" = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        { 
+          system.stateVersion = 4; 
+          services.nix-daemon.enable = true;
+        }
+        (import ./common.nix)
+        home-manager.darwinModules.home-manager
+        {
+          users.users.jfredette.home = "/Users/jfredette";
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.jfredette = homeManagerConfFor ./jfredett.nix;
+        }
+      ];
+
+      specialArgs = { inherit nixpkgs; };
+    };
+
   };
 }

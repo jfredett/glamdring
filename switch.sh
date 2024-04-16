@@ -1,1 +1,1 @@
-home-manager switch --flake .
+nix run nix-darwin -- switch --flake . --impure

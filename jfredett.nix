@@ -1,4 +1,4 @@
-{ pkgs, nixvim, nur, ... }:
+{ pkgs, home-manager, nixvim, nur, ... }:
 {
   home.stateVersion = "23.05";
 
@@ -8,12 +8,11 @@
   ];
 
   imports = [
-    ./alacritty.nix
-    ./barrier.nix
+    #./barrier.nix
     ./bash.nix
-    ./dirstack.nix
-    ./discord.nix
-    ./firefox.nix
+    #./discord.nix
+    #./dirstack.nix
+    #./firefox.nix
     ./git.nix
     ./nixvim.nix
     ./slack.nix
