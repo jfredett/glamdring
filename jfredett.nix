@@ -1,6 +1,6 @@
 { pkgs, home-manager, nixvim, nur, ... }:
 {
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
     ripgrep

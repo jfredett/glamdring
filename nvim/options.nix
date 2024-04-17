@@ -2,7 +2,7 @@
     programs.nixvim = {
       globals.mapleader = ",";
 
-      options = {
+      opts = {
         number = true;
         relativenumber = false;
         incsearch = true;

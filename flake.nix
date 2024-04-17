@@ -6,7 +6,7 @@
     nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
 
-    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.url = "github:wegank/nix-darwin/mddoc-remove";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager = {
@@ -46,6 +46,10 @@
       pkgs = import nixpkgs { system = "x86_64-linux"; config = {}; };
     in pkgs.mkShell { buildInputs = []; };
 
+    devShells.aarch64-darwin.default = let
+      pkgs = import nixpkgs { system = "aarch64-darwin"; config = {}; };
+    in pkgs.mkShell { buildInputs = [ pkgs.git ]; };
+
     nixosConfigurations = {
       archimedes = configs: nixosConfFor ([
         ./hosts/archimedes/hardware-configuration.nix
@@ -59,25 +63,45 @@
       ] ++ configs);
     };
 
-    darwinConfigurations."MBP-G071LCCXRH" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        { 
-          system.stateVersion = 4; 
-          services.nix-daemon.enable = true;
-        }
-        (import ./common.nix)
-        home-manager.darwinModules.home-manager
-        {
-          users.users.jfredette.home = "/Users/jfredette";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jfredette = homeManagerConfFor ./jfredett.nix;
-        }
-      ];
+    darwinConfigurations = {
+	"MBP-G071LCCXRH" = nix-darwin.lib.darwinSystem {
+	      system = "aarch64-darwin";
+	      modules = [
+		{ 
+		  system.stateVersion = 4; 
+		  services.nix-daemon.enable = true;
+		}
+		(import ./common.nix)
+		home-manager.darwinModules.home-manager
+		{
+		  users.users.jfredette.home = "/Users/jfredette";
+		  home-manager.useGlobalPkgs = true;
+		  home-manager.useUserPackages = true;
+		  home-manager.users.jfredette = homeManagerConfFor ./jfredett.nix;
+		}
+	      ];
 
-      specialArgs = { inherit nixpkgs; };
-    };
+	      specialArgs = { inherit nixpkgs; };
+	    };
+	"Hedges" = nix-darwin.lib.darwinSystem {
+	      system = "aarch64-darwin";
+	      modules = [
+		{ 
+		  system.stateVersion = 4; 
+		  services.nix-daemon.enable = true;
+		}
+		(import ./common.nix)
+		home-manager.darwinModules.home-manager
+		{
+		  users.users.jfredett.home = "/Users/jfredett";
+		  home-manager.useGlobalPkgs = true;
+		  home-manager.useUserPackages = true;
+		  home-manager.users.jfredett = homeManagerConfFor ./jfredett.nix;
+		}
+	      ];
 
+	      specialArgs = { inherit nixpkgs; };
+	    };
+};
   };
 }

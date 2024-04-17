@@ -1,1 +1,1 @@
-nix run nix-darwin -- switch --flake . --impure
+nix --extra-experimental-features nix-command --extra-experimental-features flakes run nix-darwin -- switch --flake . --impure
