@@ -6,7 +6,7 @@
     nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
 
-    nix-darwin.url = "github:wegank/nix-darwin/mddoc-remove";
+    nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager = {
@@ -15,7 +15,7 @@
     };
     nixvim = {
       url = "github:pta2002/nixvim/main";
-      inputs.nixpkgs.follows = "nixpkgs";
+#      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

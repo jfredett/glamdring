@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     _1password-gui
     _1password
-    git-credential-1password
+    #git-credential-1password
   ];
 
   programs._1password.enable = true;

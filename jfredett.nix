@@ -20,6 +20,7 @@
     ./slack.nix
     ./ssh.nix
     ./tmux.nix
+    ./virt-manager.nix
   ];
   
   home.shellAliases = {
