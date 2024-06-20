@@ -19,9 +19,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "archimedes"; # Define your hostname.
-  networking.extraHosts = ''
-    172.17.0.14 vault.emerald.city 
-  '';
+  # TODO: Move to nftables
+  # networking.nftables.enable = true;
 
   # Enable network manager applet
   programs.nm-applet.enable = true;

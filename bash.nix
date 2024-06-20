@@ -1,5 +1,4 @@
-{ config, lib, pkgs, ...}:
-{
+{ config, lib, pkgs, ...}: {
   home.packages = [ pkgs.oh-my-posh ];
 
   programs.bash = {
@@ -10,7 +9,7 @@
       set -o vi
       export EDITOR=nvim
     '';
-    
+
     shellAliases = {
       "cd.." = "cd ..";
       psf = "ps aux | grep";
@@ -27,5 +26,4 @@
     useTheme = "atomicBit";
     # TODO: Custom Theme
   };
-  
 }

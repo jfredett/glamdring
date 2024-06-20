@@ -15,10 +15,10 @@
 
     colorschemes.gruvbox = {
       enable = true;
-	settings = {
-      contrast_dark = "hard";
-      true_color = true;
-};
+      settings = {
+        contrast_dark = "hard";
+        true_color = true;
+      };
     };
 
     extraPlugins = with pkgs.vimPlugins; [
