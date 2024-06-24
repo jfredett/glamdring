@@ -1,8 +1,7 @@
 # TODO: Probably extract this to yet another flake, all the users can be defined right in
 # flake.nix, along with ssh-key, can automate uploading the key to vault from there, etc.
-{ pkgs, lib, ... }: let 
-	inherit (pkgs) stdenv;
-	inherit (lib) mkIf;
+{ pkgs, lib, ... }: let
+  inherit (pkgs) stdenv;
 in lib.mkIf stdenv.isLinux {
   # TODO: Make this a proper module, allow turning on/off common users from there.
 
@@ -14,7 +13,9 @@ in lib.mkIf stdenv.isLinux {
   users.users = {
     # this is me
     jfredett = {
+      isSystemUser = false;
       isNormalUser = true;
+      group = "jfredett";
       extraGroups = [ "wheel" "libvirtd" ];
       openssh.authorizedKeys.keys = [
         "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDoqUmaFuk8Zcf+ngwc9joUJsFrcOy4Bm/xQ2cs3Q7LfeCRvo2TcnpH0oK3wJJBYYmVRf76DG08vI76x4vT9DD9CbD2otDQi8NTlncRMkSYkthzd8AWea4P7i4ZZ8WVJQgBGhDkVseVUIDjrVN3BC0S0ULNiKvP3nLs358W7hmQJg1FsbTmxDTccN2cLqNdnbnCc/aYGYQtxBAcaq+CqkJT9TAM+snearOuBzhcUVZf/uDrpuanQbkBJpatbMn63fvPTGlalb8XSpDeG0TAb9rMRLkLbKuuFl/yJHhVv3Q0VJVnMQuK21GJdXN26N6qPOqDJ2ehJhtVYdFJrnfBGcdpMf8hvIIPynnVM65FRjDmnZnh1eqMFvKHnBvk8JXR1VOYXCKr6WPB9uuJNT70rHOZD1/zAz9XZczsEcW4OlVTzA0JUR8F2V5rC1V4AOyXbsHgr1/h9BNLz/T41Duzor/6nvtYuS42oZBblvo0IAmYfSFr8Lhh625fxSveQ0tccL0= jfredett@emerald.city"
@@ -30,11 +31,13 @@ in lib.mkIf stdenv.isLinux {
     };
   };
 
+  users.groups.jfredett = {};
+
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
   };
 
-  networking.firewall.allowedTCPPorts = mkIf stdenv.isLinux [ 22 ];
+  networking.firewall.allowedTCPPorts = lib.mkIf stdenv.isLinux [ 22 ];
 }

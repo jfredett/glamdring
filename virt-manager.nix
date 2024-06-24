@@ -8,19 +8,19 @@
   };
 
   config = lib.mkIf config.services.emerald-city.virt-manager.enable {
-    programs.virt-manager.enable = true;
+    home.packages = with pkgs; [ virt-manager dconf libvirt ];
 
     dconf.settings = {
       "org/virt-manager/virt-manager/connections" = let 
         connStrings = [
-          "qemu:///babylon-the-great.pandemon.ium/system?keyfile=/home/jfredett/.ssh/archimedes"
-          "qemu:///dragon-of-perdition.pandemon.ium/system?keyfile=/home/jfredett/.ssh/archimedes"
+          "qemu+ssh://jfredett@babylon-the-great.pandemon.ium:22/system?keyfile=/home/jfredett/.ssh/archimedes"
+          "qemu+ssh://jfredett@dragon-of-perdition.pandemon.ium:22/system?keyfile=/home/jfredett/.ssh/archimedes"
         ];
       in {
         autoconnect = connStrings;
         uris = connStrings;
       };
     };
-  }
+  };
 }
 

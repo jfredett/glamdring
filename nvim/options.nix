@@ -11,18 +11,18 @@
         swapfile = false;
         wildmenu = true;
         shortmess = "aIA";
-      # Show loose whitespace
-      list = true;
+        # Show loose whitespace
+        list = true;
 
-      # 2 spaces is more than enough for a tab, and never use \t.
-      expandtab = true;
-      shiftwidth = 2;
-      tabstop = 2;
+        # 2 spaces is more than enough for a tab, and never use \t.
+        expandtab = true;
+        shiftwidth = 2;
+        tabstop = 2;
 
-      # 3x100 = 15 characters shy of a max width 1440p screen for me.
-      # which means exactly 3 columns of text before wrapping.
-      textwidth = 100;
-    };
+        # 3x100 = 15 characters shy of a max width 1440p screen for me.
+        # which means exactly 3 columns of text before wrapping.
+        textwidth = 100;
+      };
 
     /* From the Neovim Manual
 
@@ -42,8 +42,8 @@
 
     Same information in a table:
     *map-table*
-    Mode  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang | ~
-    Command        +------+-----+-----+-----+-----+-----+------+------+ ~
+    Mode           | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang |
+    Command        +------+-----+-----+-----+-----+-----+------+------+
     [nore]map      | yes  |  -  |  -  | yes | yes | yes |  -   |  -   |
     n[nore]map     | yes  |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
     [nore]map!     |  -   | yes | yes |  -  |  -  |  -  |  -   |  -   |

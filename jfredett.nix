@@ -4,10 +4,18 @@
 
   home.packages = with pkgs; [
     ripgrep
+    dig
+    nmap
+    htop
+    netcat
     tree
+    jq
+    yq
+    sysstat
   ];
 
   imports = [
+    ./alacritty.nix
     ./barrier.nix
     ./bash.nix
     ./direnv.nix
@@ -34,5 +42,9 @@
     nixvim.enable = true;
     tmux.enable = true;
     ssh.enable = true;
+  };
+
+  services.emerald-city = {
+    virt-manager.enable = true;
   };
 }

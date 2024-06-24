@@ -9,6 +9,10 @@
         identityFile = "${ssh_dir}/archimedes";
       };
 
+      "*.pandemon.ium" = {
+        identityFile = "${ssh_dir}/archimedes";
+      };
+
       "*.emerald.city" = {
         identityFile = "${ssh_dir}/archimedes";
       };
