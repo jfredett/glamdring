@@ -23,13 +23,13 @@
   let
     system = "x86_64-linux";
     homeManagerConfFor = config:
-      { ... }: {
-        imports = [ 
-          nixvim.homeManagerModules.nixvim
-          nur.hmModules.nur
-          config 
-        ];
-      };
+    { ... }: {
+      imports = [ 
+        nixvim.homeManagerModules.nixvim
+        nur.hmModules.nur
+        config 
+      ];
+    };
     nixosConfFor = configs: nixpkgs.lib.nixosSystem {
       inherit system;
 
@@ -51,6 +51,14 @@
     in pkgs.mkShell { buildInputs = [ pkgs.git ]; };
 
     nixosConfigurations = {
+      maiasaura = configs: nixosConfFor ([
+        ./1password.nix
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.media = homeManagerConfFor ./media.nix;
+        }
+      ] ++ configs);
       archimedes = configs: nixosConfFor ([
         ./hosts/archimedes/hardware-configuration.nix
         ./1password.nix
@@ -64,44 +72,44 @@
     };
 
     darwinConfigurations = {
-	"MBP-G071LCCXRH" = nix-darwin.lib.darwinSystem {
-	      system = "aarch64-darwin";
-	      modules = [
-		{ 
-		  system.stateVersion = 4; 
-		  services.nix-daemon.enable = true;
-		}
-		(import ./common.nix)
-		home-manager.darwinModules.home-manager
-		{
-		  users.users.jfredette.home = "/Users/jfredette";
-		  home-manager.useGlobalPkgs = true;
-		  home-manager.useUserPackages = true;
-		  home-manager.users.jfredette = homeManagerConfFor ./jfredett.nix;
-		}
-	      ];
+      "MBP-G071LCCXRH" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          { 
+            system.stateVersion = 4; 
+            services.nix-daemon.enable = true;
+          }
+          (import ./common.nix)
+          home-manager.darwinModules.home-manager
+          {
+            users.users.jfredette.home = "/Users/jfredette";
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jfredette = homeManagerConfFor ./jfredett.nix;
+          }
+        ];
 
-	      specialArgs = { inherit nixpkgs; };
-	    };
-	"Hedges" = nix-darwin.lib.darwinSystem {
-	      system = "aarch64-darwin";
-	      modules = [
-		{ 
-		  system.stateVersion = 4; 
-		  services.nix-daemon.enable = true;
-		}
-		(import ./common.nix)
-		home-manager.darwinModules.home-manager
-		{
-		  users.users.jfredett.home = "/Users/jfredett";
-		  home-manager.useGlobalPkgs = true;
-		  home-manager.useUserPackages = true;
-		  home-manager.users.jfredett = homeManagerConfFor ./jfredett.nix;
-		}
-	      ];
+        specialArgs = { inherit nixpkgs; };
+      };
+      "Hedges" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          { 
+            system.stateVersion = 4; 
+            services.nix-daemon.enable = true;
+          }
+          (import ./common.nix)
+          home-manager.darwinModules.home-manager
+          {
+            users.users.jfredett.home = "/Users/jfredett";
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jfredett = homeManagerConfFor ./jfredett.nix;
+          }
+        ];
 
-	      specialArgs = { inherit nixpkgs; };
-	    };
-};
+        specialArgs = { inherit nixpkgs; };
+      };
+    };
   };
 }

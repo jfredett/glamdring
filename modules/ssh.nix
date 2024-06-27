@@ -10,10 +10,12 @@
       };
 
       "*.pandemon.ium" = {
+        checkHostIP = false;
         identityFile = "${ssh_dir}/archimedes";
       };
 
       "*.emerald.city" = {
+        checkHostIP = false;
         identityFile = "${ssh_dir}/archimedes";
       };
       

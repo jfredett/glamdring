@@ -1,10 +1,6 @@
 { config, lib, pkgs, ... }: {
   options = {
-    services.emerald-city.virt-manager.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable the virt-manager service";
-    };
+    glamdring.virt-manager.enable = mkEnableOption "Enable virt-manager";
   };
 
   config = lib.mkIf config.services.emerald-city.virt-manager.enable {

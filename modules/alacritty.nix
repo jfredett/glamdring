@@ -1,11 +1,20 @@
 { config, lib, pkgs, ... }: {
-  home.packages = [ pkgs.inconsolata-nerdfont ];
+  options = {
+    glamdring.alacritty.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable Alacritty terminal emulator";
+    };
+  }
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      window = {
-        # Ignore this since we're operating in Awesome anyway
+  config = lib.mkIf config.glamdring.alacritty.enable {
+
+    home.packages = [ pkgs.inconsolata-nerdfont ];
+
+    programs.alacritty = {
+      enable = true;
+      settings = {
+        window = {
         dimensions = {
           columns = 80;
           lines = 24;
@@ -53,9 +62,10 @@
         { key = "Key0"   ; mods = "Control|Shift" ; action = "ResetFontSize"    ; }
         { key = "Equals" ; mods = "Command|Shift" ; action = "IncreaseFontSize" ; }
         { key = "Minus"  ; mods = "Command|Shift" ; action = "DecreaseFontSize" ; }
-  
+
       ];
       */
     };
   };
+};
 }

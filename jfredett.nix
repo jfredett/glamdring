@@ -30,6 +30,10 @@
     ./tmux.nix
     ./virt-manager.nix
   ];
+
+  glamdring = {
+    alacritty.enable = true;
+  };
   
   home.shellAliases = {
     ps1 = "true"; # no-opping this since I can't figure out where it's being set outside of nix. Non-nixos makes me sad.
