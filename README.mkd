@@ -8,6 +8,11 @@ legacy dotfiles repo.
 Glamdring is a nix/nixos/home-manager setup intended to provide all my user configurations and
 home-manager modules. At the moment it's mostly a mess, but all good things start out as a mess.
 
+> [!CAUTION]
+>       The content of this repo is specialized to me and my use, if you intend to use the repo, I would
+>       suggest ensuring you aren't accidentally configuring, e.g., my username instead of yours wherever
+>       usernames are used.
+
 ## LICENSE
 
 Glamdring is available for use under the terms of AGPLv3, see [LICENSE](LICENSE) for details.
