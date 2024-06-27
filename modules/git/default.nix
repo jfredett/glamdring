@@ -1,11 +1,10 @@
 { config, lib, pkgs, ... }:
 {
   options = {
-    glamdring.git.enable = mkEnableOption "glamdring-git";
-  }
+    glamdring.git.enable = lib.mkEnableOption "glamdring-git";
+  };
 
-
-  config = mkIf config.glamdring.git.enable {
+  config = lib.mkIf config.glamdring.git.enable {
     programs.git = {
       enable = true;
       userName = "jfredett";

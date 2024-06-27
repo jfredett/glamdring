@@ -1,21 +1,33 @@
 { config, lib, pkgs, ... }: {
-  # TODO: Parameterize, Modularize, and generally make suck less.
+  options.glamdring.barrier = {
+    enable = lib.mkEnableOption "Enable Barrier";
+    server = lib.mkOption {
+      type = lib.types.str;
+    };
+    debugLevel = lib.mkOption {
+      type = lib.types.str;
+      default = "INFO";
+    };
+  };
 
-  home.packages = with pkgs; [ barrier ];
-  systemd.user.services.barrier-client = {
-    Unit = {
-      Description = "Barrier Client Service";
-      After = [ "network.target" ];
-    };
-    Install = {
-      WantedBy = [ "multi-user.target" ];
-    };
-    Service = {
-      ExecStart = with pkgs; writeShellScript "barrier-client-login.sh" ''
+  config = lib.mkIf config.glamdring.barrier.enable {
+    home.packages = with pkgs; [ barrier ];
+
+    systemd.user.services.barrier-client = let cfg = config.glamdring.barrier in {
+      Unit = {
+        Description = "Barrier Client Service";
+        After = [ "network.target" ];
+      };
+      Install = {
+        WantedBy = [ "multi-user.target" ];
+      };
+      Service = {
+        ExecStart = with pkgs; writeShellScript "barrier-client-login.sh" ''
         #!/run/current-system/sw/bin/bash
-        ${pkgs.barrier}/bin/barrierc --disable-crypto --display :0 --debug INFO -f 172.19.0.23
-      '';
-      Restart = "always";
+        ${pkgs.barrier}/bin/barrierc --disable-crypto --display :0 --debug ${cfg.debugLevel} -f ${cfg.server}
+        '';
+        Restart = "always";
+      };
     };
   };
 }

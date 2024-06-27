@@ -1,7 +1,13 @@
 { config, pkgs, lib, ... }: 
 {
-   virtualisation.virtualbox.host.enable = true;
-   virtualisation.virtualbox.host.enableExtensionPack = true;
+  options.glamdring.virtualbox = {
+    enable = lib.mkEnableOption "Enable VirtualBox";
+  };
 
-   users.extraGroups.vboxusers.members = [ "jfredett" ];
+  config = lib.mkIf config.glamdring.virtualbox.enable {
+    virtualisation.virtualbox.host.enable = true;
+    virtualisation.virtualbox.host.enableExtensionPack = true;
+
+    users.extraGroups.vboxusers.members = [ "jfredett" ];
+  };
 }
