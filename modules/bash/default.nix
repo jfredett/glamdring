@@ -7,6 +7,7 @@
     home.packages = [ pkgs.oh-my-posh ];
 
     programs.bash = {
+      enable = true;
       enableCompletion = true;
       enableVteIntegration = true;
 
@@ -22,8 +23,6 @@
         vi = "nvim";
         vim = "nvim";
       };
-
-
     };
 
     programs.oh-my-posh = {

@@ -1,9 +1,14 @@
 { config, lib, pkgs, ... }: {
   options = {
-    glamdring.virt-manager.enable = mkEnableOption "Enable virt-manager";
+    glamdring.virt-manager = {
+      enable = lib.mkEnableOption "Enable virt-manager";
+      # TODO: Hosts config
+      # TODO: Key Config
+      # TODO: Turnkey?
+    };
   };
 
-  config = lib.mkIf config.services.emerald-city.virt-manager.enable {
+  config = lib.mkIf config.glamdring.virt-manager.enable {
     home.packages = with pkgs; [ virt-manager dconf libvirt ];
 
     dconf.settings = {

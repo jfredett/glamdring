@@ -5,7 +5,7 @@
       default = false;
       description = "Enable Alacritty terminal emulator";
     };
-  }
+  };
 
   config = lib.mkIf config.glamdring.alacritty.enable {
 

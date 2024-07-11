@@ -1,7 +1,9 @@
 { config, lib, pkgs, vimUtils, ... }: {
-  programs.nixvim.plugins.telescope = {
-    extensions = {
-      frecency.enable = true;
+  config = lib.mkIf config.glamdring.nixvim.enable {
+    programs.nixvim.plugins.telescope = {
+      extensions = {
+        frecency.enable = true;
+      };
     };
   };
 }

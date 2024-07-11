@@ -4,7 +4,7 @@
     enable = lib.mkEnableOption "Enable nixvim";
   };
 
-  imports = lib.mkIf config.glamdring.nixvim.enable [
+  imports = [
     ./nvim/options.nix
     ./nvim/telescope.nix
     ./nvim/treesitter.nix

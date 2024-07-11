@@ -1,4 +1,6 @@
 { config, lib, pkgs, vimUtils, ... }: {
-  programs.nixvim.plugins.treesitter = {
+  config = lib.mkIf config.glamdring.nixvim.enable {
+    programs.nixvim.plugins.treesitter = {
+    };
   };
 }

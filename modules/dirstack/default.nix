@@ -1,10 +1,7 @@
-{ config, lib, pkgs, ... }:
-{
-
+{ config, lib, pkgs, ... }: {
   options.glamdring.dirstack = {
     enable = lib.mkEnableOption "dirstack";
   };
-
 
   config = lib.mkIf config.glamdring.dirstack.enable {
     home.file = {

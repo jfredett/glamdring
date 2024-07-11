@@ -1,4 +1,5 @@
 { config, lib, pkgs, vimUtils, ... }: {
+  config = lib.mkIf config.glamdring.nixvim.enable {
     programs.nixvim = {
       globals.mapleader = ",";
 
@@ -24,41 +25,41 @@
         textwidth = 100;
       };
 
-    /* From the Neovim Manual
+      /* From the Neovim Manual
 
-    Overview of which map command works in which mode.  More details below.
-    COMMANDS                    MODES ~
-    :map   :noremap  :unmap     Normal, Visual, Select, Operator-pending
-    :nmap  :nnoremap :nunmap    Normal
-    :vmap  :vnoremap :vunmap    Visual and Select
-    :smap  :snoremap :sunmap    Select
-    :xmap  :xnoremap :xunmap    Visual
-    :omap  :onoremap :ounmap    Operator-pending
-    :map!  :noremap! :unmap!    Insert and Command-line
-    :imap  :inoremap :iunmap    Insert
-    :lmap  :lnoremap :lunmap    Insert, Command-line, Lang-Arg
-    :cmap  :cnoremap :cunmap    Command-line
-    :tmap  :tnoremap :tunmap    Terminal-Job
+      Overview of which map command works in which mode.  More details below.
+      COMMANDS                    MODES ~
+      :map   :noremap  :unmap     Normal, Visual, Select, Operator-pending
+      :nmap  :nnoremap :nunmap    Normal
+      :vmap  :vnoremap :vunmap    Visual and Select
+      :smap  :snoremap :sunmap    Select
+      :xmap  :xnoremap :xunmap    Visual
+      :omap  :onoremap :ounmap    Operator-pending
+      :map!  :noremap! :unmap!    Insert and Command-line
+      :imap  :inoremap :iunmap    Insert
+      :lmap  :lnoremap :lunmap    Insert, Command-line, Lang-Arg
+      :cmap  :cnoremap :cunmap    Command-line
+      :tmap  :tnoremap :tunmap    Terminal-Job
 
-    Same information in a table:
-    *map-table*
-    Mode           | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang |
-    Command        +------+-----+-----+-----+-----+-----+------+------+
-    [nore]map      | yes  |  -  |  -  | yes | yes | yes |  -   |  -   |
-    n[nore]map     | yes  |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
-    [nore]map!     |  -   | yes | yes |  -  |  -  |  -  |  -   |  -   |
-    i[nore]map     |  -   | yes |  -  |  -  |  -  |  -  |  -   |  -   |
-    c[nore]map     |  -   |  -  | yes |  -  |  -  |  -  |  -   |  -   |
-    v[nore]map     |  -   |  -  |  -  | yes | yes |  -  |  -   |  -   |
-    x[nore]map     |  -   |  -  |  -  | yes |  -  |  -  |  -   |  -   |
-    s[nore]map     |  -   |  -  |  -  |  -  | yes |  -  |  -   |  -   |
-    o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
-    t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
-    l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
+      Same information in a table:
+      *map-table*
+      Mode           | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang |
+      Command        +------+-----+-----+-----+-----+-----+------+------+
+      [nore]map      | yes  |  -  |  -  | yes | yes | yes |  -   |  -   |
+      n[nore]map     | yes  |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
+      [nore]map!     |  -   | yes | yes |  -  |  -  |  -  |  -   |  -   |
+      i[nore]map     |  -   | yes |  -  |  -  |  -  |  -  |  -   |  -   |
+      c[nore]map     |  -   |  -  | yes |  -  |  -  |  -  |  -   |  -   |
+      v[nore]map     |  -   |  -  |  -  | yes | yes |  -  |  -   |  -   |
+      x[nore]map     |  -   |  -  |  -  | yes |  -  |  -  |  -   |  -   |
+      s[nore]map     |  -   |  -  |  -  |  -  | yes |  -  |  -   |  -   |
+      o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
+      t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
+      l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
 
-    */
+      */
 
-    keymaps = let
+      keymaps = let
       # TODO: These have terrible names.
       mkSilentLeaderLeader = cmd: action: { 
         action = "<cmd>${action}<cr>";
@@ -77,18 +78,19 @@
         key = cmd;
         options = { silent = false; };
       };
-    in [
-      (mkSilentLeaderSpace "d" "Telescope find_files")
-      (mkSilentLeaderLeader "b" "Telescope buffers")
-      (mkSilentLeaderLeader "h" "Telescope help_tags")
-      (mkSilentLeaderLeader "d" "Neotree")
-      (mkSilentLeaderLeader "g" "Neogit")
-      (mkCmd "Y" "y$")
-      (mkCmd "<C-S>" "<C-A>")
-      (mkCmd "W" "w")
-      (mkCmd "Wq" "wq")
-      (mkCmd "Q" "q")
-      (mkCmd "WQ" "wq")
-    ];
+      in [
+        (mkSilentLeaderSpace "d" "Telescope find_files")
+        (mkSilentLeaderLeader "b" "Telescope buffers")
+        (mkSilentLeaderLeader "h" "Telescope help_tags")
+        (mkSilentLeaderLeader "d" "Neotree")
+        (mkSilentLeaderLeader "g" "Neogit")
+        (mkCmd "Y" "y$")
+        (mkCmd "<C-S>" "<C-A>")
+        (mkCmd "W" "w")
+        (mkCmd "Wq" "wq")
+        (mkCmd "Q" "q")
+        (mkCmd "WQ" "wq")
+      ];
+    };
   };
 }

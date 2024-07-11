@@ -3,7 +3,7 @@
     glamdring.discord.enable = lib.mkEnableOption "Enable Discord";
   };
 
-  config = mkIf config.glamdring.discord.enable {
+  config = lib.mkIf config.glamdring.discord.enable {
     home.packages = [
       pkgs.discord
     ];

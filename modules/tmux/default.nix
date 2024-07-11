@@ -6,6 +6,8 @@
 
   config = lib.mkIf config.glamdring.tmux.enable {
     programs.tmux = {
+      enable = true;
+
       keyMode = "vi";
       shortcut = "a";
       terminal = "screen-256color";

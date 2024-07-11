@@ -10,10 +10,12 @@
     };
   };
 
-  config = lib.mkIf config.glamdring.barrier.enable {
+  config = let
+    cfg = config.glamdring.barrier;
+  in lib.mkIf cfg.enable {
     home.packages = with pkgs; [ barrier ];
 
-    systemd.user.services.barrier-client = let cfg = config.glamdring.barrier in {
+    systemd.user.services.barrier-client = {
       Unit = {
         Description = "Barrier Client Service";
         After = [ "network.target" ];

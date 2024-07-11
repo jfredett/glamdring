@@ -1,5 +1,5 @@
-{ config, pkgs, lib, ... }: 
-{
+# TODO: Move to ereshkigal?
+{ config, pkgs, lib, ... }: {
   options.glamdring.virtualbox = {
     enable = lib.mkEnableOption "Enable VirtualBox";
   };

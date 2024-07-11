@@ -1,14 +1,25 @@
-{ config, lib, pkgs, ... }:
-{
-  options = {
-    glamdring.git.enable = lib.mkEnableOption "glamdring-git";
+{ config, lib, pkgs, ... }: {
+  options = with lib; with types; {
+    glamdring.git = {
+      enable = mkEnableOption "glamdring-git";
+      identity = mkOption {
+        type = submodule {
+          options = {
+            name = mkOption { type = str; };
+            email = mkOption { type = str; };
+          };
+        };
+      };
+    };
   };
 
-  config = lib.mkIf config.glamdring.git.enable {
+  config = let 
+    cfg = config.glamdring.git;
+  in lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = "jfredett";
-      userEmail = "jfredett@gmail.com";
+      userName = cfg.identity.name;
+      userEmail = cfg.identity.email;
 
       aliases = {
         co    = "checkout";
@@ -19,7 +30,7 @@
         rc    = "rebase --continue";
         abort = "rebase --abort";
         skip  = "rebase --skip";
-        gr    = "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset) - %C(blue)Sig:%G?' --all";
+        gr    = "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all";
         patch = "commit --amend --no-edit";
       };
 

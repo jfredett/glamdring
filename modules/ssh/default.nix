@@ -1,14 +1,14 @@
-{config, lib, pkgs, ...}:
-{
+{config, lib, pkgs, ...}: {
   options.glamdring.ssh = {
-    enable = lib.mkEnableOption "Enable SSH configuration"
+    enable = lib.mkEnableOption "Enable SSH configuration";
   };
 
   config = lib.mkIf config.glamdring.ssh.enable {
     # TODO: Turnkey service should pull these keys to /run/keys, owned by this user
-    programs.ssh = let 
+    programs.ssh = let
       ssh_dir = "~/.ssh";
     in {
+      enable = true;
       matchBlocks = {
         "pinky" = {
           identityFile = "${ssh_dir}/archimedes";

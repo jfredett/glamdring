@@ -1,19 +1,21 @@
-{ config, lib, pkgs, ...}: {
-  options.glamdring._1password = {
-    enable = lib.mkEnableOption "1password";
-    withGUI = lib.mkOption {
-      type = "boolean";
+{ config, lib, pkgs, ...}: with lib; {
+  options.glamdring._1password = with types; {
+    enable = mkEnableOption "1password";
+    withGUI = mkOption {
+      type = bool;
       default = true;
       description = "Enable the 1password GUI";
     };
-    username = lib.mkOption {
-      type = "string";
+    username = mkOption {
+      type = str;
       default = "jfredett";
       description = "The username to use for 1password";
     };
   };
 
-  config = lib.mkIf config.glamdring._1password.enable {
+  config = let 
+    cfg = config.glamdring._1password;
+  in mkIf cfg.enable {
     # TODO: This is only available at the system level, not w/i home manager, even though I'm pretty
     # sure it should be in HM.
     environment.systemPackages = with pkgs; [
@@ -23,12 +25,12 @@
       #git-credential-1password
     ];
 
-    programs._1password.enable = config.glamdring._1password.withGUI;
+    programs._1password.enable = cfg.withGUI;
     programs._1password-gui = {
       enable = true;
       # Certain features, including CLI integration and system authentication support,
       # require enabling PolKit integration on some desktop environments (e.g. Plasma).
-      polkitPolicyOwners = [ config.glamdring._1password.username ];
+      polkitPolicyOwners = [ cfg.username ];
     };
   };
 }

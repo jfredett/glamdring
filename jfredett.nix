@@ -1,6 +1,37 @@
-{ pkgs, home-manager, nixvim, nur, ... }:
-{
-  home.stateVersion = "23.11";
+{ config, pkgs, ... }: {
+
+  imports = [
+    ./modules
+  ];
+
+  glamdring = {
+    alacritty.enable = true;
+    barrier = {
+      enable = true;
+      server = "hedges.pandemon.ium";
+    };
+    bash.enable = true;
+    direnv.enable = true;
+    dirstack.enable = true;
+    discord.enable = true;
+    firefox.enable = true;
+    git = {
+      enable = true;
+      identity = {
+        name = "Joe Fredette";
+        email = "jfredett@gmail.com";
+      };
+    };
+    nixvim.enable = true;
+    slack.enable = true;
+    ssh.enable = true;
+    tmux.enable = true;
+    virt-manager.enable = true;
+  };
+
+  programs.home-manager.enable = true;
+
+  home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
     ripgrep
@@ -14,39 +45,7 @@
     sysstat
   ];
 
-  imports = [
-    ./alacritty.nix
-    ./barrier.nix
-    ./bash.nix
-    ./direnv.nix
-    ./dirstack.nix
-    ./discord.nix
-    ./dropbox.nix
-    ./firefox.nix
-    ./git.nix
-    ./nixvim.nix
-    ./slack.nix
-    ./ssh.nix
-    ./tmux.nix
-    ./virt-manager.nix
-  ];
-
-  glamdring = {
-    alacritty.enable = true;
-    git.enable = true;
-    bash.enable = true;
-    nixvim.enable = true;
-    tmux.enable = true;
-    ssh.enable = true;
-  };
-  
   home.shellAliases = {
     ps1 = "true"; # no-opping this since I can't figure out where it's being set outside of nix. Non-nixos makes me sad.
-  };
-
-  programs.home-manager.enable = true;
-
-  services.emerald-city = {
-    virt-manager.enable = true;
   };
 }
