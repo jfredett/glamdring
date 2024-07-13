@@ -35,6 +35,7 @@
       modules = [
         { system.stateVersion = "24.05"; }
         home-manager.nixosModules.home-manager
+        nur.nixosModules.nur
       ] ++ configs;
 
       specialArgs = { inherit nixpkgs nur nixvim home-manager; };
@@ -97,17 +98,17 @@
             users.users.jfredette.home = "/Users/jfredette";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jfredette = homeManagerConfFor ./jfredett.nix;
+            home-manager.users.jfredette = homeManagerConfFor ./work.nix;
           }
         ];
 
-        specialArgs = { inherit nixpkgs; };
+        specialArgs = { inherit nixpkgs nur; };
       };
       "Hedges" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
           { 
-            system.stateVersion = 4; 
+            system.stateVersion = 4;
             services.nix-daemon.enable = true;
           }
           home-manager.darwinModules.home-manager
