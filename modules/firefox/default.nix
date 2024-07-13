@@ -1,15 +1,15 @@
-{ config, pkgs, lib, nur, ...}: {
+{ config, pkgs, lib, nur, ...}: with lib; {
   options.glamdring.firefox = {
-    enable = lib.mkEnableOption "Enable Firefox";
+    enable = mkEnableOption "Enable Firefox";
   };
 
-
-
-  config = lib.mkIf config.glamdring.firefox.enable {
-    programs.firefox = {
+  config = let 
+    cfg = config.glamdring.firefox;
+  in mkIf cfg.enable {
+    programs.firefox = with pkgs; {
       enable = true;
 
-      package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+      package = wrapFirefox firefox-unwrapped {
         extraPolicies = {
           CaptivePortal = false;
           DisableFirefoxStudies = true;
@@ -50,7 +50,7 @@
                     { name = "query"; value = "{searchTerms}"; }
                   ];
                 }];
-                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                icon = "${nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                 definedAliases = [ "@np" ];
               };
               "NixOS Wiki" = {
@@ -75,96 +75,101 @@
             user_pref("media.ffmpeg.vaapi.enabled", true);
             user_pref("media.rdd-vpx.enabled", true);
           '';
-          /*
+          # TODO: Group and add enable flags for each group of addons.
           extensions = let
-            ryceePkgs = nur.repos.rycee.firefox-addons;
-            bandiPkgs = nur.repos.bandithedoge.firefox-addons;
+            ryceePkgs = config.nur.repos.rycee.firefox-addons;
+            bandiPkgs = config.nur.repos.bandithedoge.firefoxAddons;
           in [
             ryceePkgs.onepassword-password-manager
 
-          # Efficiency Stuff
-          bandiPkgs.auto-tab-discard
-          bandiPkgs.dont-fuck-with-paste
-          bandiPkgs.tridactyl
-          bandiPkgs.violentmonkey
-          ryceePkgs.tree-style-tab
-          ryceePkgs.tst-tab-search
-          ryceePkgs.tst-wheel-and-double
-          ryceePkgs.pushbullet
-          ryceePkgs.tab-counter-plus
-          ryceePkgs.tab-reloader
-          ryceePkgs.terms-of-service-didnt-read
-          ryceePkgs.tomato-counter 
-          ryceePkgs.torrent-control
+            # Efficiency Stuff
+            bandiPkgs.auto-tab-discard
+            bandiPkgs.dont-fuck-with-paste
+            bandiPkgs.tridactyl
+            bandiPkgs.violentmonkey
+            ryceePkgs.tree-style-tab
+            ryceePkgs.tst-tab-search
+            ryceePkgs.tst-wheel-and-double
+            #ryceePkgs.pushbullet # TODO: Determine if I actually want this.
+            ryceePkgs.tab-counter-plus
+            ryceePkgs.tab-reloader
+            ryceePkgs.terms-of-service-didnt-read
+            ryceePkgs.tomato-clock
+            ryceePkgs.toolkit-for-ynab
+            ryceePkgs.torrent-control
 
-          # Privacy Stuff
-          ryceePkgs.duckduckgo-privacy-essentials
-          ryceePkgs.canvasblocker
-          ryceePkgs.censor-tracker
-          ryceePkgs.clearurls 
-          ryceePkgs.decentraleyes
-          ryceePkgs.linkcleaner
-          ryceePkgs.ninja-cookiforcee
-          ryceePkgs.privacy-possum
-          ryceePkgs.proton-vpn
+            # Privacy Stuff
+            ryceePkgs.duckduckgo-privacy-essentials
+            ryceePkgs.canvasblocker
+            ryceePkgs.censor-tracker
+            ryceePkgs.clearurls
+            ryceePkgs.decentraleyes
+            ryceePkgs.link-cleaner
+            ryceePkgs.ninja-cookie
+            ryceePkgs.privacy-possum
+            ryceePkgs.proton-vpn
 
-          # Security Stuff
-          ryceePkgs.ublock-origin
-          ryceePkgs.privacy-badger
-          ryceePkgs.disable-javascript
-          ryceePkgs.user-agent-string-switcher
+            # Security Stuff
+            ryceePkgs.ublock-origin
+            ryceePkgs.privacy-badger
+            ryceePkgs.disable-javascript
+            ryceePkgs.user-agent-string-switcher
 
-          # Site Enhancements Stuff
+            # Site Enhancements Stuff
 
-          ## General
-          ryceePkgs.native-mathml
-          ryceePkgs.native-tab-override
-          ryceePkgs.re-enable-right-click
+            ## General
+            ryceePkgs.native-mathml
+            ryceePkgs.new-tab-override
+            ryceePkgs.re-enable-right-click
 
 
-          ## Github
-          bandiPkgs.enhanced-github
-          bandiPkgs.octolinker
-          bandiPkgs.github-code-folding
-          bandiPkgs.github-repo-size
-          bandiPkgs.material-icons-for-github
-          ryceePkgs.buster-captcha-solver
-          ryceePkgs.bypass-paywalls-clean
+            ## Github
+            bandiPkgs.enhanced-github
+            bandiPkgs.octolinker
+            bandiPkgs.github-code-folding
+            bandiPkgs.github-repo-size
+            bandiPkgs.material-icons-for-github
+            ryceePkgs.buster-captcha-solver
 
-          ## SoundCloud
-          ryceePkgs.darkcloud
+            ## SoundCloud
+            ryceePkgs.darkcloud
 
-          ## YouTube
-          ryceePkgs.enhancer-for-youtube
+            ## YouTube
+            ryceePkgs.enhancer-for-youtube
 
-          # Social Stuff
-          bandiPkgs.pronoundb
-          bandiPkgs.reddit-enhancement-suite
-          bandiPkgs.sponsorblock
-          ryceePkgs.betterttv
-          ryceePkgs.blocktools
+            # Social Stuff
+            bandiPkgs.pronoundb
+            bandiPkgs.reddit-enhancement-suite
+            bandiPkgs.sponsorblock
+            ryceePkgs.betterttv
+            ryceePkgs.blocktube
 
-          # MuseScore
-          ryceePkgs.musescore-downloader
+            # MuseScore
+            ryceePkgs.musescore-downloader
 
-          # Reddit
-          ryceePkgs.old-reddit-redirect
+            # Reddit
+            ryceePkgs.old-reddit-redirect
 
-          # ryceePkgs.https-everywhere
-          # ryceePkgs.bitwarden
-          # ryceePkgs.clearurls
-          # ryceePkgs.decentraleyes
-          # ryceePkgs.floccus
-          # ryceePkgs.ghostery
-          # ryceePkgs.privacy-redirect
-          # ryceePkgs.privacy-badger
-          # ryceePkgs.languagetool
-          # ryceePkgs.disconnect
-          # ryceePkgs.react-devtools
-        ];
-        */
-        #userChrome = '' '';
-        #userContent = '' '';
+            # Unreviewed
+
+            # ryceePkgs.https-everywhere
+            # ryceePkgs.bitwarden
+            # ryceePkgs.clearurls
+            # ryceePkgs.decentraleyes
+            # ryceePkgs.floccus
+            # ryceePkgs.ghostery
+            # ryceePkgs.privacy-redirect
+            # ryceePkgs.privacy-badger
+            # ryceePkgs.languagetool
+            # ryceePkgs.disconnect
+            # ryceePkgs.react-devtools
+
+            # Broken
+
+            # ryceePkgs.bypass-paywalls-clean # BUG: Broken link
+          ];
+        userChrome = '' '';
+        userContent = '' '';
       };
     };
   };
