@@ -44,5 +44,3 @@
     virt-manager.enable = true;
   };
 }
-
-}
