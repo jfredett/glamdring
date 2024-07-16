@@ -19,7 +19,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
