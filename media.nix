@@ -1,46 +1,37 @@
 { config, home-manager, lib, pkgs, ... }:
 {
-  home.stateVersion = "23.11";
-
-  home.packages = with pkgs; [
-    ripgrep
-    dig
-    nmap
-    htop
-    netcat
-    tree
-    jq
-    yq
-    sysstat
-  ];
 
   imports = [
-    ./alacritty.nix
-    ./bash.nix
-    ./direnv.nix
-    ./firefox.nix
-    ./git.nix
-    ./nixvim.nix
-    ./slack.nix
-    ./ssh.nix
-    ./tmux.nix
-    ./virt-manager.nix
+    ./modules
   ];
-  
+
+  glamdring = {
+    alacritty.enable = true;
+    barrier = {
+      enable = true;
+      server = "hedges.pandemon.ium";
+    };
+    bash.enable = true;
+    direnv.enable = false;
+    dirstack.enable = false;
+    discord.enable = false;
+    firefox.enable = true;
+    git.enable = false;
+    nixvim.enable = false;
+    slack.enable = false;
+    ssh.enable = true;
+    tmux.enable = false;
+    virt-manager.enable = false;
+  };
+
+  programs.home-manager.enable = true;
+
+  home.stateVersion = "24.05";
+
+  home.packages = with pkgs; [
+  ];
+
   home.shellAliases = {
     ps1 = "true"; # no-opping this since I can't figure out where it's being set outside of nix. Non-nixos makes me sad.
-  };
-
-  programs = {
-    home-manager.enable = true;
-    bash.enable = true;
-    git.enable = true;
-    nixvim.enable = true;
-    tmux.enable = true;
-    ssh.enable = true;
-  };
-
-  services.emerald-city = {
-    virt-manager.enable = true;
   };
 }
