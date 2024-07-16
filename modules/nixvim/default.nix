@@ -41,7 +41,11 @@
         indent-blankline.enable = true;
         lsp.enable = true;
         lualine.enable = true;
-        neo-tree.enable = true;
+        neo-tree = {
+          enable = true;
+          sortCaseInsensitive = true;
+          filesystem.filteredItems.hideGitignored = false;
+        };
         nix.enable = true;
         cmp.enable = true;
         telescope.enable = true;
