@@ -60,8 +60,14 @@
     # Machine Configurations:
     nixosConfigurations = {
       maiasaura = configs: nixosConfFor ([
-        ./maiasaura.nix
+        ./hosts/maiasaura
+        ./nixos
         {
+          glamdring._1password = {
+            enable = true;
+            withGUI = true;
+          };
+
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.media = homeManagerConfFor ./media.nix;
