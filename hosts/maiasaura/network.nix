@@ -1,8 +1,6 @@
 { config, pkgs, ... }: {
   networking.hostName = "maiasaura";
 
-  networking.networkmanager.enable = true;
-
   services.openssh.enable = true;
 
   networking = {
@@ -19,7 +17,7 @@
     useDHCP = false;
 
     interfaces = {
-      wlp61s0 = {
+      wlp1s0 = {
         useDHCP = false;
         ipv4 = {
           addresses = [{
@@ -36,7 +34,7 @@
     wireless = {
       userControlled.enable = true;
       enable = true;
-      interfaces = [ "wlp61s0" ];
+      interfaces = [ "wlp1s0" ];
       networks = {
         "Emerald City" = {
           # BUG: Hardcoded secret
