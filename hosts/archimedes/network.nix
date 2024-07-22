@@ -19,11 +19,11 @@
         useDHCP = false;
         ipv4 = {
           addresses = [{
-            address = "172.19.0.14";
-            prefixLength = 24;
+            address = "10.255.1.1";
+            prefixLength = 16;
           }];
           routes = [
-            { address = "172.19.0.0"; via = "172.19.0.1"; prefixLength = 24; }
+            { address = "10.255.0.0"; via = "10.255.0.1"; prefixLength = 16; }
           ];
         };
       };
