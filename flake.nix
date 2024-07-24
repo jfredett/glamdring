@@ -57,6 +57,11 @@
       glamdring.nixos = import ./nixos { inherit inputs; };
     };
 
+    homeConfigurations = {
+      jfredett = homeManagerConfFor ./jfredett.nix;
+      media = homeManagerConfFor ./media.nix;
+    };
+
     # Machine Configurations:
     nixosConfigurations = {
       maiasaura = configs: nixosConfFor ([
