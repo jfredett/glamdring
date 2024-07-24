@@ -36,6 +36,7 @@
 
       difftastic = {
         enable = true;
+        color = "always";
       };
 
       extraConfig = {
