@@ -8,7 +8,7 @@
     alacritty.enable = true;
     barrier = {
       enable = true;
-      server = "hedges.pandemon.ium";
+      server = "hedges.canon";
     };
     bash.enable = true;
     direnv.enable = true;
