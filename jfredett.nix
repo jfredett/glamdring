@@ -22,7 +22,10 @@
         email = "jfredett@gmail.com";
       };
     };
-    nixvim.enable = true;
+    nixvim = {
+      enable = true;
+      colorscheme = "kanagawa";
+    };
     slack.enable = true;
     ssh.enable = true;
     tmux.enable = true;
