@@ -26,7 +26,13 @@
     slack.enable = true;
     ssh.enable = true;
     tmux.enable = true;
-    virt-manager.enable = true;
+    virt-manager = {
+      enable = true;
+      connections = [
+        "qemu+ssh://jfredett@babylon-the-great.canon:22/system?keyfile=/home/jfredett/.ssh/archimedes"
+        "qemu+ssh://jfredett@dragon-of-perdition.canon:22/system?keyfile=/home/jfredett/.ssh/archimedes"
+      ];
+    };
   };
 
   programs.home-manager.enable = true;
