@@ -13,9 +13,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixvim = {
       url = "github:pta2002/nixvim/main";
-#      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -62,46 +63,12 @@
       media = homeManagerConfFor ./media.nix;
     };
 
-    # Machine Configurations:
-    nixosConfigurations = {
-      maiasaura = configs: nixosConfFor ([
-        ./hosts/maiasaura
-        ./nixos
-        {
-          glamdring._1password = {
-            enable = true;
-            withGUI = true;
-          };
-
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.media = homeManagerConfFor ./media.nix;
-        }
-      ] ++ configs);
-
-      archimedes = configs: nixosConfFor ([
-        ./hosts/archimedes
-        ./nixos
-        {
-          glamdring.virtualbox.enable = true;
-          glamdring._1password = {
-            enable = true;
-            withGUI = true;
-          };
-
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jfredett = homeManagerConfFor ./jfredett.nix;
-        }
-      ] ++ configs);
-    };
-
     darwinConfigurations = {
       "MBP-G071LCCXRH" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          { 
-            system.stateVersion = 4; 
+          {
+            system.stateVersion = 4;
             services.nix-daemon.enable = true;
           }
           home-manager.darwinModules.home-manager
@@ -118,7 +85,7 @@
       "Hedges" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          { 
+          {
             system.stateVersion = 4;
             services.nix-daemon.enable = true;
           }
