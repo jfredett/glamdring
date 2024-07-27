@@ -35,9 +35,15 @@
       };
 
       difftastic = {
-        enable = true;
+        # BUG: Justfiles don't seem to be supported right now?
+        enable = false;
         color = "always";
       };
+
+      diff-so-fancy = {
+        enable = true;
+      };
+
 
       extraConfig = {
         diff.algorithm = "patience";
