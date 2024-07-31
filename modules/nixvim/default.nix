@@ -8,6 +8,7 @@
         The colorscheme to use.
       '';
     };
+    copilot = mkEnableOption "Enable copilot";
   };
 
   imports = [
@@ -69,8 +70,7 @@
         neotest
         tabular
         plenary-nvim
-        copilot-vim
-      ];
+      ] ++ (if cfg.copilot then [ copilot-vim ] else []);
 
       plugins = {
         indent-blankline.enable = true;

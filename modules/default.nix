@@ -17,5 +17,4 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-
 }

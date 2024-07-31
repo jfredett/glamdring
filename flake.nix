@@ -2,12 +2,14 @@
   description = "Glamdring, a weapon fit for a wizard";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
 
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -63,7 +65,9 @@
       media = homeManagerConfFor ./media.nix;
     };
 
-    darwinConfigurations = {
+    darwinConfigurations = let 
+      pkgs = import nixpkgs { system = "aarch64-darwin"; config = {}; };
+    in {
       "MBP-G071LCCXRH" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
@@ -71,15 +75,15 @@
             system.stateVersion = 4;
             services.nix-daemon.enable = true;
           }
-          {
-            services.openssh.ports = [ 2222 ];
-          }
           home-manager.darwinModules.home-manager
           {
             users.users.jfredette.home = "/Users/jfredette";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.jfredette = homeManagerConfFor ./work.nix;
+          }
+          { 
+            environment.systemPackages = [ pkgs.mosh ];
           }
         ];
 

@@ -7,14 +7,14 @@
   glamdring = {
     alacritty.enable = true;
     barrier = {
-      enable = true;
-      server = "hedges.pandemon.ium";
+      enable = false;
+      server = "hedges.canon";
     };
     bash.enable = true;
     direnv.enable = true;
-    dirstack.enable = true;
-    discord.enable = true;
-    firefox.enable = true;
+    dirstack.enable = false;
+    discord.enable = false;
+    firefox.enable = false;
     git = {
       enable = true;
       identity = {
@@ -22,8 +22,12 @@
         email = "jfredette@merative.com";
       };
     };
-    nixvim.enable = true;
-    slack.enable = true;
+    nixvim = {
+      copilot = false;
+      enable = true;
+      colorscheme = "gruvbox";
+    };
+    slack.enable = false;
     ssh.enable = true;
     tmux.enable = true;
     virt-manager.enable = true;
@@ -32,6 +36,7 @@
   programs.home-manager.enable = true;
 
   home.stateVersion = "24.05";
+  home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [
     ripgrep
@@ -42,7 +47,7 @@
     tree
     jq
     yq
-    sysstat
+    inetutils
   ];
 
   home.shellAliases = {
