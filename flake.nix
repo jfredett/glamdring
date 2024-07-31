@@ -71,6 +71,9 @@
             system.stateVersion = 4;
             services.nix-daemon.enable = true;
           }
+          {
+            services.openssh.ports = [ 2222 ];
+          }
           home-manager.darwinModules.home-manager
           {
             users.users.jfredette.home = "/Users/jfredette";
