@@ -7,10 +7,7 @@
 
   glamdring = {
     alacritty.enable = true;
-    barrier = {
-      enable = true;
-      server = "hedges.pandemon.ium";
-    };
+    barrier.enable = false;
     bash.enable = true;
     direnv.enable = false;
     dirstack.enable = false;
