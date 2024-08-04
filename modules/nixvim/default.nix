@@ -81,6 +81,19 @@
           sortCaseInsensitive = true;
           filesystem.filteredItems.hideGitignored = false;
         };
+        dap.enable = true;
+        neotest = {
+          enable = true;
+          adapters = {
+            rust = {
+              enable = true;
+            };
+            bash.enable = true;
+            rspec = {
+              enable = true;
+            };
+          };
+        };
         nix.enable = true;
         cmp.enable = true;
         telescope = {
