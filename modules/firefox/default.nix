@@ -155,7 +155,6 @@
             # ryceePkgs.https-everywhere
             # ryceePkgs.bitwarden
             # ryceePkgs.clearurls
-            # ryceePkgs.decentraleyes
             # ryceePkgs.floccus
             # ryceePkgs.ghostery
             # ryceePkgs.privacy-redirect
