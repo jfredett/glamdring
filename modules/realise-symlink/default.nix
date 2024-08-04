@@ -1,5 +1,5 @@
 # An idea taken from https://kokada.capivaras.dev/blog/quick-bits-realise-nix-symlinks/
-{ config, lib, pkgs, ... }: let
+{ config, lib, pkgs, ... }: with lib; let
   realise-symlink = pkgs.writeShellApplication {
     name = "realise-symlink";
     runtimeInputs = with pkgs; [ coreutils ];
@@ -26,8 +26,10 @@
   };
 in {
   options.glamdring.realise-symlink = {
-    enable = lib.mkEnableOption "Enable realise-symlink";
+    enable = mkEnableOption "Enable realise-symlink";
   };
 
-  home.packages = lib.mkIf glamdring.realise-symlink.enable [ realise-symlink ];
+  config = mkIf config.glamdring.realise-symlink.enable {
+    home.packages = [ realise-symlink ];
+  };
 }

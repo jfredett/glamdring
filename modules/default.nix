@@ -10,6 +10,7 @@
     ./firefox
     ./git
     ./nixvim
+    ./realise-symlink
     ./slack
     ./ssh
     ./tmux

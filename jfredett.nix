@@ -26,7 +26,7 @@
       enable = true;
       colorscheme = "kanagawa";
     };
-    realise-symlinks.enable = true;
+    realise-symlink.enable = true;
     slack.enable = true;
     ssh.enable = true;
     tmux.enable = true;
