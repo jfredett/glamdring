@@ -12,10 +12,11 @@
   };
 
   imports = [
+    ./nvim/lsp.nix
+    ./nvim/neotest.nix
     ./nvim/options.nix
     ./nvim/telescope.nix
     ./nvim/treesitter.nix
-    ./nvim/lsp.nix
   ];
 
   config = let
@@ -81,6 +82,8 @@
           sortCaseInsensitive = true;
           filesystem.filteredItems.hideGitignored = false;
         };
+        dap.enable = true;
+        neotest.enable = true;
         nix.enable = true;
         cmp.enable = true;
         telescope = {

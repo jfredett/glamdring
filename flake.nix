@@ -18,6 +18,7 @@
 
     nixvim = {
       url = "github:pta2002/nixvim/main";
+      #url = "git+file:../forks/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

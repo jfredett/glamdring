@@ -5,7 +5,7 @@
     ];
 
     programs.nixvim.plugins.lsp = {
-    servers = {
+      servers = {
         bashls.enable = true;
         cssls.enable = true;
         hls.enable = true;
@@ -13,10 +13,11 @@
         jsonls.enable = true;
         lua-ls.enable = true;
         pylsp.enable = true;
+        ruby-lsp.enable = true;
         rust-analyzer = {
           enable = true;
-          installCargo = true;
-          installRustc = true;
+          installCargo = false;
+          installRustc = false;
         };
       };
     };
