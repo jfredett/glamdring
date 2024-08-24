@@ -30,6 +30,6 @@ in {
   };
 
   config = mkIf config.glamdring.realise-symlink.enable {
-    home.packages = lib.mkIf glamdring.realise-symlink.enable [ realise-symlink ];
+    home.packages = [ realise-symlink ];
   };
 }
