@@ -56,6 +56,7 @@
             dimInactive = false;
             functionStyle = { };
             terminalColors = true;
+            # FIXME: this doesn't seem to be working.
             theme = "dragon";
             transparent = false;
             undercurl = true;
