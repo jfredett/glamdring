@@ -61,13 +61,13 @@
 
       keymaps = let
       # TODO: These have terrible names.
-      mkSilentLeaderLeader = cmd: action: { 
+      mkSilentLeaderLeader = cmd: action: {
         action = "<cmd>${action}<cr>";
         key = "<leader>${cmd}<leader>";
         options = { silent = true; };
         mode = "n";
       };
-      mkSilentLeaderSpace = cmd: action: { 
+      mkSilentLeaderSpace = cmd: action: {
         action = "<cmd>${action}<cr>";
         key = "<leader>${cmd}<space>";
         options = { silent = true; };
@@ -77,6 +77,12 @@
         action = "<cmd>${action}<cr>";
         key = cmd;
         options = { silent = false; };
+      };
+      mkTerminal = cmd: action: {
+        action = action;
+        key = cmd;
+        options = { silent = true; };
+        mode = "t";
       };
       in [
         (mkSilentLeaderSpace "d" "Telescope find_files")
@@ -90,6 +96,7 @@
         (mkCmd "Wq" "wq")
         (mkCmd "Q" "q")
         (mkCmd "WQ" "wq")
+        (mkTerminal "<Esc>" "<C-\\><C-n>")
       ];
     };
   };
