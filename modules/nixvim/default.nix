@@ -85,6 +85,13 @@
         };
         dap.enable = true;
         neotest.enable = true;
+        toggleterm = {
+          enable = true;
+          settings = {
+            open_mapping = "[[<leader><space><leader>]]";
+          };
+        };
+
         nix.enable = true;
         cmp.enable = true;
         telescope = {
