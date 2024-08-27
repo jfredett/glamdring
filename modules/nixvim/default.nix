@@ -85,6 +85,23 @@
         };
         dap.enable = true;
         neotest.enable = true;
+
+
+        neogit = {
+          enable = true;
+        };
+        # TODO: get this set up
+        # octo.enable = true;
+        gitgutter.enable = true;
+        gitblame = {
+          enable = true;
+          settings = {
+            message_when_not_commited = "New";
+            virtual_text_column = 125;
+          };
+        };
+        diffview.enable = true;
+
         toggleterm = {
           enable = true;
           settings = {
