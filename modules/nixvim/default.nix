@@ -22,6 +22,7 @@
   config = let
     cfg = config.glamdring.nixvim;
   in mkIf cfg.enable {
+    home.packages = [ pkgs.gh ];
     programs.nixvim = {
       enable = true;
 
@@ -72,6 +73,7 @@
         neotest
         tabular
         plenary-nvim
+        nvim-web-devicons
       ] ++ (if cfg.copilot then [ copilot-vim ] else []);
 
       plugins = {
@@ -97,7 +99,18 @@
           };
         };
         # TODO: get this set up
-        # octo.enable = true;
+        octo = {
+          enable = true;
+          # https://github.com/topaxi/gh-actions.nvim <-- may be needed if octo can't do this?
+          settings = {
+            enable_builtin = true;
+            default_remote = ["origin"];
+            ssh_aliases = {
+              "github.work" = "github.com";
+              "github.oz" = "github.com";
+            };
+          };
+        };
         gitgutter.enable = true;
         gitblame = {
           enable = true;
