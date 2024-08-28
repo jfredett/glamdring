@@ -89,6 +89,11 @@
 
         neogit = {
           enable = true;
+          settings = {
+            commit_editor = {
+              kind = "tab";
+            };
+          };
         };
         # TODO: get this set up
         # octo.enable = true;
