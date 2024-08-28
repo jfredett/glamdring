@@ -73,8 +73,14 @@
         options = { silent = true; };
         mode = "n";
       };
+      mkInsertCmd = cmd: action: {
+        action = "${action}";
+        key = cmd;
+        options = { silent = true; };
+        mode = "i";
+      };
       mkCmd = cmd: action: {
-        action = "<cmd>${action}<cr>";
+        action = "${action}";
         key = cmd;
         options = { silent = false; };
       };
@@ -90,13 +96,17 @@
         (mkSilentLeaderLeader "h" "Telescope help_tags")
         (mkSilentLeaderLeader "d" "Neotree")
         (mkSilentLeaderLeader "g" "Neogit")
+        (mkSilentLeaderLeader "b" "Gitblame")
         (mkCmd "Y" "y$")
         (mkCmd "<C-S>" "<C-A>")
         (mkCmd "W" "w")
         (mkCmd "Wq" "wq")
         (mkCmd "Q" "q")
         (mkCmd "WQ" "wq")
-        (mkTerminal "<Esc>" "<C-\\><C-n>")
+        (mkTerminal "<F12>" "<C-\\><C-n>")
+        (mkTerminal "<C-w>" "<C-\\><C-n><C-w>")
+        (mkCmd "<F12>" "<Esc>")
+        (mkInsertCmd "<F12>" "<Esc>")
       ];
     };
   };
