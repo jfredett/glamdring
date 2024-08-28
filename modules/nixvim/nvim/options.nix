@@ -91,6 +91,13 @@
         mode = "t";
       };
       in [
+        (mkSilentLeaderLeader "c" "source ~/.config/nvim/init.lua")
+        {
+          action = "gc";
+          key = "<leader>c<space>";
+          mode = [ "n" "o" "x" ];
+          options = { remap = true; };
+        }
         (mkSilentLeaderSpace "d" "Telescope find_files")
         (mkSilentLeaderLeader "b" "Telescope buffers")
         (mkSilentLeaderLeader "h" "Telescope help_tags")
