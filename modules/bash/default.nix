@@ -1,4 +1,8 @@
 { config, lib, pkgs, ...}: {
+  imports = [
+    ./azure-aliases.nix
+  ];
+
   options.glamdring.bash = {
     enable = lib.mkEnableOption "Enable bash configuration";
   };
