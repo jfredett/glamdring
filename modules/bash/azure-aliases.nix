@@ -1,6 +1,6 @@
 { config, lib, pkgs, ...}: with lib; {
   options.glamdring.bash.aliases.azure = with types; {
-    enable = mkEnableOption "enable azure aliases"
+    enable = mkEnableOption "enable azure aliases";
   };
 
   config = let 

@@ -10,7 +10,12 @@
       enable = false;
       server = "hedges.canon";
     };
-    bash.enable = true;
+    bash = {
+      enable = true;
+      aliases = {
+        azure.enable = true;
+      };
+    };
     direnv.enable = true;
     dirstack.enable = false;
     discord.enable = false;
