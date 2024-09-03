@@ -9,6 +9,7 @@
     ./discord
     ./firefox
     ./git
+    ./hyprland
     ./nixvim
     ./realise-symlink
     ./slack
