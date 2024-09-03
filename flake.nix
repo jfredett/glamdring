@@ -16,6 +16,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix.url = "github:danth/stylix";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nixvim = {
       url = "github:pta2002/nixvim/main";
       #url = "git+file:../forks/nixvim";
@@ -23,16 +25,17 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nur, nix-darwin, home-manager, flake-utils, nixvim, ... }:
+  outputs = inputs@{ self, nixpkgs, nur, nix-darwin, home-manager, flake-utils, nixvim, stylix, hyprland, ... }:
   let
     system = "x86_64-linux";
     homeManagerConfFor = config: { ... }: {
       imports = [
         nixvim.homeManagerModules.nixvim
         nur.hmModules.nur
-        config
+        stylix.homeManagerModules.stylix config
       ];
     };
+
     nixosConfFor = configs: nixpkgs.lib.nixosSystem {
       inherit system;
 
@@ -42,7 +45,7 @@
         nur.nixosModules.nur
       ] ++ configs;
 
-      specialArgs = { inherit nixpkgs nur nixvim home-manager; };
+      specialArgs = { inherit nixpkgs nur nixvim hyprland stylix home-manager; };
     };
   in {
     # Dev Shells:
