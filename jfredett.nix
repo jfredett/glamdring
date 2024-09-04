@@ -29,6 +29,7 @@
     };
     realise-symlink.enable = true;
     slack.enable = true;
+    stylix.enable = true;
     ssh.enable = true;
     tmux.enable = true;
     virt-manager = {
@@ -40,17 +41,6 @@
     };
   };
 
-  stylix = {
-    enable = true;
-    image = ./assets/wallpapers/ai/garage-lab-0.png;
-    polarity = "dark";
-    fonts = {
-      monospace = {
-        package = pkgs.inconsolata-nerdfont;
-        name = "Inconsolata Nerdfont";
-      };
-    };
-  };
 
   programs.home-manager.enable = true;
 
