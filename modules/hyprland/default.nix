@@ -1,25 +1,28 @@
-{ config, pkgs, lib, hyprland, stylix, ... }: with lib; let
+{ config, pkgs, lib, hyprland, ... }: with lib; let
 in {
   options = {
     glamdring.hyprland = with types; {
       enable = mkEnableOption "Enable hyprland";
-    }
+    };
   };
 
   config = let
-    cfg = config.hyprland;
+    cfg = config.glamdring.hyprland;
     condition = cfg.enable;
   in mkIf condition {
-    environment.systemPackages = with pkgs; [
-      hyprland
-      stylix
-    ];
-
-    /* this should probably be it's own module, since I will likely use other WMs */
-    stylix = {
-      enable = true;
-      image = ../../../assets/wallpapers/ai/garage-lab-0.png;
+    wayland.windowManager = {
+      hyprland = {
+        enable = true;
+        settings = {
+          "$mod" = "SUPER";
+          monitor = [
+            "M1, 2560x1440, 0x0, 1"
+          ];
+          bind = [
+            "$mod, Return, alacritty"
+          ];
+        };
+      };
     };
-
   };
 }
