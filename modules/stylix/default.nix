@@ -12,7 +12,7 @@
   in {
     stylix = {
       enable = true;
-      image = ../../assets/wallpapers/ai/garage-lab-0.png;
+      image = ../../assets/wallpapers/ai/garage-lab-1.png;
       polarity = "dark";
       fonts = {
         monospace = {

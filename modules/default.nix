@@ -10,13 +10,17 @@
     ./firefox
     ./git
     ./hyprland
+    ./kitty
     ./nixvim
     ./realise-symlink
     ./slack
+    ./stylix
     ./ssh
     ./tmux
     ./virt-manager
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  config = {
+    nixpkgs.config.allowUnfree = true;
+  };
 }
