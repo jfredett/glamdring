@@ -114,6 +114,10 @@
         (mkTerminal "<C-w>" "<C-\\><C-n><C-w>")
         (mkCmd "<F12>" "<Esc>")
         (mkInsertCmd "<F12>" "<Esc>")
+        # TODO: figure out some way to invert these dependencies and make a better mapping thing.
+        # TODO: Limit these to the 'octo' filetype
+        # (mkInsertCmd "@" "@<C-x><C-O>")
+        # (mkInsertCmd "#" "#<C-x><C-O>")
       ];
     };
   };
