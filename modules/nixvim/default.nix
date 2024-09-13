@@ -77,6 +77,7 @@
       ] ++ (if cfg.copilot then [ copilot-vim ] else []);
 
       plugins = {
+        auto-save.enable = true;
         commentary.enable = true;
         indent-blankline.enable = true;
         lsp.enable = true;
