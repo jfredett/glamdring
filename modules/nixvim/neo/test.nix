@@ -1,7 +1,19 @@
-{ config, lib, pkgs, vimUtils, ... }: {
-  config = lib.mkIf config.glamdring.nixvim.enable {
+{ config, lib, pkgs, ... }: with lib; {
+  options = with types; {
+    glamdring.nixvim.neo.test = {
+      enable = mkEnableOption "Enable the neotest plugin";
+    };
+  };
 
+  config = let
+    cfg = config.glamdring.nixvim.neo.test;
+    condition = cfg.enable;
+  in mkIf condition {
     programs.nixvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        neotest
+      ];
+
       plugins.neotest = {
         enable = true;
 

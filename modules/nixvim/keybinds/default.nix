@@ -1,29 +1,10 @@
+## TODO: Rebuild this so there is a library that is used and available to all nixvim related things,
+#it should create a table of bindings and then create all the bindings in one big chunk. That way I
+#can store bindings with the associated configuration. Something like glamdring.nixvim.keybinds = [
+#list of binds ]
 { config, lib, pkgs, vimUtils, ... }: {
   config = lib.mkIf config.glamdring.nixvim.enable {
     programs.nixvim = {
-      globals.mapleader = ",";
-
-      opts = {
-        number = true;
-        relativenumber = false;
-        incsearch = true;
-        backup = false;
-        writebackup = false;
-        swapfile = false;
-        wildmenu = true;
-        shortmess = "aIA";
-        # Show loose whitespace
-        list = true;
-
-        # 2 spaces is more than enough for a tab, and never use \t.
-        expandtab = true;
-        shiftwidth = 2;
-        tabstop = 2;
-
-        # 3x100 = 15 characters shy of a max width 1440p screen for me.
-        # which means exactly 3 columns of text before wrapping.
-        textwidth = 100;
-      };
 
       /* From the Neovim Manual
 
@@ -59,8 +40,10 @@
 
       */
 
+      # FIXME: I need to refactor this to some better system. I don't know if Nixvim has something,
+      # but I want to ultimately be able to inject these from the modules, and ideally there is some
+      # library that creates these guys that the module can rely on.
       keymaps = let
-      # TODO: These have terrible names.
       mkSilentLeaderLeader = cmd: action: {
         action = "<cmd>${action}<cr>";
         key = "<leader>${cmd}<leader>";
@@ -104,6 +87,7 @@
         (mkSilentLeaderLeader "d" "Neotree")
         (mkSilentLeaderLeader "g" "Neogit")
         (mkSilentLeaderLeader "b" "Gitblame")
+        (mkSilentLeaderLeader "q" "copen")
         (mkCmd "Y" "y$")
         (mkCmd "<C-S>" "<C-A>")
         (mkCmd "W" "w")
@@ -114,7 +98,6 @@
         (mkTerminal "<C-w>" "<C-\\><C-n><C-w>")
         (mkCmd "<F12>" "<Esc>")
         (mkInsertCmd "<F12>" "<Esc>")
-        # TODO: figure out some way to invert these dependencies and make a better mapping thing.
         # TODO: Limit these to the 'octo' filetype
         # (mkInsertCmd "@" "@<C-x><C-O>")
         # (mkInsertCmd "#" "#<C-x><C-O>")

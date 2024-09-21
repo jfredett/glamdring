@@ -25,8 +25,14 @@
     nixvim = {
       enable = true;
       colorscheme = "kanagawa";
-      copilot = true;
+      copilot.enable = true;
+      neo = {
+        tree.enable = true;
+        test.enable = true;
+      };
+      toggleterm.enable = true;
     };
+
     realise-symlink.enable = true;
     slack.enable = true;
     stylix.enable = true;

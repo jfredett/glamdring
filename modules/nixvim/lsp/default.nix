@@ -1,5 +1,10 @@
 { config, lib, pkgs, vimUtils, ... }: {
-  config = lib.mkIf config.glamdring.nixvim.enable {
+  options = with lib; {
+    glamdring.nixvim.lsp = {
+      enable = mkEnableOption "Enable LSP";
+    };
+  };
+  config = lib.mkIf config.glamdring.nixvim.lsp.enable {
     home.packages = with pkgs; [
       shellcheck
     ];

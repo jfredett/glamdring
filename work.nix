@@ -28,9 +28,14 @@
       };
     };
     nixvim = {
-      copilot = false;
       enable = true;
       colorscheme = "gruvbox";
+      copilot.enable = false;
+      neo = {
+        tree.enable = true;
+        test.enable = true;
+      };
+      toggleterm.enable = true;
     };
     slack.enable = false;
     ssh.enable = true;
