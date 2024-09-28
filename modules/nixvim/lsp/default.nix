@@ -9,20 +9,26 @@
       shellcheck
     ];
 
-    programs.nixvim.plugins.lsp = {
-      servers = {
-        bashls.enable = true;
-        cssls.enable = true;
-        hls.enable = true;
-        html.enable = true;
-        jsonls.enable = true;
-        lua-ls.enable = true;
-        pylsp.enable = true;
-        ruby-lsp.enable = true;
-        rust-analyzer = {
-          enable = true;
-          installCargo = false;
-          installRustc = false;
+    programs.nixvim = {
+
+      plugins.lsp = {
+        enable = true;
+        servers = {
+          bashls.enable = true;
+          cssls.enable = true;
+          hls.enable = true;
+          html.enable = true;
+          jsonls.enable = true;
+          lua-ls.enable = true;
+          nginx-language-server.enable = true;
+          nil-ls.enable = true;
+          pylsp.enable = true;
+          ruby-lsp.enable = true;
+          rust-analyzer = {
+            enable = true;
+            installCargo = false;
+            installRustc = false;
+          };
         };
       };
     };

@@ -6,48 +6,44 @@
     cfg = config.glamdring.nixvim;
     condition = cfg.enable;
   in mkIf condition {
-    programs.nixvim = {
-      # Config-free plugins (mod keybinds)
-      extraPlugins = with pkgs.vimPlugins; [
-        tabular
-        plenary-nvim
-        nvim-web-devicons
-        vim-illuminate
-      ];
+      programs.nixvim = {
+        # Config-free plugins (mod keybinds)
+        extraPlugins = with pkgs.vimPlugins; [
+          tabular
+          plenary-nvim
+          nvim-web-devicons
+          vim-illuminate
+        ];
 
-      plugins = {
-        auto-save.enable = true;
-        commentary.enable = true;
-        indent-blankline.enable = true;
-        todo-comments.enable = true;
+        plugins = {
+          auto-save.enable = true;
+          commentary.enable = true;
+          indent-blankline.enable = true;
+          todo-comments.enable = true;
+          # language enablement
+          nix.enable = true;
+        };
 
-        # language enablement
-        nix.enable = true;
-      };
+        # General options
+        globals.mapleader = ",";
+        opts = {
+          number = true;
+          relativenumber = false;
+          incsearch = true;
+          backup = false;
+          writebackup = false;
+          swapfile = false;
+          wildmenu = true;
+          shortmess = "aIA";
+          # Show loose whitespace
+          list = true;
 
-      # General options
-      globals.mapleader = ",";
-      opts = {
-        number = true;
-        relativenumber = false;
-        incsearch = true;
-        backup = false;
-        writebackup = false;
-        swapfile = false;
-        wildmenu = true;
-        shortmess = "aIA";
-        # Show loose whitespace
-        list = true;
+          expandtab = true;
+          shiftwidth = 4;
+          tabstop = 4;
 
-        # 2 spaces is more than enough for a tab, and never use \t.
-        expandtab = true;
-        shiftwidth = 2;
-        tabstop = 2;
-
-        # 3x100 = 15 characters shy of a max width 1440p screen for me.
-        # which means exactly 3 columns of text before wrapping.
-        textwidth = 100;
+          textwidth = 120;
+        };
       };
     };
-  };
 }

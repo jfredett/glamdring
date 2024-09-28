@@ -4,9 +4,11 @@
   };
 
   imports = [
+    ./agrolens
     ./cmp
     ./colorscheme
     ./copilot
+    ./coverage
     ./dap
     ./editor
     ./keybinds
@@ -16,6 +18,7 @@
     ./telescope
     ./terminal
     ./treesitter
+    ./trouble
   ];
 
   config = let
@@ -37,7 +40,6 @@
         #     - ansible
         #     - python
         #     - go
-        # - modularize everything
         # - Copilot -> Local hosted migration
         # - ai chat + completion (maybe via cmp?)
         # - nvim-surround
@@ -48,6 +50,7 @@
         #   - https://github.com/mistweaverco/kulala.nvim
         #   - ideally something that works with hurl?
         # - agrolens
+        #   - set up, but needs keybinds
         # - nvim-treesitter-textobjects
         # - nvim-coverage
         # - https://github.com/al1-ce/just.nvim

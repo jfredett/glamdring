@@ -25,7 +25,14 @@
     nixvim = {
       enable = true;
       colorscheme = "kanagawa";
+      agrolens.enable = true;
       copilot.enable = true;
+      cmp = {
+        enable = true;
+        ai.enable = false;
+      };
+      coverage.enable = true;
+      lsp.enable = true;
       neo = {
         tree.enable = true;
         test.enable = true;
