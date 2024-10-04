@@ -22,6 +22,9 @@
           todo-comments.enable = true;
           # language enablement
           nix.enable = true;
+
+          # dev icons
+          web-devicons.enable = true;
         };
 
         # General options

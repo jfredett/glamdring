@@ -30,7 +30,14 @@
     nixvim = {
       enable = true;
       colorscheme = "gruvbox";
+      agrolens.enable = true;
       copilot.enable = false;
+      cmp = {
+        enable = true;
+        ai.enable = false;
+      };
+      coverage.enable = true;
+      lsp.enable = true;
       neo = {
         tree.enable = true;
         test.enable = true;

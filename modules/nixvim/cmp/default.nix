@@ -33,9 +33,9 @@
                 { name = "path"; }
                 { name = "buffer"; }
                 { name = "calc"; }
-                { name = "spell"; }
-                { name = "tags"; }
-                { name = "cmp_ai"; }  #FIXME: this should be conditional / have it's dep inverted via module.
+                # { name = "spell"; }
+                # { name = "tags"; }
+                # { name = "cmp_ai"; }  #FIXME: this should be conditional / have it's dep inverted via module.
               ];
               mapping = {
                 "<C-k>" = "cmp.mapping.complete()";
@@ -50,7 +50,7 @@
           };
 
           cmp-ai = mkIf cfg.ai.enable {
-            enable = true;
+            enable = false;
             settings = {
               provider = "OpenAI";
               provider_options = {
