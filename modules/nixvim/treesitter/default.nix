@@ -5,16 +5,21 @@
         vim.o.foldlevel = 99
       '';
       
-      plugins.treesitter = {
-        enable = true;
-        folding = true;
-        languageRegister = {
-          octo = "markdown";
+      plugins = {
+        treesitter = {
+          enable = true;
+          folding = true;
+          languageRegister = {
+            octo = "markdown";
+          };
+          settings = {
+            ensure_installed = "all";
+            highlight.enable = true;
+            indent.enable = true;
+          };
         };
-        settings = {
-          ensure_installed = "all";
-          highlight.enable = true;
-          indent.enable = true;
+        treesitter-textobjects = {
+          enable = true;
         };
       };
     };

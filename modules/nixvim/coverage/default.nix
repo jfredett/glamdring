@@ -21,6 +21,8 @@
         autoCmd = [
           { # Automatic coverage loading for rust
             callback = {
+              # TODO: Would be nicer if this were smarter and looked for a coverage
+              # file by a few names, and noops when it can't find one.
               __raw = ''
                 function()
                   require("coverage").load_lcov(".lcov", true)

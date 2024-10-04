@@ -87,6 +87,7 @@
         (mkSilentLeaderSpace "qf" "Trouble quickfix toggle win.position=right")
         (mkSilentLeaderLeader "l" "Trouble loclist toggle win.position=right")
         (mkSilentLeaderSpace "l" "Trouble lsp toggle win.position=right")
+        (mkSilentLeaderLeader "cc" "CoverageSummary")
         (mkSilentLeaderLeader "d" "Neotree")
         (mkSilentLeaderLeader "g" "Neogit")
         #        (mkSilentLeaderLeader "q" "copen")
