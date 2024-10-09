@@ -12,6 +12,7 @@
     };
     bash = {
       enable = true;
+      posh-theme = "cloud-native-azure";
       aliases = {
         azure.enable = true;
       };

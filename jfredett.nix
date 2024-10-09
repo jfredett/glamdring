@@ -10,7 +10,10 @@
       enable = true;
       server = "hedges.canon";
     };
-    bash.enable = true;
+    bash = {
+      enable = true;
+      posh-theme = "negligible";
+    };
     direnv.enable = true;
     dirstack.enable = true;
     discord.enable = true;

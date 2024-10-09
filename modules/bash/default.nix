@@ -5,10 +5,18 @@
 
   options.glamdring.bash = {
     enable = lib.mkEnableOption "Enable bash configuration";
+    posh-theme = lib.mkOption {
+      type = lib.types.str;
+      default = "atomicBit";
+      description = "The oh-my-posh theme to use";
+    };
   };
 
   config = lib.mkIf config.glamdring.bash.enable {
-    home.packages = [ pkgs.oh-my-posh ];
+    home.packages = [
+      pkgs.oh-my-posh
+      pkgs.bat
+    ];
 
     programs.bash = {
       enable = true;
@@ -26,12 +34,13 @@
         rg = "rg --no-ignore";
         vi = "nvim";
         vim = "nvim";
+        cat = "bat";
       };
     };
 
     programs.oh-my-posh = {
       enable = true;
-      useTheme = "atomicBit";
+      useTheme = config.glamdring.bash.posh-theme;
       # TODO: Custom Theme
     };
   };
