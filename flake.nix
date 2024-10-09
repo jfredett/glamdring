@@ -19,7 +19,7 @@
     stylix.url = "github:danth/stylix";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nixvim = {
-      url = "github:pta2002/nixvim/main";
+      url = "github:nix-community/nixvim";
       #url = "git+file:../forks/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
