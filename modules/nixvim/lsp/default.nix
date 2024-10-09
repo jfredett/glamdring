@@ -19,12 +19,12 @@
           hls.enable = true;
           html.enable = true;
           jsonls.enable = true;
-          lua-ls.enable = true;
-          nginx-language-server.enable = true;
-          nil-ls.enable = true;
+          lua_ls.enable = true;
+          nginx_language_server.enable = true;
+          nil_ls.enable = true;
           pylsp.enable = true;
-          ruby-lsp.enable = true;
-          rust-analyzer = {
+          ruby_lsp.enable = true;
+          rust_analyzer = {
             enable = true;
             installCargo = false;
             installRustc = false;
