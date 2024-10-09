@@ -20,14 +20,12 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nixvim = {
       url = "github:nix-community/nixvim";
-      #url = "git+file:../forks/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = inputs@{ self, nixpkgs, nur, nix-darwin, home-manager, flake-utils, nixvim, stylix, hyprland, ... }:
   let
-    system = "x86_64-linux";
     homeManagerConfFor = config: { ... }: {
       imports = [
         nixvim.homeManagerModules.nixvim
@@ -35,21 +33,8 @@
         stylix.homeManagerModules.stylix config
       ];
     };
-
-    nixosConfFor = configs: nixpkgs.lib.nixosSystem {
-      inherit system;
-
-      modules = [
-        { system.stateVersion = "24.05"; }
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-      ] ++ configs;
-
-      specialArgs = { inherit nixpkgs nur nixvim hyprland stylix home-manager; };
-    };
   in {
     # Dev Shells:
-
     devShells.x86_64-linux.default = let
       pkgs = import nixpkgs { system = "x86_64-linux"; config = {}; };
     in pkgs.mkShell { buildInputs = []; };
@@ -61,7 +46,6 @@
     # Modules
     nixosModules = {
       glamdring.home-manager = import ./modules { inherit inputs; };
-      glamdring.nixos = import ./nixos { inherit inputs; };
     };
 
     homeConfigurations = {
