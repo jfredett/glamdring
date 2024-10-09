@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 
   imports = [
     ./modules
@@ -18,6 +18,7 @@
     dirstack.enable = true;
     discord.enable = true;
     firefox.enable = true;
+    hyprland.enable = true;
     git = {
       enable = true;
       identity = {
