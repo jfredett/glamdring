@@ -38,7 +38,7 @@
       lsp.enable = true;
       neo = {
         tree.enable = true;
-        test.enable = true;
+        test.enable = false;
       };
       toggleterm.enable = true;
     };
