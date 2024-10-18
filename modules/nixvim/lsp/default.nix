@@ -27,11 +27,6 @@
           nil_ls.enable = true;
           pylsp.enable = true;
           ruby_lsp.enable = true;
-          rust_analyzer = {
-            enable = true;
-            installCargo = false;
-            installRustc = false;
-          };
         };
       };
     };

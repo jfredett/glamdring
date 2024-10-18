@@ -89,10 +89,20 @@
         }
         # Telescopes I use
         (mkSilentLeaderLeader "b" "Telescope buffers")
-        (mkSilentLeaderLeader "a" "Telescope help_tags")
+        (mkSilentLeaderLeader "a" "Telescope tags")
         (mkSilentLeaderLeader "u" "Telescope undo")
         (mkSilentLeaderLeader "m" "Telescope diagnostics")
+
+        # Deprecated in faver of ,ff
         (mkSilentLeaderSpace "d" "Telescope find_files")
+        (mkSilentLeader "f" "f" "Telescope find_files") # TODO: I wish this were fuzzier, and better at picking files
+
+        (mkSilentLeader "d" "d" "lua require('dap').toggle_breakpoint()") # Set a breakpoint on current line
+        (mkSilentLeader "d" "n" "lua require('dap').step_over()") # Stepover
+        (mkSilentLeader "d" "i" "lua require('dap').step_into()") # Stepinto
+        (mkSilentLeader "d" "e" "lua require('dap').repl.toggle()") # toggle the debugger repl
+        (mkSilentLeader "d" "r" "lua require('dap').continue()") # Stepinto
+        (mkSilentLeader "d" "o" "lua require('dapui').toggle()") # Open the DAP UI
 
         ## Quickfix stuff
         (mkSilentLeaderSpace "q" "Telescope quickfix")
