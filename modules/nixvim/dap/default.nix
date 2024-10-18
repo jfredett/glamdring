@@ -5,7 +5,11 @@
       debuggers = {
         gdb.enable = mkEnableOption "Enable gdb";
       };
-      virtualText = mkEnableOption "Enable virtual text";
+      virtualText = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Enable virtual text";
+      };
     };
   };
 
@@ -31,9 +35,7 @@
               dap-go.enable = true;
               dap-python.enable = true;
 
-              dap-virtual-text = mkIf cfg.virtualText.enable {
-                enable = true;
-              };
+              dap-virtual-text.enable = cfg.virtualText;
             };
 
             adapters.executables = {
