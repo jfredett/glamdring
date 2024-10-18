@@ -15,7 +15,7 @@
         sortCaseInsensitive = true;
         filesystem.filteredItems = {
           hideGitignored = false;
-          hideByName = [ "target" "out" "gen" ];
+          hideByName = [ "target" "out" ];
         };
       };
     };
