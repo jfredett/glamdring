@@ -56,6 +56,12 @@
         options = { silent = true; };
         mode = "n";
       };
+      mkSilentLeader = cmd: final: action: {
+        action = "<cmd>${action}<cr>";
+        key = "<leader>${cmd}${final}";
+        options = { silent = true; };
+        mode = "n";
+      };
       mkInsertCmd = cmd: action: {
         action = "${action}";
         key = cmd;
@@ -81,16 +87,21 @@
           mode = [ "n" "o" "x" ];
           options = { remap = true; };
         }
-        (mkSilentLeaderSpace "d" "Telescope find_files")
+        # Telescopes I use
         (mkSilentLeaderLeader "b" "Telescope buffers")
-        (mkSilentLeaderLeader "h" "Telescope help_tags")
-        (mkSilentLeaderSpace "qf" "Trouble quickfix toggle win.position=right")
-        (mkSilentLeaderLeader "l" "Trouble loclist toggle win.position=right")
-        (mkSilentLeaderSpace "l" "Trouble lsp toggle win.position=right")
+        (mkSilentLeaderLeader "a" "Telescope help_tags")
+        (mkSilentLeaderLeader "u" "Telescope undo")
+        (mkSilentLeaderLeader "m" "Telescope diagnostics")
+        (mkSilentLeaderSpace "d" "Telescope find_files")
+
+        ## Quickfix stuff
+        (mkSilentLeaderSpace "q" "Telescope quickfix")
+        (mkSilentLeader "q" "h" "Telescope quickfix")
+
+        (mkSilentLeaderSpace "b" "BaconLoad<CR>:BaconList")
         (mkSilentLeaderLeader "cc" "CoverageSummary")
         (mkSilentLeaderLeader "d" "Neotree")
         (mkSilentLeaderLeader "g" "Neogit")
-        #        (mkSilentLeaderLeader "q" "copen")
         (mkCmd "Y" "y$")
         (mkCmd "<C-S>" "<C-A>")
         (mkCmd "W" "w")

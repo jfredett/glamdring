@@ -31,7 +31,8 @@
         globals.mapleader = ",";
         opts = {
           number = true;
-          relativenumber = false;
+          relativenumber = true;
+          cursorline = true;
           incsearch = true;
           backup = false;
           writebackup = false;
