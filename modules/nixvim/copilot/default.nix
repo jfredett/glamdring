@@ -13,7 +13,7 @@
       extraPlugins = [ pkgs.vimPlugins.copilot-vim ];
       extraConfigLua = ''
         vim.g.copilot_workspace_folders = {
-          "~/code"
+          "~/code", "/storage/code"
         }
       '';
     };
