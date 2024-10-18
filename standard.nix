@@ -33,6 +33,10 @@
 
       rust = {
         enable = true;
+        debugger = {
+          enable = true;
+          using = "codelldb";
+        };
         bacon.enable = true;
       };
 

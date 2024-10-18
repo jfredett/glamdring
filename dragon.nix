@@ -25,8 +25,13 @@
       agrolens.enable = true;
       rust = {
         enable = true;
+        debugger = {
+          enable = true;
+          using = "codelldb";
+        };
         bacon.enable = true;
       };
+
       copilot.enable = true;
       cmp = {
         enable = true;
