@@ -1,7 +1,8 @@
 { config, pkgs, lib, nur, ... }:
 {
   imports = [
-    ./bacon.nix
+    ./bacon
+    ./rustaceanvim
   ];
 
   config = { };

@@ -6,7 +6,7 @@
   };
 
   config = let
-    cfg = config.glamdring.nixvim.bacon;
+    cfg = config.glamdring.nixvim.rust.bacon;
     condition = cfg.enable;
   in mkIf condition {
       programs.nixvim = {

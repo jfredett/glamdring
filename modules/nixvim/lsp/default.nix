@@ -16,7 +16,10 @@
         servers = {
           bashls.enable = true;
           cssls.enable = true;
-          hls.enable = true;
+          hls = {
+            enable = true;
+            installGhc = false;
+          };
           html.enable = true;
           jsonls.enable = true;
           lua_ls.enable = true;
