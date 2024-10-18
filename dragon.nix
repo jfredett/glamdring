@@ -23,6 +23,10 @@
       enable = true;
       colorscheme = "melange";
       agrolens.enable = true;
+      rust = {
+        enable = true;
+        bacon.enable = true;
+      };
       copilot.enable = true;
       cmp = {
         enable = true;
@@ -32,7 +36,7 @@
       lsp.enable = true;
       neo = {
         tree.enable = true;
-        test.enable = false;
+        test.enable = true;
       };
       toggleterm.enable = true;
     };

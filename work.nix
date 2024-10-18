@@ -32,6 +32,10 @@
       enable = true;
       colorscheme = "gruvbox";
       agrolens.enable = true;
+      rust = {
+        enable = true;
+        bacon.enable = true;
+      };
       copilot.enable = false;
       cmp = {
         enable = true;

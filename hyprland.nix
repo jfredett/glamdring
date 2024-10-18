@@ -30,6 +30,12 @@
       enable = true;
       colorscheme = "kanagawa";
       agrolens.enable = true;
+
+      rust = {
+        enable = true;
+        bacon.enable = true;
+      };
+
       copilot.enable = true;
       cmp = {
         enable = true;

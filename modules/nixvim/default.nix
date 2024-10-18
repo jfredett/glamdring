@@ -14,6 +14,7 @@
     ./keybinds
     ./lsp
     ./neo
+    ./rust
     ./statusline
     ./telescope
     ./terminal

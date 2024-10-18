@@ -28,7 +28,14 @@
     nixvim = {
       enable = true;
       colorscheme = "kanagawa";
-      agrolens.enable = true;
+
+      agrolens.enable = false;
+
+      rust = {
+        enable = true;
+        bacon.enable = true;
+      };
+
       copilot.enable = true;
       cmp = {
         enable = true;
@@ -38,7 +45,7 @@
       lsp.enable = true;
       neo = {
         tree.enable = true;
-        test.enable = false;
+        test.enable = true;
       };
       toggleterm.enable = true;
     };
