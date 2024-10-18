@@ -20,6 +20,7 @@
           commentary.enable = true;
           indent-blankline.enable = true;
           todo-comments.enable = true;
+          numbertoggle.enable = true;
           # language enablement
           nix.enable = true;
 
