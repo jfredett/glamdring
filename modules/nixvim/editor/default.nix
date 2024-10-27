@@ -21,6 +21,8 @@
           indent-blankline.enable = true;
           todo-comments.enable = true;
           numbertoggle.enable = true;
+          nvim-surround.enable = true;
+
           # language enablement
           nix.enable = true;
 
