@@ -1,12 +1,13 @@
-{ config, pkgs, lib, nur, ... }: with lib; {
+{ config, lib, ... }: with lib; {
   imports = [
     ./gruvbox.nix
     ./kanagawa.nix
+    ./melange.nix
   ];
 
   options.glamdring.nixvim.colorscheme = mkOption {
     default = "gruvbox";
-    type = types.enum [ "stylix" "kanagawa" "gruvbox" ];
+    type = types.enum [ "stylix" "kanagawa" "gruvbox" "melange" ];
     description = "The colorscheme to use";
   };
 
