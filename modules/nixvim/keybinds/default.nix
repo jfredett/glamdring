@@ -90,12 +90,19 @@
         # Telescopes I use
         (mkSilentLeaderLeader "b" "Telescope buffers")
         (mkSilentLeaderLeader "a" "Telescope tags")
-        (mkSilentLeaderLeader "u" "Telescope undo")
         (mkSilentLeaderLeader "m" "Telescope diagnostics")
 
-        # Deprecated in faver of ,ff
-        (mkSilentLeaderSpace "d" "Telescope find_files")
-        (mkSilentLeader "f" "f" "Telescope find_files") # TODO: I wish this were fuzzier, and better at picking files
+        # "[g]o [f]ind"
+        (mkSilentLeader "g" "f" "Telescope live_grep")
+
+        # LSP Stuff
+        (mkSilentLeader "s" "w" "Telescope lsp_workspace_symbols")
+        (mkSilentLeader "s" "s" "Telescope lsp_document_symbols")
+
+        (mkSilentLeader "f" "f" "Telescope find_files") # "Find File"
+        (mkSilentLeader "f" "r" "Telescope frecency") # "Find File"
+        (mkSilentLeader "f" "u" "Telescope undo") # "Fucked up"
+        (mkSilentLeader "f" "m" "Telescope manix") # "Find Manual"
 
         (mkSilentLeader "d" "d" "lua require('dap').toggle_breakpoint()") # Set a breakpoint on current line
         (mkSilentLeader "d" "n" "lua require('dap').step_over()") # Stepover
@@ -103,6 +110,18 @@
         (mkSilentLeader "d" "e" "lua require('dap').repl.toggle()") # toggle the debugger repl
         (mkSilentLeader "d" "r" "lua require('dap').continue()") # Stepinto
         (mkSilentLeader "d" "o" "lua require('dapui').toggle()") # Open the DAP UI
+
+        # TODO: some way of doing these per filetype is probably a good plan.
+        (mkSilentLeader "a" "a" "RustLsp codeAction")
+        (mkSilentLeader "a" "x" "RustLsp expandMacro")
+        (mkSilentLeader "a" "<Up>" "RustLsp moveItem up")
+        (mkSilentLeader "a" "<Down>" "RustLsp moveItem down")
+        # TODO: I'd like this to be more generic, maybe `ece` as the 'explain current error' command?
+        (mkSilentLeader "a" "e" "RustLsp explainError current")
+        (mkSilentLeader "a" "h" "RustLsp view hir")
+        (mkSilentLeader "a" "m" "RustLsp view mir")
+        (mkSilentLeader "a" "r" "RustLsp srr")
+        (mkCmd "K" ":RustLsp hover actions<CR>")
 
         ## Quickfix stuff
         (mkSilentLeaderSpace "q" "Telescope quickfix")

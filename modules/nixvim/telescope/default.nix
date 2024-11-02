@@ -9,7 +9,7 @@
           extensions = {
             frecency.enable = true;
             undo.enable = true;
-
+            manix.enable = true;
           };
           settings = {
             pickers = {
