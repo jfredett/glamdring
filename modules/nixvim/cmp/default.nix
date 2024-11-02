@@ -50,6 +50,7 @@
           };
 
           cmp-ai = mkIf cfg.ai.enable {
+            ## FIXME: This I think is causing some kind of bug, getting required despite the mkIf.
             enable = false;
             settings = {
               provider = "OpenAI";

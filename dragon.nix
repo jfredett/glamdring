@@ -22,7 +22,6 @@
     nixvim = {
       enable = true;
       colorscheme = "melange";
-      agrolens.enable = true;
       rust = {
         enable = true;
         debugger = {

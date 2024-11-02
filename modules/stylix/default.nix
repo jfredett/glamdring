@@ -11,7 +11,7 @@
     condition = cfg.enable;
   in {
     stylix = {
-      enable = true;
+      enable = false;
       image = ../../assets/wallpapers/ai/garage-lab-1.png;
       polarity = "dark";
       fonts = {
