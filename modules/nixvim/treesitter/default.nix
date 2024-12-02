@@ -10,9 +10,10 @@
           enable = true;
           folding = true;
           languageRegister = {
-            octo = "markdown";
+            markdown = "octo";
           };
           settings = {
+            auto_install = true;
             ensure_installed = "all";
             highlight.enable = true;
             indent.enable = true;

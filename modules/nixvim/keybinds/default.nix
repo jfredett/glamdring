@@ -100,7 +100,7 @@
         (mkSilentLeader "s" "s" "Telescope lsp_document_symbols")
 
         (mkSilentLeader "f" "f" "Telescope find_files") # "Find File"
-        (mkSilentLeader "f" "r" "Telescope frecency") # "Find File"
+        (mkSilentLeader "f" "r" "Telescope frecency") # "Find recent"
         (mkSilentLeader "f" "u" "Telescope undo") # "Fucked up"
         (mkSilentLeader "f" "m" "Telescope manix") # "Find Manual"
 
@@ -114,6 +114,7 @@
         # TODO: some way of doing these per filetype is probably a good plan.
         (mkSilentLeader "a" "a" "RustLsp codeAction")
         (mkSilentLeader "a" "x" "RustLsp expandMacro")
+        (mkSilentLeader "a" "p" "RustLsp parentModule")
         (mkSilentLeader "a" "<Up>" "RustLsp moveItem up")
         (mkSilentLeader "a" "<Down>" "RustLsp moveItem down")
         # TODO: I'd like this to be more generic, maybe `ece` as the 'explain current error' command?
