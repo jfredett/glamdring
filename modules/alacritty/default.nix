@@ -9,7 +9,7 @@
 
   config = lib.mkIf config.glamdring.alacritty.enable {
 
-    home.packages = [ pkgs.inconsolata-nerdfont ];
+    home.packages = [ pkgs.nerd-fonts.inconsolata ];
 
     programs.alacritty = {
       enable = true;
