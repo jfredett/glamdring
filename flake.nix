@@ -19,6 +19,8 @@
     stylix.url = "github:danth/stylix";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     ags.url = "github:Aylur/ags";
 
     nixvim = {
@@ -27,7 +29,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nur, nix-darwin, home-manager, flake-utils, nixvim, stylix, hyprland, ... }:
+  outputs = inputs@{ self, nixpkgs, nur, nix-darwin, home-manager, flake-utils, nixvim, stylix, hyprland, neovim-nightly-overlay, ... }:
     let
       homeManagerConfFor = config: { ... }: {
         imports = [
@@ -35,7 +37,18 @@
           nur.hmModules.nur
           stylix.homeManagerModules.stylix
           config
+          {
+            nixpkgs.overlays = [ neovim-nightly-overlay.overlays.default ];
+          }
         ];
+
+        /*
+        nixpkgs = {
+          overlays = [
+            neovim-nightly-overlay.overlays.default
+          ];
+        };
+        */
       };
     in {
       # Dev Shells:
@@ -75,7 +88,7 @@
             home-manager.darwinModules.home-manager
             {
               users.users.jfredette.home = "/Users/jfredette";
-              home-manager.useGlobalPkgs = true;
+              home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
               home-manager.users.jfredette = homeManagerConfFor ./work.nix;
             }
@@ -96,7 +109,7 @@
             home-manager.darwinModules.home-manager
             {
               users.users.jfredett.home = "/Users/jfredett";
-              home-manager.useGlobalPkgs = true;
+              home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
               home-manager.users.jfredett = homeManagerConfFor ./jfredett.nix;
             }

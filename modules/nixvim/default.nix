@@ -31,10 +31,13 @@
       viAlias = true;
       vimAlias = true;
 
+      package = pkgs.neovim;
+
       plugins = {
           # Still to do:
           # - DB client:
           #   - DadBod + DadBodUI, supports everything I want.
+          # - notify / some improved notification system
           # - nvim-cmp
           #   - Copilot -> Local hosted migration (Avante?)
           #   - ai chat + completion (maybe via cmp?)
@@ -53,6 +56,7 @@
           #   - https://github.com/gennaro-tedesco/nvim-possession
           # - cursorless/talon setup?
           #   - probably for want of a lav mic.
+          # - todo-comments https://github.com/folke/todo-comments.nvim <-- in nixvim
     };
   };
 };
