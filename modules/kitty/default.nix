@@ -16,9 +16,7 @@
     cfg = config.glamdring.kitty;
     condition = cfg.enable;
   in mkIf condition {
-
       #stylix.targets.kitty.enable = cfg.stylix.enable;
-
 
       home.packages = [
         pkgs.nerd-fonts.jetbrains-mono
@@ -38,9 +36,8 @@
         font = lib.mkForce {
           name = "JetBrainsMono Nerd Font Mono";
           package = pkgs.nerd-fonts.jetbrains-mono;
-          size = 12;
+          size = if std.isLinux then 12 else 16;
         };
-
 
         extraConfig = ''
           # kitty.conf
@@ -58,10 +55,10 @@
 
           ## Keymaps
 
-          map ctrl+c copy_to_clipboard
+          map ctrl+shift+c copy_to_clipboard
           map cmd+c copy_to_clipboard
 
-          map ctrl+v paste_from_clipboard
+          map ctrl+shift+v paste_from_clipboard
           map cmd+v paste_from_clipboard
 
           map ctrl+shift+z scroll_to_prompt -1
@@ -70,9 +67,6 @@
           map ctrl+shift+x scroll_to_prompt 1
           map cmd+shift+x scroll_to_prompt 1
         '';
-
       };
-
-
     };
 }
