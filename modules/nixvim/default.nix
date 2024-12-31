@@ -4,6 +4,7 @@
   };
 
   imports = [
+    ./avante
     ./agrolens
     ./cmp
     ./colorscheme
@@ -11,11 +12,13 @@
     ./coverage
     ./dap
     ./editor
+    ./image
     ./keybinds
     ./lsp
     ./neo
     ./rust
     ./statusline
+    ./stickybuf
     ./telescope
     ./terminal
     ./treesitter
@@ -31,7 +34,7 @@
       viAlias = true;
       vimAlias = true;
 
-      package = pkgs.neovim;
+        # package = pkgs.neovim-developer;
 
       plugins = {
           # Still to do:
@@ -49,7 +52,6 @@
           #   - https://github.com/mistweaverco/kulala.nvim
           #   - ideally something that works with hurl?
           # - https://github.com/al1-ce/just.nvim
-          # - https://github.com/tris203/precognition.nvim
           # - neogen? (to generate annotations quickly)
           # - some kind of session manager:
           #   - https://github.com/olimorris/persisted.nvim

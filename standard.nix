@@ -30,6 +30,7 @@
       colorscheme = "kanagawa";
 
       agrolens.enable = false;
+      avante.enable = true;
 
       rust = {
         enable = true;
