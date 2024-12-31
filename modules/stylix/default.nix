@@ -16,7 +16,7 @@
       polarity = "dark";
       fonts = {
         monospace = {
-          package = pkgs.inconsolata-nerdfont;
+          package = pkgs.nerd-fonts.inconsolata;
           name = "Inconsolata Nerdfont";
         };
       };
