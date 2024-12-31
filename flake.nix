@@ -6,6 +6,8 @@
     nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
 
+    mac-app-util.url = "github:hraban/mac-app-util";
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +31,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nur, nix-darwin, home-manager, flake-utils, nixvim, stylix, hyprland, neovim-nightly-overlay, ... }:
+  outputs = inputs@{ self, nixpkgs, nur, nix-darwin, home-manager, flake-utils, nixvim, stylix, hyprland, neovim-nightly-overlay, mac-app-util, ... }:
     let
       homeManagerConfFor = config: { ... }: {
         imports = [
@@ -41,14 +43,6 @@
             nixpkgs.overlays = [ neovim-nightly-overlay.overlays.default ];
           }
         ];
-
-        /*
-        nixpkgs = {
-          overlays = [
-            neovim-nightly-overlay.overlays.default
-          ];
-        };
-        */
       };
     in {
       # Dev Shells:
@@ -75,47 +69,46 @@
         work = homeManagerConfFor ./work.nix;
       };
 
-      darwinConfigurations = let 
+      darwinConfigurations = let
         pkgs = import nixpkgs { system = "aarch64-darwin"; config = {}; };
-      in {
-        "MBP-G071LCCXRH" = nix-darwin.lib.darwinSystem {
+        glamdringForDarwin = import ./modules/darwin.nix;
+        mkDarwinSystem = config: nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
+
+          specialArgs = { inherit nixpkgs nur; };
+
           modules = [
+            mac-app-util.darwinModules.default
+            glamdringForDarwin
             {
               system.stateVersion = 4;
               services.nix-daemon.enable = true;
+
             }
             home-manager.darwinModules.home-manager
+            config
             {
-              users.users.jfredette.home = "/Users/jfredette";
               home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
-              home-manager.users.jfredette = homeManagerConfFor ./work.nix;
+              home-manager.sharedModules = [
+                mac-app-util.homeManagerModules.default
+              ];
             }
-            { 
+            {
               environment.systemPackages = [ pkgs.mosh ];
             }
           ];
-
-          specialArgs = { inherit nixpkgs nur; };
         };
-        "Hedges" = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          modules = [
-            {
-              system.stateVersion = 4;
-              services.nix-daemon.enable = true;
-            }
-            home-manager.darwinModules.home-manager
-            {
-              users.users.jfredett.home = "/Users/jfredett";
-              home-manager.useGlobalPkgs = false;
-              home-manager.useUserPackages = true;
-              home-manager.users.jfredett = homeManagerConfFor ./mac.nix;
-            }
-          ];
+      in {
+        "MBP-G071LCCXRH" = mkDarwinSystem {
+          users.users.jfredette.home = "/Users/jfredette";
+          home-manager.users.jfredette = homeManagerConfFor ./work.nix;
+          environment.systemPackages = [ pkgs.mosh ];
+        };
 
-          specialArgs = { inherit nixpkgs; };
+        "Hedges" = mkDarwinSystem {
+          users.users.jfredett.home = "/Users/jfredett";
+          home-manager.users.jfredett = homeManagerConfFor ./mac.nix;
         };
       };
     };
