@@ -16,14 +16,20 @@
     cfg = config.glamdring.kitty;
     condition = cfg.enable;
   in mkIf condition {
-      stylix.targets.kitty.enable = cfg.stylix.enable;
+
+      #stylix.targets.kitty.enable = cfg.stylix.enable;
 
 
       home.packages = [
         pkgs.nerd-fonts.jetbrains-mono
       ];
-      fonts.fontconfig.enable = true;
 
+      fonts.fontconfig = {
+        enable = true;
+        defaultFonts = {
+          monospace = [ "JetBrainsMono Nerd Font Mono" ];
+        };
+      };
 
       programs.kitty = {
         enable = true;
@@ -32,8 +38,9 @@
         font = lib.mkForce {
           name = "JetBrainsMono Nerd Font Mono";
           package = pkgs.nerd-fonts.jetbrains-mono;
-          size = 10;
+          size = 12;
         };
+
 
         extraConfig = ''
           # kitty.conf

@@ -25,6 +25,7 @@
         email = "jfredett@gmail.com";
       };
     };
+    kitty.enable = true;
     nixvim = {
       enable = true;
       colorscheme = "kanagawa";
