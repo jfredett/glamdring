@@ -111,7 +111,7 @@
               users.users.jfredett.home = "/Users/jfredett";
               home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
-              home-manager.users.jfredett = homeManagerConfFor ./jfredett.nix;
+              home-manager.users.jfredett = homeManagerConfFor ./mac.nix;
             }
           ];
 
