@@ -36,7 +36,9 @@
 
       unbind-key Z # TODO: Rebind detach to be somewhere else, I keep hitting it by accident
 
+      # Passthrough and italics enablement for kitty/ghostty
       set -g allow-passthrough on
+      set -g default-terminal "tmux-256color"
 
       ################################################################################
       ## Status Bar ##################################################################
