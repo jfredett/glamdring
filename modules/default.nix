@@ -9,6 +9,7 @@
     ./discord
     ./firefox
     ./git
+    ./ghostty
     ./hyprland
     ./kitty
     ./nixvim

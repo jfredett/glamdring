@@ -1,4 +1,6 @@
-{ config, lib, pkgs, ... }: with lib; {
+{ config, lib, pkgs, ... }: with lib; let
+  std = pkgs.stdenv;
+in {
   options = with types; {
     glamdring.kitty = {
       enable = mkEnableOption "Enable the kitty terminal emulator";

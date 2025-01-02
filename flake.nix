@@ -25,22 +25,41 @@
 
     ags.url = "github:Aylur/ags";
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nur, nix-darwin, home-manager, flake-utils, nixvim, stylix, hyprland, neovim-nightly-overlay, mac-app-util, ... }:
+  outputs = inputs@{ self,
+    flake-utils,
+    ghostty,
+    home-manager,
+    hyprland,
+    mac-app-util,
+    neovim-nightly-overlay,
+    nix-darwin,
+    nixpkgs,
+    nixvim,
+    nur,
+    stylix,
+    ... }:
     let
       homeManagerConfFor = config: { ... }: {
         imports = [
           nixvim.homeManagerModules.nixvim
-          nur.hmModules.nur
+          nur.modules.homeManager.default
           stylix.homeManagerModules.stylix
           config
           {
-            nixpkgs.overlays = [ neovim-nightly-overlay.overlays.default ];
+            nixpkgs.overlays = [
+              neovim-nightly-overlay.overlays.default
+              ghostty.overlays.default
+            ];
           }
         ];
       };
