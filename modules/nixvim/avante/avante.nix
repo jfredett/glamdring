@@ -4,7 +4,7 @@
       enable = mkEnableOption "Enable Avante";
       server = mkOption {
         type = types.str;
-        default = "http://randy.emerald.city";
+        default = "http://randy.emerald.city:11464";
         description = "Avante Backend URL";
       };
     };
