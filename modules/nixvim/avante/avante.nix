@@ -4,8 +4,13 @@
       enable = mkEnableOption "Enable Avante";
       server = mkOption {
         type = types.str;
-        default = "http://randy.emerald.city:11464";
+        default = "http://randy.emerald.city";
         description = "Avante Backend URL";
+      };
+      port = mkOption {
+        type = types.int;
+        default = 11434;
+        description = "Avante Backend Port";
       };
     };
   };
@@ -20,9 +25,10 @@
           settings = {
             vendors = {
               qwen = {
-                endpoint = cfg.server;
-                max_tokens = 4096;
-                model = "qwen2.5-coder:32b";
+                __inherited_from = "openai";
+                endpoint = "${cfg.server}:${builtins.toString cfg.port}/v1";
+                api_key_name = "";
+                model = "qwen2-avante:latest";
                 temperature = 0;
               };
             };
