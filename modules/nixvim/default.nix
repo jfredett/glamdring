@@ -4,9 +4,10 @@
   };
 
   imports = [
-    ./avante
     ./agrolens
+    ./avante
     ./cmp
+    ./codecompanion
     ./colorscheme
     ./copilot
     ./coverage
@@ -34,7 +35,7 @@
       viAlias = true;
       vimAlias = true;
 
-        # package = pkgs.neovim-developer;
+      package = pkgs.neovim:;
 
       plugins = {
           # Still to do:

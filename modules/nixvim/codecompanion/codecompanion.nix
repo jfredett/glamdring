@@ -1,16 +1,16 @@
 { config, lib, pkgs, ... }: with lib; {
   options = with types; {
-    glamdring.nixvim.avante = {
-      enable = mkEnableOption "Enable Avante";
+    glamdring.nixvim.code-companion = {
+      enable = mkEnableOption "Enable Code Companion";
       server = mkOption {
         type = types.str;
         default = "http://randy.emerald.city";
-        description = "Avante Backend URL";
+        description = "Backend URL";
       };
       port = mkOption {
         type = types.int;
         default = 11434;
-        description = "Avante Backend Port";
+        description = "Backend Port";
       };
     };
   };
