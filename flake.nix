@@ -58,6 +58,7 @@
           {
             nixpkgs.overlays = [
               neovim-nightly-overlay.overlays.default
+              nur.overlays.default
               ghostty.overlays.default
             ];
           }

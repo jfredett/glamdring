@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nur, ...}: with lib; {
+{ config, pkgs, lib, ...}: with lib; {
   options.glamdring.firefox = {
     enable = mkEnableOption "Enable Firefox";
   };
@@ -77,8 +77,8 @@
           '';
           # TODO: Group and add enable flags for each group of addons.
           extensions = let
-            ryceePkgs = config.nur.repos.rycee.firefox-addons;
-            bandiPkgs = config.nur.repos.bandithedoge.firefoxAddons;
+            ryceePkgs = pkgs.nur.repos.rycee.firefox-addons;
+            bandiPkgs = pkgs.nur.repos.bandithedoge.firefoxAddons;
           in [
             ryceePkgs.onepassword-password-manager
 
