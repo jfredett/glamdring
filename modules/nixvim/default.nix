@@ -35,7 +35,7 @@
       viAlias = true;
       vimAlias = true;
 
-      package = pkgs.neovim:;
+      package = pkgs.neovim;
 
       plugins = {
           # Still to do:
