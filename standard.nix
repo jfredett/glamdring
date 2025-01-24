@@ -26,6 +26,7 @@
       };
     };
     kitty.enable = true;
+    kubernetes.enable = true;
     ghostty.enable = true;
     nixvim = {
       enable = true;

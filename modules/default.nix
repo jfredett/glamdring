@@ -12,6 +12,7 @@
     ./ghostty
     ./hyprland
     ./kitty
+    ./kubernetes
     ./nixvim
     ./realise-symlink
     ./slack
