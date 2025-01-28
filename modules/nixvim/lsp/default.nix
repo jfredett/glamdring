@@ -22,12 +22,13 @@
           };
           html.enable = true;
           jsonls.enable = true;
+          gopls.enable = true;
           lua_ls.enable = true;
           nginx_language_server.enable = true;
           nil_ls.enable = true;
           pylsp.enable = true;
           # FIXME: broken on unstable 27-DEC-2024
-          ruby_lsp.enable = false;
+          ruby_lsp.enable = true;
         };
       };
     };
