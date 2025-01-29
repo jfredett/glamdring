@@ -30,7 +30,7 @@
     ghostty.enable = true;
     nixvim = {
       enable = true;
-      colorscheme = "kanagawa";
+      colorscheme = "melange";
 
       agrolens.enable = false;
       avante.enable = false;
