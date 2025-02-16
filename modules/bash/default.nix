@@ -26,6 +26,7 @@
       initExtra = ''
         set -o vi
         export EDITOR=nvim
+        export DO_NOT_TRACK=1
       '';
 
       shellAliases = {

@@ -4,49 +4,60 @@
     # this on, so no sense adding an option that will never be used.
     condition = config.glamdring.git.enable;
   in mkIf condition {
-    home.packages = [ pkgs.gh ];
+      home.packages = [ pkgs.gh ];
 
-    programs.nixvim = {
-      # https://github.com/topaxi/gh-actions.nvim <-- may be needed if octo can't do this?
+      programs.nixvim = {
+        # https://github.com/topaxi/gh-actions.nvim <-- may be needed if octo can't do this?
 
-      extraPlugins = with pkgs.vimPlugins; [
-        neogit
-      ];
+        extraPlugins = with pkgs.vimPlugins; [
+          neogit
+        ];
 
-      plugins = {
-        neogit = {
+        # Set update time to once-per-minute instead of once-every-four-seconds. Hopefully reduces perf impact of
+        # gitgutter.
+        extraFiles."gitgutter-conf.lua" = {
+          text = ''
+            vim.g.updatetime = 60
+          '';
           enable = true;
-          settings = {
-            commit_editor = {
-              kind = "tab";
-            };
-            integrations = {
-              telescope = true;
-              diffview = true;
+        };
+
+        plugins = {
+          neogit = {
+            enable = true;
+            settings = {
+              commit_editor = {
+                kind = "tab";
+              };
+              integrations = {
+                telescope = true;
+                diffview = true;
+              };
             };
           };
-        };
-        octo = {
-          enable = true;
-          settings = {
-            enable_builtin = true;
-            default_remote = ["origin"];
-            ssh_aliases = {
-              "github.work" = "github.com";
-              "github.oz" = "github.com";
+          octo = {
+            enable = true;
+            settings = {
+              enable_builtin = true;
+              default_remote = ["origin"];
+              ssh_aliases = {
+                "github.work" = "github.com";
+                "github.oz" = "github.com";
+              };
             };
           };
-        };
-        gitgutter.enable = true;
-        gitblame = {
-          enable = true;
-          settings = {
-            message_when_not_commited = "New";
-            virtual_text_column = 125;
+          gitgutter = {
+            enable = true;
           };
+          gitblame = {
+            enable = true;
+            settings = {
+              message_when_not_commited = "New";
+              virtual_text_column = 125;
+            };
+          };
+          diffview.enable = true;
         };
-        diffview.enable = true;
       };
     };
-  };
 }

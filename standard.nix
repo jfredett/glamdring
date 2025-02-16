@@ -32,8 +32,6 @@
       enable = true;
       colorscheme = "melange";
 
-      agrolens.enable = false;
-      avante.enable = false;
       code-companion.enable = true;
 
       rust = {
@@ -45,7 +43,6 @@
         bacon.enable = true;
       };
 
-      copilot.enable = true;
       cmp = {
         enable = true;
         ai.enable = false;
