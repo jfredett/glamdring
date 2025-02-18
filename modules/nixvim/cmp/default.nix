@@ -44,6 +44,7 @@
                 "<C-f>" = "cmp.mapping.scroll_docs(4)";
                 "<Right>" = "cmp.mapping.confirm({ select = true })";
                 "<Up>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+                "<Tab>" = "cmp.mapping.confirm({ select = true })";
                 "<Down>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
               };
             };
