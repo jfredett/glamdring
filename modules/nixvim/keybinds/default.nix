@@ -98,6 +98,7 @@
         # LSP Stuff
         (mkSilentLeader "s" "w" "Telescope lsp_workspace_symbols")
         (mkSilentLeader "s" "s" "Telescope lsp_document_symbols")
+        (mkSilentLeader "s" "r" "Telescope lsp_references")
 
         (mkSilentLeader "f" "f" "Telescope find_files") # "Find File"
         (mkSilentLeader "f" "r" "Telescope frecency") # "Find recent"
