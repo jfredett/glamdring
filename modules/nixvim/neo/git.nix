@@ -1,8 +1,18 @@
 { config, lib, pkgs, ... }: with lib; {
+
+  options = with types; {
+    glamdring.nixvim.neo.git = {
+      gutter = {
+        enable = mkEnableOption "Enable the gitgutter plugin | WARNING: May be a performance hog.";
+      };
+    };
+  };
+
   config = let
     # This maybe should be overridable? But for the moment if I have git and vim, I probably want
     # this on, so no sense adding an option that will never be used.
     condition = config.glamdring.git.enable;
+    enableGutter = config.glamdring.nixvim.neo.git.gutter.enable;
   in mkIf condition {
       home.packages = [ pkgs.gh ];
 
@@ -15,11 +25,13 @@
 
         # Set update time to once-per-minute instead of once-every-four-seconds. Hopefully reduces perf impact of
         # gitgutter.
-        extraFiles."gitgutter-conf.lua" = {
-          text = ''
-            vim.g.updatetime = 60
-          '';
-          enable = true;
+        extraFiles =  mkIf enableGutter {
+          "gitgutter-conf.lua" = {
+            text = ''
+              vim.g.updatetime = 10000
+            '';
+            enable = true;
+          };
         };
 
         plugins = {
@@ -47,7 +59,7 @@
             };
           };
           gitgutter = {
-            enable = true;
+            enable = enableGutter;
           };
           gitblame = {
             enable = true;

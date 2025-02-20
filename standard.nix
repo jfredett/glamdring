@@ -52,6 +52,7 @@
       neo = {
         tree.enable = true;
         test.enable = true;
+        git.gutter.enable = true;
       };
       toggleterm.enable = true;
     };
