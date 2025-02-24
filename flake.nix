@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
+    #    stylix.url = "github:danth/stylix";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -46,14 +46,14 @@
     nixpkgs,
     nixvim,
     nur,
-    stylix,
+    #stylix,
     ... }:
     let
       homeManagerConfFor = config: { ... }: {
         imports = [
           nixvim.homeManagerModules.nixvim
           nur.modules.homeManager.default
-          stylix.homeManagerModules.stylix
+          #          stylix.homeManagerModules.stylix
           config
           {
             nixpkgs.overlays = [

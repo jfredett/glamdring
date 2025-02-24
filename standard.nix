@@ -59,7 +59,7 @@
 
     realise-symlink.enable = true;
     slack.enable = true;
-    stylix.enable = true;
+    #stylix.enable = false;
     ssh.enable = true;
     tmux.enable = true;
     virt-manager = {

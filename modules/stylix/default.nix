@@ -10,7 +10,7 @@
     cfg = config.glamdring.stylix;
     condition = cfg.enable;
   in {
-    stylix = {
+    stylix = mkIf condition {
       enable = false;
       image = ../../assets/wallpapers/ai/garage-lab-1.png;
       polarity = "dark";

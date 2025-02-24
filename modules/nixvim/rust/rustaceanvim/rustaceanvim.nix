@@ -18,9 +18,9 @@
     cfg = config.glamdring.nixvim.rust;
     condition = cfg.enable;
   in mkIf condition {
-      home.packages = with pkgs; [ 
+      home.packages = with pkgs; [
         rust-analyzer
-        vscode-extensions.vadimcn.vscode-lldb.adapter 
+        vscode-extensions.vadimcn.vscode-lldb.adapter
       ];
 
       glamdring.nixvim.dap = {

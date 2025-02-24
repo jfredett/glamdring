@@ -44,7 +44,6 @@
         enable = true;
       };
 
-
       extraConfig = {
         diff.algorithm = "patience";
         rerere.enabled = true;

@@ -15,6 +15,6 @@
   config = let
     cfg = config.glamdring.nixvim.colorscheme;
   in {
-    stylix.targets.nixvim.enable = (cfg == "stylix");
+    # stylix.targets.nixvim.enable = (cfg == "stylix");
   };
 }
