@@ -52,7 +52,7 @@
       neo = {
         tree.enable = true;
         test.enable = true;
-        git.gutter.enable = true;
+        git.gutter.enable = false; # too slow.
       };
       toggleterm.enable = true;
     };
