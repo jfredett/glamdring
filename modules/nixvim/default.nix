@@ -5,11 +5,9 @@
 
   imports = [
     ./agrolens
-    ./avante
     ./cmp
     ./codecompanion
     ./colorscheme
-    ./copilot
     ./coverage
     ./dap
     ./editor

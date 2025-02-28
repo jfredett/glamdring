@@ -35,7 +35,6 @@
         bacon.enable = true;
       };
 
-      copilot.enable = true;
       cmp = {
         enable = true;
         ai.enable = false;

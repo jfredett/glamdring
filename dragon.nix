@@ -31,7 +31,7 @@
         bacon.enable = true;
       };
 
-      copilot.enable = true;
+      code-companion.enable = true;
       cmp = {
         enable = true;
         ai.enable = false;
