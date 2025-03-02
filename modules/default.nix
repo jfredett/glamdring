@@ -16,7 +16,6 @@
     ./nixvim
     ./realise-symlink
     ./slack
-    #    ./stylix
     ./ssh
     ./tmux
     ./virt-manager
