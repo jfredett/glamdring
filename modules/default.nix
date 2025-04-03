@@ -1,7 +1,6 @@
 { config, pkgs, lib, nur, ... }:
 {
   imports = [
-    ./alacritty
     ./barrier
     ./bash
     ./direnv

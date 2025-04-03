@@ -99,8 +99,6 @@
             glamdringForDarwin
             {
               system.stateVersion = 4;
-              services.nix-daemon.enable = true;
-
             }
             home-manager.darwinModules.home-manager
             config

@@ -27,7 +27,6 @@
           nginx_language_server.enable = true;
           nil_ls.enable = true;
           pylsp.enable = true;
-          # FIXME: broken on unstable 27-DEC-2024
           ruby_lsp.enable = true;
         };
       };

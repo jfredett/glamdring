@@ -20,9 +20,9 @@ in {
   in mkIf condition {
       #stylix.targets.kitty.enable = cfg.stylix.enable;
 
-      home.packages = [
+      home.packages = if std.isLinux then [
         pkgs.nerd-fonts.jetbrains-mono
-      ];
+      ] else [];
 
       fonts.fontconfig = {
         enable = true;
@@ -37,7 +37,9 @@ in {
 
         font = lib.mkForce {
           name = "JetBrainsMono Nerd Font Mono";
-          package = pkgs.nerd-fonts.jetbrains-mono;
+          package = if std.isLinux
+                  then pkgs.nerd-fonts.jetbrains-mono
+                  else pkgs.jetbrains-mono;
           size = if std.isLinux then 12 else 16;
         };
 

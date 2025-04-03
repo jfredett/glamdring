@@ -4,7 +4,7 @@
       extraConfigLua = ''
         vim.o.foldlevel = 99
       '';
-      
+
       plugins = {
         treesitter = {
           enable = true;

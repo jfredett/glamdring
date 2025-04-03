@@ -5,7 +5,6 @@
   ];
 
   glamdring = {
-    alacritty.enable = true;
     barrier = {
       enable = false;
       server = "hedges.canon";
@@ -31,12 +30,6 @@
     nixvim = {
       enable = true;
       colorscheme = "gruvbox";
-      agrolens.enable = true;
-      rust = {
-        enable = true;
-        bacon.enable = true;
-      };
-      copilot.enable = false;
       cmp = {
         enable = true;
         ai.enable = false;
@@ -61,15 +54,18 @@
   home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [
-    ripgrep
     dig
-    nmap
+    dbeaver-bin
+    #sqlcl
     htop
-    netcat
-    tree
-    jq
-    yq
     inetutils
+    jq
+    mani
+    netcat
+    nmap
+    ripgrep
+    tree
+    yq
   ];
 
   home.shellAliases = {

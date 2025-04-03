@@ -5,7 +5,6 @@
   ];
 
   glamdring = {
-    alacritty.enable = true;
     barrier = {
       enable = true;
       server = "hedges.canon";
