@@ -45,7 +45,7 @@
     slack.enable = false;
     ssh.enable = true;
     tmux.enable = true;
-    virt-manager.enable = true;
+    virt-manager.enable = false;
   };
 
   programs.home-manager.enable = true;
@@ -56,7 +56,6 @@
   home.packages = with pkgs; [
     dig
     dbeaver-bin
-    #sqlcl
     htop
     inetutils
     jq
