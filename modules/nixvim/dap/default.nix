@@ -28,15 +28,14 @@
         ];
 
         plugins = {
+          dap-ui.enable = true;
+          dap-lldb.enable = true;
+          dap-go.enable = true;
+          dap-python.enable = true;
+
+          dap-virtual-text.enable = cfg.virtualText;
           dap = {
             enable = true;
-            extensions = {
-              dap-ui.enable = true;
-              dap-go.enable = true;
-              dap-python.enable = true;
-
-              dap-virtual-text.enable = cfg.virtualText;
-            };
 
             adapters.executables = {
               gdb = mkIf cfg.debuggers.gdb.enable {
