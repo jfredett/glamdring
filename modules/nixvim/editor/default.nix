@@ -23,6 +23,46 @@
           numbertoggle.enable = true;
           nvim-surround.enable = true;
 
+          # TODO: Move these to their own module
+          notify = {
+            enable = true;
+            settings = {
+              top_down = true;
+              max_height = 10;
+              max_width = 80;
+              minimum_width = 50;
+              merge = true;
+              timeout = 3000;
+              render = "minimal";
+              stages = "fade";
+            };
+          };
+          noice = {
+            settings = {
+              notify.enabled = true;
+              lsp.override = {
+                "vim.lsp.util.convert_input_to_markdown_lines" = true;
+                "vim.lsp.util.stylize_markdown" = true;
+                "cmp.entry.get_documentation" = true;
+              };
+              presets = {
+                bottom_search = true;
+                command_palette = true;
+                long_message_to_split = true;
+                inc_rename = true;
+                lsp_doc_border = true;
+              };
+              popupmenu = {
+                enabled = true;
+                backend = "cmp";
+              };
+              enable = true;
+            };
+          };
+          ####
+
+
+
           # language enablement
           nix.enable = true;
 

@@ -12,6 +12,18 @@
             manix.enable = true;
           };
           settings = {
+            defaults = {
+              file_ignore_patterns = [
+                "%.lock"
+                "%.out"
+                "^.git/"
+                "^.mypy_cache/"
+                "^__pycache__/"
+                "^output/"
+                "^data/"
+                "%.ipynb"
+              ];
+            };
             pickers = {
               find_files = {
                 # no_ignore = true;

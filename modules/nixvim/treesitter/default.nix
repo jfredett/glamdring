@@ -8,7 +8,7 @@
       plugins = {
         treesitter = {
           enable = true;
-          folding = true;
+          folding = false;
           languageRegister = {
             markdown = "octo";
           };
