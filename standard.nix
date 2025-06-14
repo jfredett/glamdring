@@ -81,6 +81,7 @@
     htop
     netcat
     tree
+    clang
     jq
     yq
     sysstat

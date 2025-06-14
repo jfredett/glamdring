@@ -3,7 +3,7 @@
     enable = mkEnableOption "Enable Firefox";
   };
 
-  config = let 
+  config = let
     cfg = config.glamdring.firefox;
   in mkIf cfg.enable {
     programs.firefox = with pkgs; {
@@ -40,7 +40,7 @@
           name = "jfredett";
           search = {
             force = true;
-            default = "DuckDuckGo";
+            default = "ddg";
             engines = {
               "Nix Packages" = {
                 urls = [{
@@ -55,15 +55,15 @@
               };
               "NixOS Wiki" = {
                 urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-                iconUpdateURL = "https://nixos.wiki/favicon.png";
+                icon = "https://nixos.wiki/favicon.png";
                 updateInterval = 24 * 60 * 60 * 1000;
                 definedAliases = [ "@nw" ];
               };
-              "Wikipedia (en)".metaData.alias = "@wiki";
-              "Google".metaData.hidden = true;
-              "Amazon.com".metaData.hidden = true;
-              "Bing".metaData.hidden = true;
-              "eBay".metaData.hidden = true;
+              wikipedia.metaData.alias = "@wiki";
+              google.metaData.hidden = true;
+              amazondotcom-us.metaData.hidden = true;
+              bing.metaData.hidden = true;
+              ebay.metaData.hidden = true;
             };
           };
           settings = {
@@ -76,7 +76,7 @@
             user_pref("media.rdd-vpx.enabled", true);
           '';
           # TODO: Group and add enable flags for each group of addons.
-          extensions = let
+          extensions.packages = let
             ryceePkgs = pkgs.nur.repos.rycee.firefox-addons;
             bandiPkgs = pkgs.nur.repos.bandithedoge.firefoxAddons;
           in [
@@ -87,9 +87,9 @@
             bandiPkgs.dont-fuck-with-paste
             bandiPkgs.tridactyl
             bandiPkgs.violentmonkey
-            ryceePkgs.tree-style-tab
-            ryceePkgs.tst-tab-search
-            ryceePkgs.tst-wheel-and-double
+              #ryceePkgs.tree-style-tab
+              #ryceePkgs.tst-tab-search
+              #ryceePkgs.tst-wheel-and-double
             #ryceePkgs.pushbullet # TODO: Determine if I actually want this.
             ryceePkgs.tab-counter-plus
             ryceePkgs.tab-reloader

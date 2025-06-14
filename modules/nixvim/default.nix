@@ -15,6 +15,7 @@
     ./keybinds
     ./lsp
     ./neo
+    ./obsidian
     ./rust
     ./statusline
     ./stickybuf
