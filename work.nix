@@ -27,6 +27,8 @@
         email = "jfredette@merative.com";
       };
     };
+    kitty.enable = true;
+    kubernetes.enable = true;
     nixvim = {
       enable = true;
       colorscheme = "gruvbox";
@@ -42,10 +44,8 @@
       };
       toggleterm.enable = true;
     };
-    slack.enable = false;
     ssh.enable = true;
     tmux.enable = true;
-    virt-manager.enable = false;
   };
 
   programs.home-manager.enable = true;
@@ -54,8 +54,13 @@
   home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [
-    dig
+    (azure-cli.withExtensions [
+      azure-cli.extensions.aks-preview
+      azure-cli.extensions.oracle-database
+      azure-cli.extensions.ssh
+    ])
     dbeaver-bin
+    dig
     htop
     inetutils
     jq
@@ -64,6 +69,8 @@
     nmap
     ripgrep
     tree
+    k9s
+    watch
     yq
   ];
 

@@ -12,6 +12,7 @@
     home.packages = with pkgs; [
         kubectl
         kubectx
+        kubelogin
         k9s
     ];
   };
