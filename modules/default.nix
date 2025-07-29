@@ -15,6 +15,7 @@
     ./nixvim
     ./realise-symlink
     ./slack
+    ./signal
     ./ssh
     ./tmux
     ./virt-manager
