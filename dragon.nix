@@ -8,7 +8,7 @@
   glamdring = {
     bash = {
       enable = true;
-      posh-theme = "velvet";
+      posh-theme = "tiwahu";
     };
     direnv.enable = true;
     dirstack.enable = true;
@@ -19,9 +19,13 @@
         email = "jfredett@gmail.com";
       };
     };
+    kubernetes.enable = true;
     nixvim = {
       enable = true;
       colorscheme = "melange";
+
+      code-companion.enable = true;
+
       rust = {
         enable = true;
         debugger = {
@@ -31,11 +35,11 @@
         bacon.enable = true;
       };
 
-      code-companion.enable = true;
       cmp = {
         enable = true;
         ai.enable = false;
       };
+
       coverage.enable = true;
       lsp.enable = true;
       neo = {
