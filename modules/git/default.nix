@@ -46,6 +46,9 @@
 
       extraConfig = {
         diff.algorithm = "patience";
+        credential = {
+          helper = "cache --timeout=3600";
+        };
         rerere.enabled = true;
         push.default = "current";
         init.defaultBranch = "main";
