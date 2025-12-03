@@ -49,7 +49,7 @@
     let
       homeManagerConfFor = config: { ... }: {
         imports = [
-          nixvim.homeManagerModules.nixvim
+          nixvim.homeModules.nixvim
           nur.modules.homeManager.default
           config
           {

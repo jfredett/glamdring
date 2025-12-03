@@ -10,6 +10,10 @@
       enable = true;
       posh-theme = "tiwahu";
     };
+    deskflow = {
+      enable = true;
+      server = "hedges.canon";
+    };
     direnv.enable = true;
     dirstack.enable = true;
     git = {
@@ -19,6 +23,7 @@
         email = "jfredett@gmail.com";
       };
     };
+    # hyprland.enable = true;
     kubernetes.enable = true;
     nixvim = {
       enable = true;
@@ -60,15 +65,22 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
-    bat
+    clang
     dig
     htop
+    hyperfine
     jq
+    lsof
+    mprocs
     netcat
     nmap
+    pciutils
     ripgrep
+    rusty-man
     sysstat
     tree
+    xh
+    yazi
     yq
   ];
 

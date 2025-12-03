@@ -5,10 +5,6 @@
   ];
 
   glamdring = {
-    barrier = {
-      enable = false;
-      server = "hedges.canon";
-    };
     bash = {
       enable = true;
       posh-theme = "cloud-native-azure";
@@ -18,6 +14,10 @@
     };
     direnv.enable = true;
     dirstack.enable = false;
+    deskflow = {
+      enable = true;
+      server = "hedges.canon";
+    };
     discord.enable = false;
     firefox.enable = false;
     git = {

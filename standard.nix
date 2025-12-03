@@ -5,7 +5,7 @@
   ];
 
   glamdring = {
-    barrier = {
+    deskflow = {
       enable = true;
       server = "hedges.canon";
     };
@@ -76,16 +76,23 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
-    ripgrep
-    dig
-    nmap
-    htop
-    netcat
-    tree
     clang
+    dig
+    htop
+    hyperfine
     jq
-    yq
+    lsof
+    mprocs
+    netcat
+    nmap
+    pciutils
+    ripgrep
+    rusty-man
     sysstat
+    tree
+    xh
+    yazi
+    yq
   ];
 
   home.shellAliases = {

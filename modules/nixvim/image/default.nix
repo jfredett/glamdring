@@ -4,8 +4,7 @@
     ./image.nix
   ];
 
-  config = { 
+  config = {
     glamdring.nixvim.image.enable = true;
-
   };
 }

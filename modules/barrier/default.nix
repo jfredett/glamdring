@@ -182,5 +182,5 @@
         };
       };
     };
-  in mkIf cfg.enable (mkMerge [ barrierBasedCfg waynergyBasedCfg ]);
+  in builtins.trace "Deprecated, use Deskflow instead" (mkIf cfg.enable (mkMerge [ barrierBasedCfg waynergyBasedCfg ]));
 }

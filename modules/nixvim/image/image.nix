@@ -10,7 +10,12 @@
     condition = cfg.enable;
   in mkIf condition {
       programs.nixvim = {
-        plugins.image.enable = true;
+        plugins.image = {
+          enable = true;
+          settings = {
+            backend = "kitty";
+          };
+        };
       };
   };
 }

@@ -3,6 +3,7 @@
   imports = [
     ./barrier
     ./bash
+    ./deskflow
     ./direnv
     ./dirstack
     ./discord

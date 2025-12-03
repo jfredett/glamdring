@@ -6,10 +6,6 @@
 
   glamdring = {
     alacritty.enable = true;
-    barrier = {
-      enable = true;
-      server = "hedges.canon";
-    };
     bash = {
       enable = true;
       posh-theme = "negligible";

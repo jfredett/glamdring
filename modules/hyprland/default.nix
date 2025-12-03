@@ -21,7 +21,7 @@ in {
         settings = {
           "$mod" = "SUPER";
           monitor = [
-            "M1, 2560x1440, 0x0, 1"
+            "M1, 5120x2160, 0x0, 1"
           ];
           bind = [
             "$mod, Return, exec, kitty"
