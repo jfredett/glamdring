@@ -1,7 +1,6 @@
 { config, pkgs, lib, nur, ... }:
 {
   imports = [
-    ./barrier
     ./bash
     ./deskflow
     ./direnv

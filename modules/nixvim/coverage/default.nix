@@ -13,8 +13,8 @@
         plugins = {
           coverage = {
             enable = true;
-            autoReload = true;
-            lcovFile = ".lcov";
+            settings.auto_reload = true;
+            # lcovFile = ".lcov";
           };
         };
 
