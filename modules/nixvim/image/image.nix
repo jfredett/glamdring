@@ -9,6 +9,11 @@
     cfg = config.glamdring.nixvim.image;
     condition = cfg.enable;
   in mkIf condition {
+      home.packages =  with pkgs; [
+        imagemagick
+        luajitPackages.magick
+      ];
+
       programs.nixvim = {
         plugins.image = {
           enable = true;
@@ -17,5 +22,5 @@
           };
         };
       };
-  };
+    };
 }

@@ -28,16 +28,47 @@
             enable = true;
             settings = {
               top_down = true;
-              max_height = 10;
-              max_width = 80;
+              max_height = {
+                __raw = /* lua */ ''
+                  function()
+                    return math.floor(vim.o.columns * 0.6)
+                  end
+                '';
+              };
+              max_width = {
+                __raw = /* lua */ ''
+                  function()
+                    return math.floor(vim.o.lines * 0.6)
+                  end
+                '';
+              };
               minimum_width = 50;
               merge = true;
-              timeout = 3000;
-              render = "minimal";
-              stages = "fade";
+              timeout = 5000;
+              render = "wrapped-compact";
+              stages = "static";
+
+              on_open = { __raw = /* lua */ ''
+                function(win)
+                  local cur_win = vim.api.nvim_get_current_win()
+                  local win_pos = vim.api.nvim_win_get_position(cur_win)
+                  local win_width = vim.api.nvim_win_get_width(cur_win)
+
+                  local notif_width = vim.api.nvim_win_get_width(win)
+
+                  vim.api.nvim_win_set_config(win, {
+                    relative = "editor",
+                    row = win_pos[1] + 1,
+                    col = win_pos[2] + math.floor((win_width - notif_width) / 2),
+                  })
+                end
+                '';
+              };
             };
           };
+
           noice = {
+            enable = false;
             settings = {
               notify.enabled = true;
               lsp.override = {

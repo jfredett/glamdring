@@ -5,13 +5,13 @@
   ];
 
   glamdring = {
-    deskflow = {
-      enable = true;
-      server = "hedges.canon";
-    };
     bash = {
       enable = true;
       posh-theme = "negligible";
+    };
+    deskflow = {
+      enable = true;
+      server = "hedges.canon";
     };
     direnv.enable = true;
     dirstack.enable = true;
@@ -31,7 +31,7 @@
       enable = true;
       colorscheme = "melange";
 
-      code-companion.enable = true;
+      lean.enable = true;
 
       rust = {
         enable = true;

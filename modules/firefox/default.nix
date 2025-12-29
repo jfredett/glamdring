@@ -6,171 +6,171 @@
   config = let
     cfg = config.glamdring.firefox;
   in mkIf cfg.enable {
-    programs.firefox = with pkgs; {
-      enable = true;
+      programs.firefox = with pkgs; {
+        enable = true;
 
-      package = wrapFirefox firefox-unwrapped {
-        extraPolicies = {
-          CaptivePortal = false;
-          DisableFirefoxStudies = true;
-          DisablePocket = true;
-          DisableTelemetry = true;
-          DisableFirefoxAccounts = false;
-          NoDefaultBookmarks = true;
-          OfferToSaveLogins = false;
-          OfferToSaveLoginsDefault = false;
-          PasswordManagerEnabled = false;
-          FirefoxHome = {
-            Search = true;
-            Pocket = false;
-            Snippets = false;
-            TopSites = false;
-            Highlights = false;
-          };
-          UserMessaging = {
-            ExtensionRecommendations = false;
-            SkipOnboarding = true;
-          };
-        };
-      };
-
-      profiles = {
-        jfredett = {
-          id = 0;
-          name = "jfredett";
-          search = {
-            force = true;
-            default = "ddg";
-            engines = {
-              "Nix Packages" = {
-                urls = [{
-                  template = "https://search.nixos.org/packages";
-                  params = [
-                    { name = "type"; value = "packages"; }
-                    { name = "query"; value = "{searchTerms}"; }
-                  ];
-                }];
-                icon = "${nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@np" ];
-              };
-              "NixOS Wiki" = {
-                urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-                icon = "https://nixos.wiki/favicon.png";
-                updateInterval = 24 * 60 * 60 * 1000;
-                definedAliases = [ "@nw" ];
-              };
-              wikipedia.metaData.alias = "@wiki";
-              google.metaData.hidden = true;
-              amazondotcom-us.metaData.hidden = true;
-              bing.metaData.hidden = true;
-              ebay.metaData.hidden = true;
+        package = wrapFirefox firefox-unwrapped {
+          extraPolicies = {
+            CaptivePortal = false;
+            DisableFirefoxStudies = true;
+            DisablePocket = true;
+            DisableTelemetry = true;
+            DisableFirefoxAccounts = false;
+            NoDefaultBookmarks = true;
+            OfferToSaveLogins = false;
+            OfferToSaveLoginsDefault = false;
+            PasswordManagerEnabled = false;
+            FirefoxHome = {
+              Search = true;
+              Pocket = false;
+              Snippets = false;
+              TopSites = false;
+              Highlights = false;
+            };
+            UserMessaging = {
+              ExtensionRecommendations = false;
+              SkipOnboarding = true;
             };
           };
-          settings = {
-            "general.smoothScroll" = true;
-          };
-          extraConfig = ''
+        };
+
+        profiles = {
+          jfredett = {
+            id = 0;
+            name = "jfredett";
+            search = {
+              force = true;
+              default = "ddg";
+              engines = {
+                "Nix Packages" = {
+                  urls = [{
+                    template = "https://search.nixos.org/packages";
+                    params = [
+                      { name = "type"; value = "packages"; }
+                      { name = "query"; value = "{searchTerms}"; }
+                    ];
+                  }];
+                  icon = "${nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                  definedAliases = [ "@np" ];
+                };
+                "NixOS Wiki" = {
+                  urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+                  icon = "https://nixos.wiki/favicon.png";
+                  updateInterval = 24 * 60 * 60 * 1000;
+                  definedAliases = [ "@nw" ];
+                };
+                wikipedia.metaData.alias = "@wiki";
+                google.metaData.hidden = true;
+                amazondotcom-us.metaData.hidden = true;
+                bing.metaData.hidden = true;
+                ebay.metaData.hidden = true;
+              };
+            };
+            settings = {
+              "general.smoothScroll" = true;
+            };
+            extraConfig = ''
             user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
             user_pref("full-screen-api.ignore-widgets", true);
             user_pref("media.ffmpeg.vaapi.enabled", true);
             user_pref("media.rdd-vpx.enabled", true);
-          '';
-          # TODO: Group and add enable flags for each group of addons.
-          extensions.packages = let
-            ryceePkgs = pkgs.nur.repos.rycee.firefox-addons;
-            bandiPkgs = pkgs.nur.repos.bandithedoge.firefoxAddons;
-          in [
-            ryceePkgs.onepassword-password-manager
+            '';
+            # TODO: Group and add enable flags for each group of addons.
+            extensions.packages = let
+              ryceePkgs = pkgs.nur.repos.rycee.firefox-addons;
+              bandiPkgs = pkgs.nur.repos.bandithedoge.firefoxAddons;
+            in [
+              ryceePkgs.onepassword-password-manager
 
-            # Efficiency Stuff
-            bandiPkgs.auto-tab-discard
-            bandiPkgs.dont-fuck-with-paste
-            bandiPkgs.tridactyl
-            bandiPkgs.violentmonkey
+              # Efficiency Stuff
+              bandiPkgs.auto-tab-discard
+              bandiPkgs.dont-fuck-with-paste
+              bandiPkgs.tridactyl
+              bandiPkgs.violentmonkey
               #ryceePkgs.tree-style-tab
               #ryceePkgs.tst-tab-search
               #ryceePkgs.tst-wheel-and-double
-            #ryceePkgs.pushbullet # TODO: Determine if I actually want this.
-            ryceePkgs.tab-counter-plus
-            ryceePkgs.tab-reloader
-            ryceePkgs.terms-of-service-didnt-read
-            ryceePkgs.tomato-clock
-            ryceePkgs.toolkit-for-ynab
-            ryceePkgs.torrent-control
+              #ryceePkgs.pushbullet # TODO: Determine if I actually want this.
+              ryceePkgs.tab-counter-plus
+              ryceePkgs.tab-reloader
+              ryceePkgs.terms-of-service-didnt-read
+              ryceePkgs.tomato-clock
+              ryceePkgs.toolkit-for-ynab
+              ryceePkgs.torrent-control
 
-            # Privacy Stuff
-            ryceePkgs.duckduckgo-privacy-essentials
-            ryceePkgs.canvasblocker
-            ryceePkgs.censor-tracker
-            ryceePkgs.clearurls
-            ryceePkgs.decentraleyes
-            ryceePkgs.link-cleaner
-            ryceePkgs.ninja-cookie
-            ryceePkgs.privacy-possum
-            ryceePkgs.proton-vpn
+              # Privacy Stuff
+              ryceePkgs.duckduckgo-privacy-essentials
+              ryceePkgs.canvasblocker
+              ryceePkgs.censor-tracker
+              ryceePkgs.clearurls
+              ryceePkgs.decentraleyes
+              ryceePkgs.link-cleaner
+              # ryceePkgs.ninja-cookie
+              ryceePkgs.privacy-possum
+              ryceePkgs.proton-vpn
 
-            # Security Stuff
-            ryceePkgs.ublock-origin
-            ryceePkgs.privacy-badger
-            ryceePkgs.disable-javascript
-            ryceePkgs.user-agent-string-switcher
+              # Security Stuff
+              ryceePkgs.ublock-origin
+              ryceePkgs.privacy-badger
+              ryceePkgs.disable-javascript
+              ryceePkgs.user-agent-string-switcher
 
-            # Site Enhancements Stuff
+              # Site Enhancements Stuff
 
-            ## General
-            ryceePkgs.native-mathml
-            ryceePkgs.new-tab-override
-            ryceePkgs.re-enable-right-click
+              ## General
+              ryceePkgs.native-mathml
+              ryceePkgs.new-tab-override
+              ryceePkgs.re-enable-right-click
 
 
-            ## Github
-            bandiPkgs.enhanced-github
-            bandiPkgs.octolinker
-            bandiPkgs.github-code-folding
-            bandiPkgs.github-repo-size
-            bandiPkgs.material-icons-for-github
-            ryceePkgs.buster-captcha-solver
+              ## Github
+              bandiPkgs.enhanced-github
+              bandiPkgs.octolinker
+              bandiPkgs.github-code-folding
+              bandiPkgs.github-repo-size
+              bandiPkgs.material-icons-for-github
+              ryceePkgs.buster-captcha-solver
 
-            ## SoundCloud
-            ryceePkgs.darkcloud
+              ## SoundCloud
+              ryceePkgs.darkcloud
 
-            ## YouTube
-            ryceePkgs.enhancer-for-youtube
+              ## YouTube
+              # ryceePkgs.enhancer-for-youtube
 
-            # Social Stuff
-            bandiPkgs.pronoundb
-            bandiPkgs.reddit-enhancement-suite
-            bandiPkgs.sponsorblock
-            ryceePkgs.betterttv
-            ryceePkgs.blocktube
+              # Social Stuff
+              bandiPkgs.pronoundb
+              bandiPkgs.reddit-enhancement-suite
+              bandiPkgs.sponsorblock
+              # ryceePkgs.betterttv
+              ryceePkgs.blocktube
 
-            # MuseScore
-            ryceePkgs.musescore-downloader
+              # MuseScore
+              ryceePkgs.musescore-downloader
 
-            # Reddit
-            ryceePkgs.old-reddit-redirect
+              # Reddit
+              ryceePkgs.old-reddit-redirect
 
-            # Unreviewed
+              # Unreviewed
 
-            # ryceePkgs.https-everywhere
-            # ryceePkgs.bitwarden
-            # ryceePkgs.clearurls
-            # ryceePkgs.floccus
-            # ryceePkgs.ghostery
-            # ryceePkgs.privacy-redirect
-            # ryceePkgs.privacy-badger
-            # ryceePkgs.languagetool
-            # ryceePkgs.disconnect
-            # ryceePkgs.react-devtools
+              # ryceePkgs.https-everywhere
+              # ryceePkgs.bitwarden
+              # ryceePkgs.clearurls
+              # ryceePkgs.floccus
+              # ryceePkgs.ghostery
+              # ryceePkgs.privacy-redirect
+              # ryceePkgs.privacy-badger
+              # ryceePkgs.languagetool
+              # ryceePkgs.disconnect
+              # ryceePkgs.react-devtools
 
-            # Broken
+              # Broken
 
-            # ryceePkgs.bypass-paywalls-clean # BUG: Broken link
-          ];
-        userChrome = '' '';
-        userContent = '' '';
+              # ryceePkgs.bypass-paywalls-clean # BUG: Broken link
+            ];
+            userChrome = '' '';
+            userContent = '' '';
+          };
+        };
       };
     };
-  };
-};
 }

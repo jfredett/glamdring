@@ -1,7 +1,7 @@
 { config, pkgs, lib, nur, ... }:
 {
   imports = [
-    ./codecompanion.nix
+    ./modelica.nix
   ];
 
   config = { };

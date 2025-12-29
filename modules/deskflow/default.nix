@@ -15,11 +15,9 @@
   in mkIf cfg.enable {
       home.packages = with pkgs; [ deskflow ];
 
-      # home.file.".config/path/to/file" = {
-      #   text = ''
-      #     content
-      #   '';
-      # };
+      home.file.".config/Deskflow/Deskflow.conf" = {
+        text = builtins.readFile ./Deskflow.conf;
+      };
 
 
       systemd.user.services.deskflow-client = {
@@ -33,7 +31,7 @@
         Service = {
           ExecStart = with pkgs; writeShellScript "deskflow-client-login.sh" ''
             #!/run/current-system/sw/bin/bash
-            ${pkgs.deskflow}/bin/deskflow-client -f -d ${cfg.debugLevel} ${cfg.server}
+            ${pkgs.deskflow}/bin/deskflow-core client
           '';
           Restart = "always";
         };

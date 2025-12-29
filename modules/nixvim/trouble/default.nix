@@ -2,10 +2,9 @@
   config = lib.mkIf config.glamdring.nixvim.enable {
     programs.nixvim = {
       plugins.trouble = {
-        enable = false;
-        settings = {
-          position = "right";
-        };
+        enable = true;
+
+
       };
     };
   };

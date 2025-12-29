@@ -16,6 +16,7 @@
     };
     direnv.enable = true;
     dirstack.enable = true;
+    firefox.enable = true;
     git = {
       enable = true;
       identity = {
@@ -24,13 +25,14 @@
       };
     };
     # hyprland.enable = true;
+    kitty.enable = true;
     kubernetes.enable = true;
     nixvim = {
       enable = true;
       colorscheme = "melange";
 
-      code-companion.enable = true;
-
+      lean.enable = true;
+      modelica.enable = true;
       rust = {
         enable = true;
         debugger = {
@@ -42,7 +44,6 @@
 
       cmp = {
         enable = true;
-        ai.enable = false;
       };
 
       coverage.enable = true;
@@ -56,7 +57,15 @@
 
     realise-symlink.enable = true;
     ssh.enable = true;
-    tmux.enable = true;
+    tmux.enable = false;
+
+    virt-manager = {
+      enable = true;
+      connections = [
+        "qemu+ssh://jfredett@babylon-the-great.canon:22/system?keyfile=/home/jfredett/.ssh/archimedes"
+        "qemu+ssh://jfredett@dragon-of-perdition.canon:22/system?keyfile=/home/jfredett/.ssh/archimedes"
+      ];
+    };
   };
 
 
