@@ -10,8 +10,8 @@
     condition = cfg.enable;
   in mkIf condition {
       home.packages = with pkgs; [
-        lean4
-        # elan
+        # lean4
+        elan
       ];
 
       programs.nixvim = {
@@ -33,7 +33,7 @@
             infoview = {
               horizontal_position = "top";
               indicators = "always";
-              separate_tab = true;
+              separate_tab = false;
             };
             lsp = {
               enable = true;

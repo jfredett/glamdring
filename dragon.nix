@@ -85,7 +85,7 @@
     nmap
     pciutils
     ripgrep
-    rusty-man
+    # rusty-man
     sysstat
     tree
     xh

@@ -58,7 +58,7 @@
             jinja_inline
             jq
             json
-            jsonc
+            # jsonc
             jsonnet
             just
             kitty
