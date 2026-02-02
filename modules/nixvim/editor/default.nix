@@ -15,11 +15,17 @@
           vim-illuminate
         ];
 
+        autoCmd = [
+          # ensure helm lsp is used for helm.
+          { event = "FileType"; pattern = "helm"; command = "LspRestart"; }
+        ]
+
         plugins = {
           auto-save.enable = true;
           commentary.enable = true;
           indent-blankline.enable = true;
           todo-comments.enable = true;
+          helm.enable = true;
           numbertoggle.enable = true;
           nvim-surround.enable = true;
 
