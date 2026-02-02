@@ -65,7 +65,7 @@
     nmap
     ripgrep
     tree
-    yq
+    yq-go
   ];
 
   home.shellAliases = {

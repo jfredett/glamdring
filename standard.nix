@@ -87,12 +87,12 @@
     nmap
     pciutils
     ripgrep
-    rusty-man
+    # rusty-man
     sysstat
     tree
     xh
     yazi
-    yq
+    yq-go
   ];
 
   home.shellAliases = {

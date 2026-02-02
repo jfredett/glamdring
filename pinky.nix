@@ -63,7 +63,7 @@
     netcat
     tree
     jq
-    yq
+    yq-go
     sysstat
   ];
 

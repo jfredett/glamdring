@@ -74,7 +74,7 @@
     netcat
     tree
     jq
-    yq
+    yq-go
   ];
 
   home.shellAliases = {

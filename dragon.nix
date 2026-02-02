@@ -90,7 +90,7 @@
     tree
     xh
     yazi
-    yq
+    yq-go
   ];
 
   home.shellAliases = {
