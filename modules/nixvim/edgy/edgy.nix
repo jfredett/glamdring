@@ -22,9 +22,11 @@
               "VimEnter"
             ];
           };
+
         in [
           (onStart ''lua require("edgy").open("left")'')
           (onStart ''lua require("edgy").open("right")'')
+
         ];
 
 

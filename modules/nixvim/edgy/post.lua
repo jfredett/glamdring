@@ -9,6 +9,7 @@ require("edgy").setup({
         bottom = { size = 20 },
         right = { size = 100 },
         top = { size = 10 },
+        exclude_ft = { "gitrebase", "gitcommit" },
     },
 
     wo = {
@@ -66,16 +67,28 @@ require("edgy").setup({
             open = "Neotree position=left buffers",
         },
         {
-            title = "log",
-            ft = "notify",
-            -- filter = function(buf)
-            --     return require('notify').history()
-            -- end,
+            ft = "trouble",
             pinned = true,
             collapsed = false,
+            title = "todo",
+            filter = function(_buf, win)
+                return vim.w[win].trouble.mode == "todo"
+            end,
             size = { height = 0.3 },
-            open = "NotifyHistory",
-        }
+            open = "Trouble todo position=bottom focus=false",
+        },
+        -- notification logs here
+        -- {
+        --     title = "log",
+        --     ft = "notify",
+        --     -- filter = function(buf)
+        --     --     return require('notify').history()
+        --     -- end,
+        --     pinned = true,
+        --     collapsed = false,
+        --     size = { height = 0.3 },
+        --     open = "NotifyHistory",
+        -- }
         -- notification logs here
     },
 
@@ -102,16 +115,41 @@ require("edgy").setup({
             open = "Trouble diagnostics position=right focus=false filter.severity=vim.diagnostic.severity.WARN",
             size = { height = 0.3 },
         },
+        -- {
+        --     title = "goal",
+        --     ft = "leaninfo",
+        --     -- filter = function(buf)
+        --     --     return require('notify').history()
+        --     -- end,
+        --     filter = function(buf)
+        --       -- Only for rust buffers in the main window
+        --       return vim.api.nvim_buf_get_option(
+        --         vim.api.nvim_win_get_buf(vim.api.nvim_get_current_win()),
+        --         'filetype'
+        --       ) == 'lean'
+        --     end,
+        --     pinned = true,
+        --     collapsed = false,
+        --     size = { height = 0.3 },
+        --     open = "LeanInfoView"
+        -- },
         {
-            ft = "trouble",
+            title = "bacon",
+            ft = "bacon",
+            -- filter = function(buf)
+            --     return require('notify').history()
+            -- end,
             pinned = true,
-            collapsed = false,
-            title = "todo",
-            filter = function(_buf, win)
-                return vim.w[win].trouble.mode == "todo"
+            filter = function(buf)
+              -- Only for rust buffers in the main window
+              return vim.api.nvim_buf_get_option(
+                vim.api.nvim_win_get_buf(vim.api.nvim_get_current_win()),
+                'filetype'
+              ) == 'rust'
             end,
+            collapsed = false,
             size = { height = 0.3 },
-            open = "Trouble todo position=bottom focus=false",
-        },
+            open = "BaconList",
+        }
     },
 })
