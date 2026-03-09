@@ -56,6 +56,7 @@ in {
           italic_font       family="JetBrainsMono Nerd Font Mono" style=Italic
           bold_italic_font  family="JetBrainsMono Nerd Font Mono" style="ExtraBold Italic"
 
+          map ctrl+a>g kitten ~/.config/kitty/goto.py
 
           ## Keymaps
 
