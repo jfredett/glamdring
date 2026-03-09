@@ -15,6 +15,18 @@
       ];
 
       programs.nixvim = {
+        autoCmd = [
+            {
+              event = "BufWritePre";
+              pattern = "*.lean";
+              callback.__raw = ''
+                function()
+                  vim.lsp.buf.format({ async = false })
+                end
+              '';
+            }
+        ];
+
         plugins.lean = {
           enable = true;
           settings = {

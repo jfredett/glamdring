@@ -75,7 +75,9 @@
             muttrc
             nginx
             nickel
-            nix
+            (nix.overrideAttrs {
+              postPatch = "sed -i '/#is-not?/d' queries/highlights.scm";
+            })
             passwd
             pem
             php

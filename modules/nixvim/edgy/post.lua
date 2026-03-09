@@ -115,24 +115,24 @@ require("edgy").setup({
             open = "Trouble diagnostics position=right focus=false filter.severity=vim.diagnostic.severity.WARN",
             size = { height = 0.3 },
         },
-        -- {
-        --     title = "goal",
-        --     ft = "leaninfo",
-        --     -- filter = function(buf)
-        --     --     return require('notify').history()
-        --     -- end,
-        --     filter = function(buf)
-        --       -- Only for rust buffers in the main window
-        --       return vim.api.nvim_buf_get_option(
-        --         vim.api.nvim_win_get_buf(vim.api.nvim_get_current_win()),
-        --         'filetype'
-        --       ) == 'lean'
-        --     end,
-        --     pinned = true,
-        --     collapsed = false,
-        --     size = { height = 0.3 },
-        --     open = "LeanInfoView"
-        -- },
+        {
+            title = "goal",
+            ft = "leaninfo",
+            -- filter = function(buf)
+            --     return require('notify').history()
+            -- end,
+            filter = function(buf)
+              -- Only for rust buffers in the main window
+              return vim.api.nvim_buf_get_option(
+                vim.api.nvim_win_get_buf(vim.api.nvim_get_current_win()),
+                'filetype'
+              ) == 'lean'
+            end,
+            pinned = true,
+            collapsed = false,
+            size = { height = 0.3 },
+            open = "LeanInfoView"
+        },
         {
             title = "bacon",
             ft = "bacon",

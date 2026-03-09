@@ -20,9 +20,9 @@
             enable = true;
             installGhc = false;
           };
+          gopls.enable = true;
           html.enable = true;
           jsonls.enable = true;
-          gopls.enable = true;
           lua_ls.enable = true;
           nginx_language_server.enable = true;
           nil_ls.enable = true;

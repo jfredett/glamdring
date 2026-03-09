@@ -24,15 +24,14 @@
           };
 
         in [
-          (onStart ''lua require("edgy").open("left")'')
-          (onStart ''lua require("edgy").open("right")'')
-
+          # (onStart ''lua require("edgy").open("left")'')
+          # (onStart ''lua require("edgy").open("right")'')
         ];
 
 
         plugins = {
           edgy = {
-            enable = true;
+            enable = false;
             luaConfig.pre = builtins.readFile ./pre.lua;
             luaConfig.post = builtins.readFile ./post.lua;
           };

@@ -18,7 +18,7 @@
         autoCmd = [
           # ensure helm lsp is used for helm.
           { event = "FileType"; pattern = "helm"; command = "LspRestart"; }
-        ]
+        ];
 
         plugins = {
           auto-save.enable = true;
